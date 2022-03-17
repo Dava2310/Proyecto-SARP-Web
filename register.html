@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="stylesheet" href="style.css">
     <title>Ventana de Registro</title>
 </head>
 <body>
-    <h1>Hola mundo</h1>
-    <h2>Hola master</h2>
+    <div class="fondo">
+        <img class="logo" src="img/ICONO PROG PANT COMPL.png" alt="LogoSarp">
+    </div>
+
+    <div class="contenido">
+        <h1>Registro</h1>
+        <h4>Registra tus datos para posteriormente ingresar al sistema.</h4>
+        <h2>Modalidad:</h2> <hr>
+        <form>
+            Nombre y Apellido: <br>
+            <input type="text" name="nombre" id="nombre"> <br>
+            Cedula de Identidad: <br>
+            <input type="text" name="cedula" id="cedula"> <br>
+            Fecha de nacimiento: <br>
+            <h6>Dia</h6>
+            <h6>Mes</h6>
+            <h6>Año</h6>
+            <input type="number" name="dia" id="dia">
+            <input type="number" name="mes" id="mes">
+            <input type="number" name="anio" id="anio">
+            <h2>Datos de usuario</h2> <hr>
+            Correo de usuario: <br>
+            <input type="text" name="correo" id="correo"> <br>
+            Contraseña: <br>
+            <input type="text" name="password" id="password"> <br>
+            Codigo de seguridad: <br>
+            <input type="text" name="codigo" id="codigo"> <br>
+            <button class="aceptar">Aceptar</button>
+            <button type="reset" class="limpiar">Limpiar</button>
+        </form>
+    </div>
+
 </body>
 </html>
