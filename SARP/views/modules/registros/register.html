@@ -4,41 +4,74 @@
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/SARP/views/css/register.css">
+    <link rel="stylesheet" href="/SARP/views/css/bootstrap.min.css">
     <title>Registro de Usuario</title>
 </head>
 <body>
-    <div class="fondo">
-        <img class="logo" src="/SARP/views/images/fondo.jpg" alt="LogoSarp">
+    <div class="container">
+        <div class="row">
+            <div class="contenido">
+                <div class="fondo">
+                    <!-- <h1>hola</h1> -->
+                    <img class="fondo-imagen" src="/SARP/views/images/LOGO.png" alt="fondo">
+                </div>
+        
+                <div class="registro">
+                    <div class="registro-cabecera">
+                        <div class="registro-cabecera-imagen">
+                            <img src="/SARP/views/images/verificar.png" alt="">
+                        </div>
+                        <h1>Registro</h1>
+                    </div>
+                    <div class="descripcion">
+                        <h4>Registra tus datos para posteriormente ingresar al sistema.</h4>
+                    </div>
+                    <div class="contenedorform">
+                        <h2>Datos Personales:</h2>
+                        <hr>
+                        <form>
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido">Apellido:
+                                </label>
+                                <input type="text" name="apellido" id="apellido" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="cedula">Cedula:
+                                </label>
+                                <input type="text" name="cedula" id="cedula" class="form-control">
+                            </div>
+                            <h2>Datos de Usuario:</h2> <hr>
+                            <div class="form-group">
+                                <label for="email">Correo de Usuario:
+                                </label>
+                                <input type="text" name="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="contraseña">Contraseña:
+                                </label>
+                                <input type="text" name="contraseña" id="contraseña" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Codigo de Seguridad:
+                                </label>
+                                <input type="text" name="codigo" id="codigo" class="form-control">
+                            </div>
+                            <div class="botones">
+                                <button type="reset" class="btn btn-primary">Limpiar</button>
+                                <button type="submit" class="btn btn-success">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="contenido">
-        <h1>Registro</h1>
-        <h4>Registra tus datos para posteriormente ingresar al sistema.</h4>
-        <h2>Modalidad:</h2> <hr>
-        <form>
-            Nombre y Apellido: <br>
-            <input type="text" name="nombre" id="nombre"> <br>
-            Cedula de Identidad: <br>
-            <input type="text" name="cedula" id="cedula"> <br>
-            Fecha de nacimiento: <br>
-            <h6>Dia</h6>
-            <h6>Mes</h6>
-            <h6>Año</h6>
-            <input type="number" name="dia" id="dia">
-            <input type="number" name="mes" id="mes">
-            <input type="number" name="anio" id="anio">
-            <h2>Datos de usuario</h2> <hr>
-            Correo de usuario: <br>
-            <input type="text" name="correo" id="correo"> <br>
-            Contraseña: <br>
-            <input type="text" name="password" id="password"> <br>
-            Codigo de seguridad: <br>
-            <input type="text" name="codigo" id="codigo"> <br>
-            <button class="aceptar">Aceptar</button>
-            <button type="reset" class="limpiar">Limpiar</button>
-        </form>
-    </div>
-
+    <script src="/SARP/views/js/bootstrap.min.js"></script>
+	<script src="/SARP/views/js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
