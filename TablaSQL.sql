@@ -18,6 +18,7 @@ create table Usuario(
 create table Proveedores(
 	-- Datos Unicos
     -- Cuenta Personal
+    ID_U int,
     Banco_P varchar(30),
     Cuenta_P varchar(20),
     TipoCuenta_P varchar(10),
@@ -37,6 +38,8 @@ create table Terrenos(
 
 create table Siembras(
 	ID_Lote int auto_increment NOT NULL,
+    ID_T int,
+    ID_Proveedor int,
 	Fecha_Inicio datetime,
     Variedad varchar(10),
     Fecha_Cosecha datetime,
@@ -51,6 +54,7 @@ create table Siembras(
 create table Fleteros(
 	-- Datos Unicos
     Sector varchar(20),
+    ID_U int,
 	-- Cuenta Personal
     Banco_P varchar(30),
     Cuenta_P varchar(20),
@@ -78,6 +82,8 @@ create table Camiones(
 );
 
 create table Camion_Chofer(
+	ID_Camion varchar(10),
+    ID_Chofer varchar(10),
 	FOREIGN KEY(ID_Camion) REFERENCES Camiones(Placa),
     FOREIGN KEY(ID_Chofer) REFERENCES Choferes(Cedula)
 );
@@ -86,6 +92,7 @@ create table Camion_Chofer(
 create table Contraloria(
 	-- Datos Unicos
     -- Este no tiene cuenta bancaria de ningun tipo
+    ID_U int,
 	FOREIGN KEY(ID_U) REFERENCES Usuario(ID_Usuario)
 );
 
@@ -99,6 +106,7 @@ create table Tarifas(
 create table Agropecuario(
 	-- Datos Unicos
     -- Este no tiene cuenta bancaria de ningun tipo
+    ID_U int,
 	FOREIGN KEY(ID_U) REFERENCES Usuario(ID_Usuario)
 );
 
@@ -121,26 +129,35 @@ create table Solicitudes(
 
 create table Solicitud_Fletero(
 	ID_SolicitudF int auto_increment NOT NULL,
+    ID_U int,
+    Solicitud_F int,
     PRIMARY KEY(ID_SolicitudF),
     Observaciones varchar(40) NOT NULL,
     Estado_Aprobacion int NOT NULL,
     Cantidad_MP float NOT NULL,
     Sector varchar(20),
-	FOREIGN KEY(ID_U) REFERENCES Usuarios(ID_Usuario),
+	FOREIGN KEY(ID_U) REFERENCES Usuario(ID_Usuario),
 	FOREIGN KEY(Solicitud_F) REFERENCES Solicitudes(ID_Solicitud)
 );
 
 create table Solicitud_Proveedor(
 	ID_SolicitudP int auto_increment NOT NULL,
+    ID_U int,
+    Solicitud_F int,
     PRIMARY KEY(ID_SolicitudP),
 	Observaciones varchar(40) NOT NULL,
     Estado_Aprobacion int NOT NULL,
     Cantidad_MP float NOT NULL,
-	FOREIGN KEY(ID_U) REFERENCES Usuarios(ID_Usuario),
+	FOREIGN KEY(ID_U) REFERENCES Usuario(ID_Usuario),
 	FOREIGN KEY(Solicitud_F) REFERENCES Solicitudes(ID_Solicitud)
 );
 
 create table ODP(
+	Tarifa_ID int,
+    Planificacion_ID int,
+    Lote_ID int,
+    Usuario_ID int,
+    Solicitud_ID int,
 	-- ID TARIFA
     FOREIGN KEY(Tarifa_ID) REFERENCES Tarifas(ID_Tarifa),
     -- ID PLANIFICACION
@@ -148,7 +165,7 @@ create table ODP(
     -- ID LOTE
     FOREIGN KEY(Lote_ID) REFERENCES Siembras(ID_Lote),
     -- ID USUARIO
-    FOREIGN KEY(Usuario_ID) REFERENCES Usuarios(ID_Usuario),
+    FOREIGN KEY(Usuario_ID) REFERENCES Usuario(ID_Usuario),
     -- ID SOLICITUDPROVEEODR
     FOREIGN KEY(Solicitud_ID) REFERENCES Solicitud_Proveedor(ID_SolicitudP)
 );
