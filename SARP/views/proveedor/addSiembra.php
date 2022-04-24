@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/SARP/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/SARP/assets/css/datos.css">
-    <title>Añadir Siembra</title>
-</head>
-<body>
+<?php
+    $_titulo = "Añadir Siembras";
+    include('../templates/head.php');
+?>
     <div class="container-fluid">
         <div class="row">
             <div class="pantalla">
@@ -19,7 +12,7 @@
                 <!-- CONTENIDO DE LA SIEMBRA -->
                 <div class="contenido">
                     <header class="titulo-formulario">
-                        <h1>Añadir Siembra</h1> 
+                        <h1><?=$_titulo?></h1> 
                         <img class="imagen-titulo" src="/SARP/assets/images/siembra.png" alt="">
                     </header>
                     <hr>
@@ -71,9 +64,8 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
-    <script src="/SARP/assets/js/bootstrap.min.js"></script>
-	<script src="/SARP/assets/js/jquery-3.2.1.min.js"></script>
-</body>
-</html>
+    <?php
+        include('../templates/footer.php');
+    ?>
