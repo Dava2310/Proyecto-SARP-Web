@@ -1,5 +1,5 @@
 <?php
-    $_titulo = "Añadir Siembras";
+    $_titulo = "Añadir Siembras!";
     include('../templates/head.php');
 ?>
     <div class="container-fluid">
@@ -16,22 +16,22 @@
                         <img class="imagen-titulo" src="/SARP/assets/images/siembra.png" alt="">
                     </header>
                     <hr>
-                    <form action="">
+                    <form action="../../controllers/proveedor/ctrl_addSiembra.php" method='post'>
                         <div class="row">
                             <div class="form-group col-md-5">
                                 <label for="fecha_inicio">Fecha de Inicio</label>
-                                <input class="form-control" type="text" name="fecha_inicio" id="fecha_inicio">
+                                <input class="form-control" type="text" name="fecha_inicio" id="fecha_inicio" required>
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="kilos_totales">Kilos Totales por Lote:</label> 
-                                <input class="form-control" type="text" name="kilos_totales" id="kilos_totales">
+                                <input class="form-control" type="text" name="kilos_totales" id="kilos_totales" required>
                             </div>
                         </div>
                         <!-- <br> -->
                         <div class="row">
                             <div class="form-group col-md-5">
                                 <label for="variedad">Variedad</label>
-                                <input class="form-control" type="text" name="variedad" id="variedad">
+                                <input class="form-control" type="text" name="variedad" id="variedad" required>
                             </div>
                             <div class="form-group col-md-5">
                                 <label  for="id_lote">ID del Lote Generado:</label> 
@@ -41,24 +41,24 @@
                         <div class="row">
                             <div class="form-group col-md-5">
                                 <label for="fecha_cosecha">Fecha Estimada de Cosecha:</label>
-                                <input class="form-control"  type="text" name="fecha_cosecha" id="fecha_cosecha">
+                                <input class="form-control"  type="text" name="fecha_cosecha" id="fecha_cosecha" required>
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="rendimiento">Rendimiento Esperado:</label>
-                                <input class="form-control" type="text" name="rendimiento" id="rendimiento">
+                                <input class="form-control" type="text" name="rendimiento" id="rendimiento" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-5">
                                 <label for="hectareas">Héctareas sembradas:</label>
-                                <input class="form-control" type="text" name="hectareas" id="hectareas">
+                                <input class="form-control" type="text" name="hectareas" id="hectareas" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
-                                <button class="btn btn-success glyphicon glyphicon-pencil">Terminar Registro</button>
-                                <button class="btn btn-primary glyphicon glyphicon-pencil">Terminar y Añadir Otro</button>
+                                <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Terminar Registro</button>
+                                <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Terminar y Añadir Otro</button>
                             </div>
                         </div>
                     </form>
