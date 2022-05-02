@@ -1,57 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir Camión</title>
-</head>
+<?php
+    $_titulo = "Añadir Camion";
+    include('../templates/headFletero.php');
+?>
 <body>
-    <header>
-        <h1>Añadir Camión</h1>
-        <hr>
-        <img src="/SARP/views/images/camion.png" alt="">
-    </header>
-    <nav>
-        <a href="./datosPersonales.html">Datos Personales</a>
-        <a href="./datosBancarios.html">Datos Bancarios</a>
-        Camión
-        <a href="./addCamion.html">Añadir Camión</a>
-        <a href="./buscarCamion.html">Consultar Camiones</a>
-        Notificaciones
-        <a href="./solicitudesPendientes.html">Solicitudes Pendientes</a>
-        <a href="./solicitudesAceptadas.html">Solicitudes Aceptadas</a>
-        <a href="./solicitudesDenegadas.html">Solicitudes Denegadas</a>
-        <img src="/SARP/views/images/LOGOTIPO SARP+.png" alt="">
-    </nav>
-    <div class="contenido">
-        <form action="">
-            Placa:
-            <input type="text" name ="" id="">
-            Capacidad en Toneladas:
-            <input type="text" name="" id="">
-            Modelo:
-            <input type="text" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Guardar Cambios</button>
-        </form>
-        <h2>Choferes</h2> <img src="/SARP/views/images/chofer.png" alt=""> <hr> 
-        <form action="">          
-            Nombre Completo (1):
-            <input type="text" name ="" id="">
-            Cédula de Identidad (1):
-            <input type="tex t" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Terminar Registro</button> 
-        </form>
-        <form action="">          
-            Nombre Completo (2):
-            <input type="text" name ="" id="">
-            Cédula de Identidad (2):
-            <input type="tex t" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Terminar Registro</button> 
-        </form>
-    </div>
-</body>
-</html>
+    
+
+    <div class="container-fluid">
+        <div class="row"> 
+                   
+                <?php
+                    include("../templates/menuFletero.php");
+                ?>
+            
+                <div  class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;" >
+                    <div class="contenidoInterno" style="padding-top: 25px;">
+                            <header class="row" style="margin-left: 10px;">
+                                <h2>Añadir Camion</h2>
+                                
+                                <img class="imagen-titulo" src="../../assets/images/camion.png" alt="" style="width: 50px; height: 50px;">
+                                
+                            </header>
+                            <hr>
+                            <form action="">
+                                <div class="row">
+                                    <div class="form-group col-sm">
+                                        <label for="Placa">Placa:</label>
+                                        <input class="form-control" type="text" name="Placa" id="Placa" required>
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="Capacidad">Capacidad en Toneladas:</label>
+                                        <input class="form-control" type="number" name="Capacidad" id="Capacidad" required>
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="Modelo">Modelo:</label>  
+                                        <input class="form-control" type="text" name="Modelo" id="Modelo" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                        <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Guardar Cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+                        <div class="row" style="margin-left: 10px; margin-top: 8px;">
+                            <h2>Choferes</h2>
+                            <img class="imagen-titulo" src="../../assets/images/chofer.png" alt="" style="width: 50px; height: 50px;"> 
+                        </div>
+                        <hr>
+                        <form action="">   
+                            <div class="row">    
+                                <div class="form-group col-sm">
+                                    <label for="Nombre">Nombre Completo (1):</label>
+                                    <input class="form-control" type="text" name ="Nombre" id="Nombre" required>
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="CI">Cédula de Identidad (1):</label>
+                                    <input class="form-control" type="text" name="CI" id="CI" required>
+                                </div> 
+                            </div> 
+                            
+                            <div class="row">   
+                                <div class="form-group col-sm">
+                                    <label for="Nombre2">Nombre Completo (2):</label>   
+                                    <input class="form-control" type="text" name ="Nombre2" id="Nombre2">
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="CI2"> Cédula de Identidad (2):</label>
+                                    <input class="form-control" type="text" name="CI2" id="CI2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                    <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Terminar registro</button>
+                                </div>
+                            </div>
+                        </form>      
+<?php
+    include ("../templates/footerFletero.php")
+?>
+
+   

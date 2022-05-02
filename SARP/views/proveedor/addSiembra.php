@@ -13,7 +13,7 @@
                 <div class="contenido">
                     <header class="titulo-formulario">
                         <h1><?=$_titulo?></h1> 
-                        <img class="imagen-titulo" src="/SARP/assets/images/siembra.png" alt="">
+                        <img class="imagen-titulo" src="../../assets/images/siembra.png" alt="">
                     </header>
                     <hr>
                     <form action="../../controllers/proveedor/ctrl_addSiembra.php" method='post'>

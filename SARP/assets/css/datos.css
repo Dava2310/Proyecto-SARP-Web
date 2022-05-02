@@ -107,7 +107,7 @@ nav > ul > li > ul{
 nav > ul > li:hover > ul{
     display: inline-block;
     /* top: 200px; */
-    left: 240px;
+    /* left: 240px; */
 }
 
 

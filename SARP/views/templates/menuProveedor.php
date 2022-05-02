@@ -4,7 +4,7 @@
                     <div class="cabeceranav">
                         <!-- IMAGEN PRINCIPAL DEL NAV -->
                         <div class="cabeceranav-img">
-                            <img src="/SARP/assets/images/cadena.png" alt="">
+                            <img src="../../assets/images/cadena.png" alt="">
                         </div>
                         <h2>Modo: Proveedor</h2>  
                     </div>
@@ -32,6 +32,6 @@
                         <!-- LOGO EN EL PIE DEL NAV -->
                     </nav>
                     <div class="nav-imagen">
-                        <img src="/SARP/assets/images/LOGOTIPO SARP+.png" alt="">
+                        <img src="../../assets/images/LOGOTIPO SARP+.png" alt="">
                     </div>
 </div>

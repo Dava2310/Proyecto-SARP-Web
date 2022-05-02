@@ -1,42 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>Reportes</title>
-</head>
+<?php
+    $_titulo = "Reportes";
+    include('../templates/headFletero.php');
+?>
 <body>
-    <header>
-        <h1>Reportes</h1>
-        <img src="/SARP/views/images/report.png" alt="">
-    </header>
-    <nav>
-        <a href="./datosPersonales.html">Datos Personales</a>
-        <a href="./datosProveedores.html">Datos Proveedores</a>
-        <a href="./datosFleteros.html">Datos Fleteros</a>
-        <a href="./reportes.html">Generación de Reportes</a>
-        <a href="./arrime.html">Planificacion de Arrime</a>
-        <a href="./ODP.html">Plantillas de ODP</a>
-        <img src="/SARP/views/images/LOGOTIPO SARP+.png" alt="">
-    </nav>
-    <div class="contenido">
-        <div class="contenido-disponibilidad">
-            <label for="disponibilidad">Disponibiliadd de Arrime en el Campo.</label>
-            <button class="boton">Generar Reporte</button>
-        </div>
-        <div class="contenido-planificacion">
-            <label for="planificacion">Planificaciones confirmadas.</label>
-            <button class="boton">Generar Reporte</button>
-        </div>
-        <div class="contenido-listadoarrime">
-            <label for="listadoarrime">Listado de Arrime Real.</label>
-            <button class="boton">Generar Reporte</button>
-        </div>
-        <div class="contenido-boletoindividual">
-            <label for="boletoindividual">Reporte por Boleto Individual.</label>
-            <button class="boton">Generar Reporte</button>
-        </div>
-    </div> 
-</body>
-</html>
+    <div class="container-fluid">
+        <div class="row"> 
+    
+                <?php
+                    include("../templates/menuAgropecuaria.php");
+                ?>
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                    <div class="contenidoInterno" style="padding-top: 25px;">
+                        <header class="row" style="margin-left: 10px;">
+                            <h2>Reportes</h2>
+                            <img class="imagen-titulo" src="../../assets/images/report.png" alt="" style="width: 50px; height: 50px;">
+                        </header>
+                        <hr>
+                        
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Disponibilidad de Arrime en el Campo.</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Planificaciones confirmadas.</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Listado de arrime Real.</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Reporte por Boleto Individual.</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                          
+                         
+                       
+                        
+<?php
+    include ("../templates/footerFletero.php")
+?>

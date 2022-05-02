@@ -1,48 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>Plantillas ed ODP</title> 
-</head>
+<?php
+    $_titulo = "ODP";
+    include('../templates/headFletero.php');
+?>
 <body>
-    <header>
-        <h1>Plantillas de ODP</h1>
-        <img src="/SARP/views/images/payment-method.png" alt="">
-    </header>
-    <nav>
-        <a href="./datosPersonales.html">Datos Personales</a>
-        <a href="./datosProveedores.html">Datos Proveedores</a>
-        <a href="./datosFleteros.html">Datos Fleteros</a>
-        <a href="./reportes.html">Generación de Reportes</a>
-        <a href="./arrime.html">Planificacion de Arrime</a>
-        <a href="./ODP.html">Plantillas de ODP</a>
-        <img src="/SARP/views/images/LOGOTIPO SARP+.png" alt="">
-    </nav>
-    <div class="contenido">
-        <div class="contenido-generarodp">
-            <label for="generarodp">Reporte de ODP general.</label>
-            <select name="semana-1" id="semana-1">
-                <!-- opciones -->
-            </select> 
-            <button class="boton">Generar Reporte.</button>
-        </div>
-        <div class="contenido-odpno">
-            <label for="odpno">Reporte de ODP no pagadas.</label>
-            <select name="semana-2" id="semana-2">
-                <!-- opciones -->
-            </select>
-            <button class="boton">Generar Reporte.</button>
-        </div>
-        <div class="contenido-odpsi">
-            <label for="confirmacion">Reporte de ODP pagadas.</label>
-            <select name="semana-3" id="semana-3">
-                <!-- opciones -->
-            </select>
-            <button class="boton">Generar Reporte.</button>
-        </div>
-        
-    </div>
-</body>
-</html>
+    <div class="container-fluid">
+        <div class="row"> 
+    
+                <?php
+                    include("../templates/menuAgropecuaria.php");
+                ?>
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                    <div class="contenidoInterno" style="padding-top: 25px;">
+                        <header class="row" style="margin-left: 10px;">
+                            <h2>Datos Personales</h2>
+                            <img class="imagen-titulo" src="../../assets/images/datos-personales.png" alt="" style="width: 50px; height: 50px;">
+                        </header>
+                        <hr>
+                        
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Reporte ODP General</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label for="Semana">semana</label>
+                                    <input  type="week" name ="Semana" id="Semana">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Reporte ODP No Pagadas</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label for="Semana">semana</label>
+                                    <input  type="week" name ="Semana" id="Semana">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                                <div class="  col-md-6 col-sm-12 ">
+                                    <h3> Reporte ODP Pagadas</h3>
+                                </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label for="Semana">semana</label>
+                                    <input  type="week" name ="Semana" id="Semana">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>
+                            
+                            </div>
+                         
+                       
+                        
+<?php
+    include ("../templates/footerFletero.php")
+?>

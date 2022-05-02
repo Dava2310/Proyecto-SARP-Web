@@ -1,54 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos Bancarios</title>
-</head>
+<?php
+    $_titulo = "Datos Bancarios";
+    include('../templates/headFletero.php');
+?>
 <body>
-    <header>
-        <h1>Datos Bancarios Personales - Datos Bancarios Autorizado</h1>
-        <hr>
-        <img src="/SARP/views/images/bank.png" alt="">
-    </header>
-    <nav>
-        <a href="./datosPersonales.html">Datos Personales</a>
-        <a href="./datosBancarios.html">Datos Bancarios</a>
-        Camión
-        <a href="./addCamion.html">Añadir Camión</a>
-        <a href="./buscarCamion.html">Consultar Camiones</a>
-        Notificaciones
-        <a href="./solicitudesPendientes.html">Solicitudes Pendientes</a>
-        <a href="./solicitudesAceptadas.html">Solicitudes Aceptadas</a>
-        <a href="./solicitudesDenegadas.html">Solicitudes Denegadas</a>
-        <img src="/SARP/views/images/LOGOTIPO SARP+.png" alt="">
-    </nav>
-    <div class="contenido">
-        <form action="">
-            Cuenta Propia:
-            <input type="text" name ="" id="">
-            Banco:
-            <input type="text" name="" id="">
-            Nº de Cuenta:
-            <input type="text" name="" id="">
-            Tipo de Cuenta:
-            <input type="text" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Aceptar</button>
-        </form>
-        <form action="">
-            Cuenta Propia:
-            <input type="text" name ="" id="">
-            Banco:
-            <input type="text" name="" id="">
-            Nº de Cuenta:
-            <input type="text" name="" id="">
-            Tipo de Cuenta:
-            <input type="text" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Aceptar</button> 
-        </form>
-    </div>
-</body>
-</html>
+   
+    <div class="container-fluid">
+        <div class="row"> 
+            
+                <?php
+                    include("../templates/menuFletero.php");
+                ?>
+                 
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                    <div class="contenidoInterno" style="padding-top: 25px;">   
+                            <header  class="row" style="margin-left: 10px;">
+                                    <h2>Datos Bancarios Personales </h2>
+                                    <img class="imagen-titulo" src="../../assets/images/bank.png" alt="" style="width: 50px; height: 50px;">
+                            </header>
+                            <hr>
+                            <form action="">
+                                <div class="row">
+                                    <div class="form-group col-sm">
+                                        <label for="ctaPropia">Cuenta Propia:</label>
+                                        <input class="form-control" type="text" name ="ctaPropia" id="ctaPropia">
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="Banco">Banco:</label>
+                                        <input class="form-control" type="text" name ="Banco" id="Banco">
+
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="Nrocuenta">Nº de Cuenta:</label>
+                                        <input class="form-control" type="text" name ="Nrocuenta" id="Nrocuenta">
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="TpoCuenta">Tipo de cuenta:</label>
+                                        <input class="form-control" type="text" name ="TpoCuenta" id="TpoCuenta">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                        <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Aceptar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row" style="margin-left: 10px; margin-top: 8px;">
+                                <h2>Datos Bancarios Autorizado</h2>
+                                <img class="imagen-titulo" src="../../assets/images/bank.png" alt="" style="width: 50px; height: 50px;">
+                            </div>
+                            <hr>
+                            <form action="">
+                                <div class="row">
+                                    <div class="form-group col-sm">
+                                        <label for="Nombre">Nombre:</label>
+                                        <input class="form-control" type="Nombre" name ="Nombre" id="Nombre">
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="Banco">Banco:</label>
+                                        <input class="form-control" type="text" name ="Banco" id="Banco">
+
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="Nrocuenta">Nº de Cuenta:</label>
+                                        <input class="form-control" type="text" name ="Nrocuenta" id="Nrocuenta">
+                                    </div>
+                                    <div class="form-group col-sm">
+                                        <label for="TpoCuenta">Tipo de cuenta:</label>
+                                        <input class="form-control" type="text" name ="TpoCuenta" id="TpoCuenta">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                        <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Aceptar</button>
+                                    </div>
+                                </div>
+                            </form>
+<?php
+include ("../templates/footerFletero.php")
+?>
