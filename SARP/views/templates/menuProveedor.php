@@ -12,20 +12,20 @@
                     <!-- NAVEGACION DE OPCIONES -->
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="./addSiembra.html">Datos Personales</a></li>
-                            <li><a href="./datosBancarios.html">Datos Bancarios</a></li>
-                            <li><a href="./datosTerreno.html">Datos del Terreno</a> </li>
+                            <li><a href="./datosPersonales.php">Datos Personales</a></li>
+                            <li><a href="./datosBancarios.php">Datos Bancarios</a></li>
+                            <li><a href="./datosTerreno.php">Datos del Terreno</a> </li>
                             <li>Manejo de Siembra
                                 <ul>
-                                    <li><a href="./addSiembra.html">Añadir Siembra</a> </li>
-                                    <li><a href="./consultarSiembra.html">Consultar Siembra</a> </li>
+                                    <li><a href="./addSiembra.php">Añadir Siembra</a> </li>
+                                    <li><a href="./consultarSiembra.php">Consultar Siembra</a> </li>
                                 </ul>
                             </li>
                             <li>Notificaciones
                                 <ul>
-                                    <li><a href="./solicitudesPendientes.html">Solicitudes Pendientes</a></li>
-                                    <li><a href="./solicitudesAceptadas.html">Solicitudes Aceptadas</a></li>
-                                    <li><a href="./solicitudesPospuestas.html">Solicitudes Pospuestas</a></li>
+                                    <li><a href="./solicitudesPendientes.php">Solicitudes Pendientes</a></li>
+                                    <li><a href="./solicitudesAceptadas.php">Solicitudes Aceptadas</a></li>
+                                    <li><a href="./solicitudesPospuestas.php">Solicitudes Pospuestas</a></li>
                                 </ul>
                             </li>
                         </ul>    

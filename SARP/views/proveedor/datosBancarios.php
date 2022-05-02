@@ -1,55 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <m eta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>Datos Bancarios</title>
-</head>
-<body>
-    <header>
-        <h1>Datos Bancarios Personales - Datos Bancarios Autorizado</h1>
-        <hr>
-        <img src="/SARP/views/images/bank.png" alt="">
-    </header>
-    <nav> 
-        <a href="./addSiembra.html">Datos Personales</a>
-        <a href="./datosBancarios.html">Datos Bancarios</a>
-        <a href="./datosTerreno.html">Datos del Terreno</a> 
-        Manejo de Siembra 
-        <a href="./addSiembra.html">Añadir Siembra</a> 
-        <a href="./consultarSiembra.html">Consultar Siembra</a> 
-        Notificaciones
-        <a href="./solicitudesPendientes.html">Solicitudes Pendientes</a>
-        <a href="./solicitudesAceptadas.html">Solicitudes Aceptadas</a>
-        <a href="./solicitudesPospuestas.html">Solicitudes Pospuestas</a>
-        <img src="/SARP/views/images/LOGOTIPO SARP+.png" alt="">
-    </nav>
-    <div class="contenido">
-        <form action="">
-            Cuenta Propia:
-            <input type="text" name ="" id="">
-            Banco:
-            <input type="text" name="" id="">
-            Nº de Cuenta:
-            <input type="text" name="" id="">
-            Tipo de Cuenta:
-            <input type="text" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Aceptar</button>
-        </form>
-        <form action="">
-            Cuenta Propia:
-            <input type="text" name ="" id="">
-            Banco:
-            <input type="text" name="" id="">
-            Nº de Cuenta:
-            <input type="text" name="" id="">
-            Tipo de Cuenta:
-            <input type="text" name="" id="">
-            <button type="reset">Limpiar</button>
-            <button>Aceptar</button> 
-        </form>
+<?php
+    $_titulo = "Datos Bancarios Personales y Autorizados";
+    $_titulo1 = "Datos Bancarios Personales";
+    $_titulo2 = "Datos Bancarios Autorizados";
+    include('../templates/head.php');
+?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="pantalla">
+                <!-- CONTENIDO DEL MENU DE NAVEGACION -->
+                <?php
+                    include("../templates/menuProveedor.php");
+                ?>
+                <!-- CONTENIDO DE LOS DATOS BANCARIOS -->
+                <div class="contenido">
+                    <header class="titulo-formulario">
+                        <h1><?=$_titulo1?></h1>
+                        <img class="imagen-titulo" src="../../assets/images/bank.png" alt="">
+                    </header>
+                    <hr>
+                    <!-- FORMULARIO DE LOS DATOS BANCARIOS PERSONALES -->
+                    <form action="ctrl_bancarioPersonal.php">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="cuentaP">Cuenta Propia:</label>
+                                <input class="form-control" type="text" name="cuentaP" id="cuentaP" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="bancoP">Banco:</label>
+                                <input class="form-control" type="text" name="bancoP" id="bancoP" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="numP">Nº de Cuenta:</label>
+                                <input class="form-control" type="text" name="numP" id="numP" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="tipoP">Tipo de Cuenta:</label>
+                                <input class="form-control" type="text" name="tipoP" id="tipoP" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Aceptar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- <br> -->
+                    <hr>
+                    <header class="titulo-formulario">
+                        <h1><?=$_titulo2?></h1>
+                        <img class="imagen-titulo" src="../../assets/images/bank.png" alt="">
+                    </header>
+                    <br>
+                    <!-- FORMULARIO DE LOS DATOS BANCARIOS AUTORIZADOS -->
+                    <form action="ctrl_bancarioAutorizado.php">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="cuentaA">Cuenta Autorizada:</label>
+                                <input class="form-control" type="text" name="cuentaA" id="cuentaA" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="bancoA">Banco:</label>
+                                <input class="form-control" type="text" name="bancoA" id="bancoA" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="numA">Nº de Cuenta:</label>
+                                <input class="form-control" type="text" name="numA" id="numA" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="tipoA">Tipo de Cuenta:</label>
+                                <input class="form-control" type="text" name="tipoA" id="tipoA" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Aceptar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+    <?php
+        include('../templates/footer.php');
+    ?>
