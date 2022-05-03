@@ -8,4 +8,3 @@
     <link rel="stylesheet" href="../../assets/css/datos.css">
     <title><?=$_titulo?></title>
 </head>
-<body>

@@ -13,7 +13,7 @@
                     <div class="contenidoInterno" style="padding-top: 25px;">   
                             <header  class="row" style="margin-left: 10px;">
                                     <h2>Datos Bancarios Personales </h2>
-                                    <img class="imagen-titulo" src="../../assets/images/bank.png" alt="" style="width: 50px; height: 50px;">
+                                    <img src="../../assets/images/bank.png" alt="" style="width: 50px; height: 50px;">
                             </header>
                             <hr>
                             <form action="">
@@ -76,5 +76,5 @@
                                 </div>
                             </form>
 <?php
-include ("../templates/footerFletero.php")
+    include ("../templates/footerFletero.php")
 ?>

@@ -16,12 +16,12 @@
     box-sizing: border-box;
 }
 
-.menu{
+/* .menu{
     width: 250px;
     height: 95vh;
     border: 1px solid black;
     background-color: white;
-}
+} */
 
 label{
     font-weight: bold;
@@ -32,49 +32,44 @@ button{
     font-weight: bold !important;
 }
 
-.pantalla{
+/* .pantalla{
     width: 100%;
     height: 95vh;
     display: flex;
     background-color: #99BC78;
-}
+} */
 
 .nav-menu{
     font-size: 1.5em;
     font-family: 'Times New Roman', Times, serif ;
 }
 
-.cabeceranav{
+/* .cabeceranav{
     padding: 10px;
     margin: 5px;
-    /* border: 1px solid black; */
-    /* background-color: red; */
     display: flex;
     margin-bottom: -35px;
-}
+} */
 
-.cabeceranav-img{
+/* .cabeceranav-img{
     width: 23%;
-}
+} */
 
+/* 
 .cabeceranav-img img{
     width: 100%;
-    /* height: 100% */
-}
+} */
 
-.cabeceranav h2{
+/* .cabeceranav h2{
     padding: 10px;
     display: inline-block;
     width: 60%;
     padding-top: 4px;
-}
+} */
 
 nav{
     width: 90%;
-    height: 53%;
-    /* display: inline-block; */
-    margin: auto;
-    /* background: aqua; */
+    height: 40%;
 }
 
 nav ul{
@@ -83,16 +78,7 @@ nav ul{
 }
 
 nav ul>li:hover{
-    background-color: aquamarine;
-}
-
-.nav-imagen{
-    width: 90%;
-}
-
-.nav-imagen img{
-    width: 100%;
-    margin-left: 3.5%;
+    background-color: rgba(143, 243, 139, 0.942);
 }
 
 nav > ul > li > ul{
@@ -106,30 +92,26 @@ nav > ul > li > ul{
 
 nav > ul > li:hover > ul{
     display: inline-block;
-    /* top: 200px; */
-    /* left: 240px; */
 }
 
-
-.contenido{
+/* .contenido{
     margin-top: 31px;
     width: 80%;
     height: 88vh;
     margin-left: 10px;
-    /* border: 3px aqua solid; */
-}
+} */
 
-.imagen-titulo{
+/* .imagen-titulo{
     width: 50px;
     height: 50px;
-}
+} */
 
-.titulo-formulario{
+/* .titulo-formulario{
     display: flex;
     margin-left: 10px;
-}
+} */
 
-.titulo-formulario img{
+/* .titulo-formulario img{
     margin-left: 10px;
 }
 
@@ -139,7 +121,7 @@ nav > ul > li:hover > ul{
     background-color: rgb(43, 20, 87);
     color: white;
     margin-bottom: 0px;
-}
+} */
 
 html{
     background-color: rgb(43, 20, 87);
