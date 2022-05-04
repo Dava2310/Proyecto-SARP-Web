@@ -7,7 +7,6 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-
                 <!-- CONTENIDO DEL MENU DE NAVEGACION -->
                 <?php
                     include("../templates/menuProveedor.php");

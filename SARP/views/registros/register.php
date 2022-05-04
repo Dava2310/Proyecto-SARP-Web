@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link rel="stylesheet" href="/SARP/assets/css/register.css">
-    <link rel="stylesheet" href="/SARP/assets/css/bootstrap.min.css">
-    <title>Registro de Usuario!</title>
-</head>
+<?php
+    $_titulo = "Registro de Usuario";
+    include('../templates/headRegistros.php');
+?>
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -15,7 +9,7 @@
 
                 <!-- IMAGEN DE FONDO -->
                 <div class="fondo">
-                <img class="fondo-imagen" src="/SARP/assets/images/LOGO.png" alt="fondo">
+                    <img class="fondo-imagen" src="/SARP/assets/images/LOGO.png" alt="fondo">
                 </div>
         
                 <!-- PARTE DEL REGISTRO -->

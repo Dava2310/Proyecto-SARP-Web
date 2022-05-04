@@ -4,33 +4,35 @@
 ?>
     <div class="container-fluid">
         <div class="row">
-            <div class="pantalla">
+            
                 <!-- CONTENIDO DEL MENU DE NAVEGACION -->
                 <?php
                     include("../templates/menuProveedor.php");
                 ?>
-                <!-- CONTENIDO DE LA VISTA -->
-                <div class="contenido">
-                    <header class="titulo-formulario row justify-content-between">
-                        <div class=" col-md-6 col-sm-12 ">
-                            <div class="row">
-                                <h1><?=$_titulo?></h1>
-                                <img class="imagen-titulo" src="../../assets/images/solicitudesPendientes.png" alt="" style="width: 50px; height: 50px;">
+
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                    <div class="contenidoInterno" style="padding-top: 25px;">
+                        <!-- CONTENIDO DE LA VISTA -->
+                        <header class="row justify-content-between" style="margin-left: 10px;">
+                            <div class=" col-md-6 col-sm-12 ">
+                                <div class="row">
+                                    <h1><?=$_titulo?></h1>
+                                    <img class="imagen-titulo" src="../../assets/images/solicitudesPendientes.png" alt="" style="width: 50px; height: 50px;">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-md-6 col-sm-12">
-                            <label for="solicitudes">Lista de Solicitudes:</label>
-                            <input list="solicitudes" name="solicitudes">
-                                <datalist id="solicitudes">
-                                    <option value="JavaScript"></option>
-                                    <option value="HTML5"></option>
-                                    <option value="CSS3"></option>
-                                </datalist>
-                            <input type="submit" value="Buscar" class="btn btn-info glyphicon glyphicon-pencil" style="color: black; font-weight: bold;">
-                        </div>
-                    </header>
-                    <hr>
-                    <form action="../../controllers/proveedor/ctrl_solicitudPendiente.php">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="solicitudes">Lista de solicitudes:</label>
+                                <input list="solicitudes" name="solicitudes">
+                                    <datalist id="solicitudes">
+                                        <option value="JavaScript"></option>
+                                        <option value="HTML5"></option>
+                                        <option value="CSS3"></option>
+                                    </datalist>
+                                <input type="submit" value="Buscar" class="btn btn-info glyphicon glyphicon-pencil" style="color: black; font-weight: bold;">
+                            </div>
+                        </header>
+                        <hr>
+                        <form action="../../controllers/proveedor/ctrl_solicitudPendiente.php">
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="cantidadA">Cantidad a Arrimar:</label>
@@ -53,15 +55,11 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Deshacer</button>
+                                <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Rechazar</button>
                                 <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php
         include('../templates/footer.php');
     ?>

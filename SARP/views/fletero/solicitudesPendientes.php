@@ -71,7 +71,6 @@
                                 <div class="form-group col-sm">
                                     <label for="jueves">Jueves:</label>
                                     <input class="form-control" type="text" name="jueves" id="jueves">
-                                   
                                 </div>
                                 <!-- Viernes -->
                                 <div class="form-group col-sm">
