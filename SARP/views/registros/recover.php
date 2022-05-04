@@ -41,7 +41,7 @@
                                 <label for="cargo">Cargo designado:</label>
                                 <input type="text" name="cargo" id="cargo" class="form-control" required>
                             </div>
-                            <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión aquí</a>.</p>
+                            <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>
                                 <button type="submit" class="btn btn-success">Aceptar</button>

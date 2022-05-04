@@ -1,4 +1,3 @@
-
 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-2 d-none d-sm-none d-md-block d-lg-block d-xl-block" style="background-color: white; height: 100vh;">
     <div class="row">
         <div class="col">

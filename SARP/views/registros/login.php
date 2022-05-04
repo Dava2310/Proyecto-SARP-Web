@@ -25,7 +25,7 @@
                     </div>
                     <!-- FORMULARIO -->
                     <div class="contenedorform">
-                        <form action="" method="post">
+                        <form action="../../controllers/registros/validarUsuario.php" method="post">
                             <h2>Datos de Usuario:</h2> <hr>
                             <div class="form-group">
                                 <label for="email">Correo de Usuario</label>
@@ -33,15 +33,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña:</label>
-                                <input class="form-control" type="text" name="password" id="password" required>
+                                <input class="form-control" type="password" name="password" id="password" required>
                             </div>
                             <div class="form-group">
-                                <label for="cargo">Cargo Designado:</label>
-                                <input class="form-control" type="text" name="cargo" id="cargo" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Correo de Usuario</label>
-                                <input class="form-control" type="text" name="email" id="email" required>
+                                <label for="tipoUsuario">Cargo Designado:</label>
+                                <select name="tipoUsuario" id="tipoUsuario" class="form-control" required>
+                                    <option value="">-- SELECCIONE TIPO -- </option>
+                                    <option value="1">Contralor</option>
+                                    <option value="2">Agropecuario</option>
+                                    <option value="3">Proveedor</option>
+                                    <option value="4">Fletero</option>
+                                </select>
                             </div>
                             <p class="inicioSesion">¿Olvidazte tu contraseña?<a href="recover.php"> Haz clic aquí</a>.</p>
                             <p class="inicioSesion">¿No tienes una cuenta?<a href="register.php"> Crea una cuenta aquí</a>.</p>
