@@ -1,14 +1,25 @@
 <?php
+    session_start();
+    $usuario = $_SESSION['ID'];
+
     $_titulo = "Datos Personales!";
     include('../templates/head.php');
     
     include("../../controllers/conexion.php");
-    $clave = $_GET['clave'];
-    if($clave==""){
+    if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
         echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    } else {
+        
+        /*
+        if((time() - $_SESSION['time']) > 1000000){
+            header('location: ../../controllers/salir.php');
+            die();
+        }
+        */
     }
-    $result = $con->query("select * from usuario where ID_Usuario = '$clave';");
+    $result = $con->query("select * from usuario where ID_Usuario = '$usuario';");
     if(!($row = $result->fetch_object())){
 		echo "<script> alert('Id de usuario indicada no existe'); </script>";
 		echo "<script> window.location='../registros/login.php'; </script>";
@@ -29,7 +40,7 @@
                             <img src="../../assets/images/datos-personales.png" style="width: 50px; height: 50px;" alt="">
                         </header>
                         <hr>
-                        <form action="../../controllers/proveedor/ctrl_datosPersonales.php">
+                        <form action="../../controllers/proveedor/ctrl_datosPersonales.php" method="POST">
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="nombre">Nombre</label>
@@ -69,12 +80,39 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
-                                    <button class="btn btn-success glyphicon glyphicon-pencil">Modificar Datos</button>
+                                    <input id="botonCambiar" type="" onclick="activarCampos()" class="btn btn-primary glyphicon glyphicon-pencil" 
+                                    value="Modificar (Desactivado)" style="color: black; font-weight: bold;">
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
                                 </div>
                             </div>
                         </form>
-    <?php
+                        <!-- FUNCION PARA HABILITAR O DESHABILITAR LOS CAMPOS -->
+                        <script type="text/javascript">
+                            function activarCampos(){
+                                var BotonCambiar = document.getElementById('botonCambiar');
+                                if(document.getElementById('nombre').disabled == false){
+                                    BotonCambiar.value="Modificar (Desactivado)";
+                                    document.getElementById('nombre').disabled=true;
+                                    document.getElementById('apellido').disabled=true;
+                                    document.getElementById('telefono').disabled=true;
+                                    //document.getElementById('email').disabled=true;
+                                    //document.getElementById('cedula').disabled=true;
+                                    document.getElementById('rif').disabled=true;
+                                    document.getElementById('direccion').disabled=true;
+                                } else {
+                                    BotonCambiar.value="Modificar (Activado)";
+                                    document.getElementById('nombre').disabled=false;
+                                    document.getElementById('apellido').disabled=false;
+                                    document.getElementById('telefono').disabled=false;
+                                    //document.getElementById('email').disabled=false;
+                                    //document.getElementById('cedula').disabled=false;
+                                    document.getElementById('rif').disabled=false;
+                                    document.getElementById('direccion').disabled=false;
+                                }
+                                
+                            }
+                        </script>
+    <?php               
         include('../templates/footer.php');
     ?>
 

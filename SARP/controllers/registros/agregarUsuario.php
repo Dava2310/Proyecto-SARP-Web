@@ -21,23 +21,5 @@
         echo "<script> alert('agregado con exito');</script>";
     }
 
-    switch($tipoUsuario){
-        case 1:
-            echo "<script> window.location='../../views/contraloria/datosPersonales.php'; </script>";
-            break;
-        case 2:
-            echo "<script> window.location='../../views/agropecuaria/datosPersonales.php'; </script>";
-            break;
-        case 3:
-            echo "<script> window.alert('Me mandaste un PROVEEDOR');</script>";
-            echo "<script> window.location='../../views/proveedor/datosPersonales.php'; </script>";
-            break;
-        case 4:
-            echo "<script> window.location='../../views/fletero/datosPersonales.php'; </script>";
-            break;
-        default:
-            echo "<script> window.location='../../views/registros/register.html'; </script>";
-            echo "<script> window.alert('No se ha logrado identificar el tipo de Usuario Ingresado');</script>";
-            
-    }
 ?>
+<script>window.location="../../views/registros/login.php"</script>
