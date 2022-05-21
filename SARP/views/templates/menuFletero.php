@@ -35,6 +35,7 @@
                                         <li><a class="nav-link active" href="../fletero/solicitudesDenegadas.php">Solicitudes Denegadas</a></li>
                                     </ul>
                                 </li>
+                                <li><a class="nav-link active" href="../../controllers/salir.php">Cerrar Sesion</a></li>
                             </ul> 
                     
                         </nav>   

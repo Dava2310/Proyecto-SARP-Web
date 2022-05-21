@@ -1,6 +1,30 @@
 <?php
-    $_titulo = "Datos Personales";
+    session_start();
+    $usuario = $_SESSION['ID'];
+
+    $_titulo = "Datos Personales!";
     include('../templates/headFletero.php');
+    
+    include("../../controllers/conexion.php");
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    } else {
+        
+        /*
+        if((time() - $_SESSION['time']) > 1000000){
+            header('location: ../../controllers/salir.php');
+            die();
+        }
+        */
+    }
+    $result = $con->query("select * from usuario where  ID_Usuario = '$usuario';");
+    if(!($row = $result->fetch_object())){
+		echo "<script> alert('Id de usuario indicada no existe'); </script>";
+		echo "<script> window.location='../registros/login.php'; </script>";
+	}
+    //YA AQUI TENGO LOS DATOS DEL USUARIO
 ?>
 <body>
     <div class="container-fluid">
@@ -16,49 +40,82 @@
                             <img class="imagen-titulo" src="../../assets/images/datos-personales.png" alt="" style="width: 50px; height: 50px;">
                         </header>
                         <hr>
-                        <form action="">
+                        <form action="../../controllers/agropecuaria/ctrl_datosPersonales.php" method="POST">
                             <div class="row">
                                 <div class="form-group col-sm">
-                                    <label for="Nombre">Nombre Completo:</label>
-                                    <input class="form-control" type="text" name ="Nombre" id="Nombre">
+                                    <label for="Nombre">Nombre:</label>
+                                    <input value="<?=$row->Nombre?>" disabled class="form-control" type="text" name ="Nombre" id="Nombre">
                                 </div>
                                 <div class="form-group col-sm">
-                                    <label for="CI">Cédula:</label>
-                                    <input class="form-control" type="text" name ="CI" id="CI">
+                                    <label for="apellido">Apellido:</label>
+                                    <input value="<?=$row->Apellido?>" disabled class="form-control" type="text" name ="apellido" id="apellido">
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                 <div class="form-group col-sm">
+                                    <label for="cedula">Cédula:</label>
+                                    <input value="<?=$row->Cedula?>" disabled class="form-control" type="text" name ="cedula" id="cedula">
                                     
 
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm">
-                                    <label for="correo">Correo de Usuario:</label>
-                                    <input class="form-control" type="email" name ="correo" id="correo">
-                                </div>
-                                <div class="form-group col-sm">
-                                    <label for="tlf">Teléfono:</label>
-                                    <input class="form-control" type="number" name ="tlf" id="tlf">
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="rif">RIF:</label>
-                                    <input class="form-control" type="text" name ="rif" id="rif">
+                                    <input value="<?=$row->RIF?>" disabled class="form-control" type="text" name ="rif" id="rif">
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm">
+                                    <label for="tlf">Teléfono:</label>
+                                    <input value="<?=$row->Telefono?>" disabled class="form-control" type="text" name ="tlf" id="tlf">
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="correo">Correo de Usuario:</label>
+                                    <input  value="<?=$row->Email?>" disabled class="form-control" type="email" name ="correo" id="correo">
+                                </div>
+                                
                             </div>
                            
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="direc">Dirección o Habitación:</label>
-                                    <input class="form-control" type="text" name ="direc" id="direc">
+                                    <label for="direccion">Dirección o Habitación:</label>
+                                    <input value="<?=$row->Direccion?>" disabled class="form-control" type="text" name ="direccion" id="direccion">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
-                                    <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Aceptar</button>
+                                    <input id="botonCambiar" type="" onclick="activarCampos()" class="btn btn-primary glyphicon glyphicon-pencil" 
+                                    value="Modificar (Desactivado)" style="color: black; font-weight: bold;">
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
                                 </div>
                             </div>
                         </form>
+                        <script type="text/javascript">
+                            function activarCampos(){
+                                var BotonCambiar = document.getElementById('botonCambiar');
+                                if(document.getElementById('Nombre').disabled == false){
+                                    BotonCambiar.value="Modificar (Desactivado)";
+                                    document.getElementById('Nombre').disabled=true;
+                                    document.getElementById('apellido').disabled=true;
+                                    document.getElementById('tlf').disabled=true;
+                                    //document.getElementById('email').disabled=true;
+                                    //document.getElementById('cedula').disabled=true;
+                                    document.getElementById('rif').disabled=true;
+                                    document.getElementById('direccion').disabled=true;
+                                } else {
+                                    BotonCambiar.value="Modificar (Activado)";
+                                    document.getElementById('Nombre').disabled=false;
+                                    document.getElementById('apellido').disabled=false;
+                                    document.getElementById('tlf').disabled=false;
+                                    //document.getElementById('email').disabled=false;
+                                    //document.getElementById('cedula').disabled=false;
+                                    document.getElementById('rif').disabled=false;
+                                    document.getElementById('direccion').disabled=false;
+                                }
+                                
+                            }
+                        </script>
 <?php
     include ("../templates/footerFletero.php")
 ?>

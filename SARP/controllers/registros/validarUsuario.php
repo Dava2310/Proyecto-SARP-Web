@@ -22,7 +22,7 @@
 
         //Validando que se haya encontrado al usuario.
         if(!($row = $result->fetch_object())){
-            //echo "window.alert('$email $password $cargo');";
+            /* echo "<script>window.alert('md5('$password')');</script>"; */
             echo "<script>window.alert('No se ha encontrado el usuario con estos datos');</script>";
             echo "<script>window.location='../../views/registros/login.php';</script>";
             session_destroy();
@@ -35,9 +35,11 @@
             echo "<script>window.alert('Encontrado con exito, bienvenido: $row->Nombre $row->Apellido');</script>";
             switch($cargo){
                 case 1:
+                    header("location: ../../views/contraloria/datosPersonales.php");
                     echo "<script> window.location='../../views/contraloria/datosPersonales.php; </script>";
                     break;
                 case 2:
+                    header("location: ../../views/agropecuaria/datosPersonales.php");
                     echo "<script> window.location='../../views/agropecuaria/datosPersonales.php; </script>";
                     break;
                 case 3:
@@ -45,6 +47,7 @@
                     header("location: ../../views/proveedor/datosPersonales.php");
                     break;
                 case 4:
+                    header("location: ../../views/fletero/datosPersonales.php ");
                     echo "<script> window.location='../../views/fletero/datosPersonales.php; </script>";
                     break;
                 default:

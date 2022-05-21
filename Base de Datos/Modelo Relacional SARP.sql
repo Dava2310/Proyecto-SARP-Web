@@ -294,7 +294,7 @@ CREATE TABLE `usuario` (
 
 `tipo_Usuario` int(11) NULL,
 
-`Password` varchar(20) NOT NULL,
+`Password` varchar(35) NOT NULL,
 
 `Nombre` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
 
@@ -302,7 +302,7 @@ CREATE TABLE `usuario` (
 
 `Cedula` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
 
-`Telefono` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
+`Telefono` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
 
 `Email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
 
@@ -321,6 +321,10 @@ CREATE TABLE `usuario` (
 `Cuenta_A` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
 
 `TipoCuenta_A` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
+
+`Nombre_A` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
+
+`Apellido_A` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '',
 
 PRIMARY KEY (`ID_Usuario`) 
 

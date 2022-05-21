@@ -8,14 +8,14 @@
             <div class="contenido">
                 <!-- IMAGEN DE FONDO -->
                 <div class="fondo">
-                    <img class="fondo-imagen" src="/SARP/assets/images/LOGO.png" alt="fondo">
+                    <img class="fondo-imagen" src="../../assets/images/LOGO.png" alt="fondo">
                 </div>
 
                 <!-- PARTE DEL LOGIN -->
                 <div class="registro">
                     <div class="registro-cabecera" style="margin-top: 100px;">
                         <div class="registro-cabecera-imagen">
-                            <img src="/SARP/assets/images/verificar.png" alt="">
+                            <img src="../../assets/images/verificar.png" alt="">
                         </div>
                         <h1>Inicio de Sesión</h1>
                     </div>
@@ -57,8 +57,8 @@
             </div>
         </div>
     </div>
-    <script src="/SARP/assets/js/bootstrap.min.js"></script>
-	<script src="/SARP/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
 

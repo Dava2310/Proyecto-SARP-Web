@@ -7,7 +7,7 @@
                                 <div class="media " style="padding-top: 10px; ;">
                                     <img class="mr-3 img-fluid" src="../../assets/images/cadena.png" alt="Generic placeholder image" style="width: 50px; height: 50px;">
                                     <div class="media-body" >
-                                        <h3 class="mt-0">Modo: Contraloria</h3>
+                                        <h4 class="mt-0">Modo: Contraloria</h4>
                                 </div>
                                    
                                     
@@ -27,6 +27,7 @@
                             <a class="nav-link active" href="../contraloria/reportes.php">Generacion de Reportes</a>
                             <a class="nav-link active" href="../contraloria/tarifas.php">Tarifas</a>
                             <a class="nav-link active" href="../contraloria/ODP.php">Plantillas de ODP</a>
+                            <a class="nav-link active" href="../../controllers/salir.php">Cerrar Sesion</a>
                         </nav>   
                     </div>
                     <div class="row align-items-end">
