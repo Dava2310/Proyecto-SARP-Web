@@ -33,7 +33,7 @@
                     include("../templates/menuProveedor.php");
                 ?>
                 <!-- CONTENIDO DE LOS DATOS PERSONALES -->
-                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78; height: 100vh; overflow-y: scroll;">
                     <div class="contenidoInterno" style="padding-top: 25px;">
                         <header class="row" style="margin-left: 10px;">
                             <h1><?=$_titulo?></h1>
@@ -44,37 +44,37 @@
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="nombre">Nombre</label>
-                                    <input value="<?=$row->Nombre?>" disabled class="form-control" type="text" name="nombre" id="nombre" required>
+                                    <input value="<?=$row->Nombre?>" readOnly class="form-control" type="text" name="nombre" id="nombre" required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="apellido">Apellido</label>
-                                    <input value="<?=$row->Apellido?>" disabled class="form-control" type="text" name="apellido" id="apellido" required>
+                                    <input value="<?=$row->Apellido?>" readOnly class="form-control" type="text" name="apellido" id="apellido" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="telefono">Número de Teléfono:</label>
-                                    <input value="<?=$row->Telefono?>" disabled class="form-control" type="text" name="telefono" id="telefono" required>
+                                    <input value="<?=$row->Telefono?>" readOnly class="form-control" type="text" name="telefono" id="telefono" required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="email">Correo de Usuario:</label>
-                                    <input value="<?=$row->Email?>" disabled class="form-control" type="text" name="email" id="email" required>
+                                    <input value="<?=$row->Email?>" readOnly class="form-control" type="text" name="email" id="email" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="cedula">Cédula:</label>
-                                    <input value="<?=$row->Cedula?>" disabled class="form-control" type="text" name="cedula" id="cedula" required>
+                                    <input value="<?=$row->Cedula?>" readOnly class="form-control" type="text" name="cedula" id="cedula" required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="rif">RIF:</label>
-                                    <input value="<?=$row->RIF?>" disabled class="form-control" type="text" name="rif" id="rif" required>
+                                    <input value="<?=$row->RIF?>" readOnly class="form-control" type="text" name="rif" id="rif" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="direccion">Dirección o habitación:</label>
-                                    <input value="<?=$row->Direccion?>" disabled class="form-control" type="text" name="direccion" id="direccion" required>
+                                    <input value="<?=$row->Direccion?>" readOnly class="form-control" type="text" name="direccion" id="direccion" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -90,24 +90,24 @@
                         <script type="text/javascript">
                             function activarCampos(){
                                 var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('nombre').disabled == false){
+                                if(document.getElementById('nombre').readOnly == false){
                                     BotonCambiar.value="Modificar (Desactivado)";
-                                    document.getElementById('nombre').disabled=true;
-                                    document.getElementById('apellido').disabled=true;
-                                    document.getElementById('telefono').disabled=true;
+                                    document.getElementById('nombre').readOnly=true;
+                                    document.getElementById('apellido').readOnly=true;
+                                    document.getElementById('telefono').readOnly=true;
                                     //document.getElementById('email').disabled=true;
                                     //document.getElementById('cedula').disabled=true;
-                                    document.getElementById('rif').disabled=true;
-                                    document.getElementById('direccion').disabled=true;
+                                    document.getElementById('rif').readOnly=true;
+                                    document.getElementById('direccion').readOnly=true;
                                 } else {
                                     BotonCambiar.value="Modificar (Activado)";
-                                    document.getElementById('nombre').disabled=false;
-                                    document.getElementById('apellido').disabled=false;
-                                    document.getElementById('telefono').disabled=false;
+                                    document.getElementById('nombre').readOnly=false;
+                                    document.getElementById('apellido').readOnly=false;
+                                    document.getElementById('telefono').readOnly=false;
                                     //document.getElementById('email').disabled=false;
                                     //document.getElementById('cedula').disabled=false;
-                                    document.getElementById('rif').disabled=false;
-                                    document.getElementById('direccion').disabled=false;
+                                    document.getElementById('rif').readOnly=false;
+                                    document.getElementById('direccion').readOnly=false;
                                 }
                                 
                             }

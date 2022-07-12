@@ -2,7 +2,7 @@
     session_start();
     $usuario = $_SESSION['ID'];
 
-    $nombre = $_POST['nombre'] ?? "";
+    $nombre = $_POST['Nombre'] ?? "";
     $apellido = $_POST['apellido'] ?? "";
     $telefono = $_POST['tlf'] ?? "";
     $rif = $_POST['rif'] ?? "";

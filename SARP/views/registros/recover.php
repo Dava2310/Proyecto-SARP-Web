@@ -5,24 +5,24 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="contenido">
+            
                 <!-- IMAGEN DE FONDO -->
-                <div class="fondo">
+                <div class="fondo col-8" style="padding: 0;">
                     <img class="fondo-imagen" src="../../assets/images/LOGO.png" alt="fondo">
                 </div>
                 <!-- PARTE DEL FORMULARIO -->
-                <div class="registro">
-                    <div class="registro-cabecera">
-                        <div class="registro-cabecera-imagen">
-                            <img src="../../assets/verificar.png" alt="">
-                        </div>
+                <div class="registro col-4 align-self-center">
+                    <div class="registro-cabecera row justify-content-center">
+
+                        <img src="../../assets/images/verificar.png" alt="" style="width: 50px; height: 50px;">
                         <h1>Recordar Contraseña</h1>
+
                     </div>
                     <!-- DESCRIPCION -->
-                    <div class="descripcion">
-                        <h4>Restaura la contraseña de tu cuenta.</h4>
+                    <div class="descripcion row justify-content-center">
+                        <p>Restaura la contraseña de tu cuenta.</p>
                     </div>
-
+                    <hr>
                     <div class="contenedorform">
                         <h2>Datos de usuario:</h2> <hr>
                         <form action="" method="post">
@@ -35,7 +35,7 @@
                                 <input type="text" name="newP" id="newP" class="form-control" required>
                             </div>
                             <div class="descripcion">
-                                <h4>El cargo designado debe ser el mismo de la cuenta.</h4>
+                                <p> <b> cargo designado debe ser el mismo de la cuenta. </b></p>
                             </div>
                             <div class="form-group">
                                 <label for="cargo">Cargo designado:</label>
@@ -49,7 +49,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
     <script src="../../assets/js/bootstrap.min.js"></script>

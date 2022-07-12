@@ -9,7 +9,7 @@
                 <?php
                     include("../templates/menuContraloria.php");
                 ?>
-                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78; height: 100vh; overflow-y: scroll;">
                     <div class="contenidoInterno" style="padding-top: 25px;">
                         <header class="row" style="margin-left: 10px;">
                             <h2>Reportes</h2>

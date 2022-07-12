@@ -5,24 +5,25 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="contenido">
+            
                 <!-- IMAGEN DE FONDO -->
-                <div class="fondo">
+                <div class="fondo col-8" style="padding: 0;">
                     <img class="fondo-imagen" src="../../assets/images/LOGO.png" alt="fondo">
                 </div>
 
                 <!-- PARTE DEL LOGIN -->
-                <div class="registro">
-                    <div class="registro-cabecera" style="margin-top: 100px;">
-                        <div class="registro-cabecera-imagen">
-                            <img src="../../assets/images/verificar.png" alt="">
-                        </div>
+                <div class="registro col-4 align-self-center">
+                    <div class="registro-cabecera row justify-content-center" style="">
+
+                        <img src="../../assets/images/verificar.png" alt="" style="width: 50px; height: 50px;">
                         <h1>Inicio de Sesión</h1>
+
                     </div>
                     <!-- DESCRIPCION DEL INICIO DE SESION -->
-                    <div class="descripcion">
-                        <h4>Ingresa tus datos para acceder a tu cuenta.</h4>
+                    <div class="descripcion row justify-content-center">
+                        <p>Ingresa tus datos para acceder a tu cuenta.</p>
                     </div>
+                    <hr>
                     <!-- FORMULARIO -->
                     <div class="contenedorform">
                         <form action="../../controllers/registros/validarUsuario.php" method="post">
@@ -54,7 +55,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
     <script src="../../assets/js/bootstrap.min.js"></script>

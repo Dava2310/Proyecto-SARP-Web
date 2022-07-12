@@ -33,7 +33,7 @@
                 <?php
                     include("../templates/menuFletero.php");
                 ?>
-                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78;">
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78; height: 100vh; overflow-y: scroll;">
                     <div class="contenidoInterno" style="padding-top: 25px;">   
                             <header  class="row" style="margin-left: 10px;">
                                     <h2>Datos Bancarios Personales </h2>
@@ -44,15 +44,15 @@
                                 <div class="row">
                                     <div class="form-group col-12 col-md-4">
                                         <label for="Nombre">Nombre:</label>
-                                        <input value="<?=$row->Nombre?>" disabled class="form-control" type="text" name ="Nombre" id="Nombre">
+                                        <input value="<?=$row->Nombre?>" readOnly class="form-control" type="text" name ="Nombre" id="Nombre">
                                     </div>
                                     <div class="form-group col-12 col-md-4">
                                         <label for="Apellido">Apellido:</label>
-                                        <input value="<?=$row->Apellido?>" disabled class="form-control" type="text" name ="Apellido" id="Apellido">
+                                        <input value="<?=$row->Apellido?>" readOnly class="form-control" type="text" name ="Apellido" id="Apellido">
                                     </div>
                                     <div class="form-group col-12 col-md-4">
                                         <label for="Banco">Banco:</label>
-                                        <input value="<?=$row->Banco_P?>" disabled class="form-control" list="Banco" name="Banco" id="BancoP">
+                                        <input value="<?=$row->Banco_P?>" readOnly class="form-control" list="Banco" name="Banco" id="BancoP">
                                             <datalist id="Banco" >
                                                 <option value="BANCO NACIONAL DE CRÉDITO"></option>
                                                 <option value="BANCO DEL CARIBE"></option>
@@ -70,12 +70,12 @@
                                     </div>
                                     <div class="form-group col-12 col-md6 col-md-6">
                                         <label for="Nrocuenta">Nº de Cuenta:</label>
-                                        <input value="<?=$row->Cuenta_P?>" disabled class="form-control" type="text" name ="Nrocuenta" id="Nrocuenta">
+                                        <input value="<?=$row->Cuenta_P?>" readOnly class="form-control" type="text" name ="Nrocuenta" id="Nrocuenta">
                                     </div>
                                     <div class="form-group col-12 col-md-6">
                                         <label for="TpoCuenta">Tipo de cuenta:</label>
                                       
-                                        <input value="<?=$row->TipoCuenta_P?>" class="form-control" list="TpoCuenta" name="TpoCuenta" id="TpoCuentaP"disabled>
+                                        <input value="<?=$row->TipoCuenta_P?>" class="form-control" list="TpoCuenta" name="TpoCuenta" id="TpoCuentaP"readOnly>
                                             <datalist id="TpoCuenta">
                                                 <option value="AHORRO"></option>
                                                 <option value="CORRIENTE"></option>
@@ -92,17 +92,17 @@
                                 <div class="row">
                                     <div class="form-group col-6 col-md-4">
                                         <label for="NombreA">Nombre:</label>
-                                        <input value="<?=$row->Nombre_A?>" disabled class="form-control" type="text" name ="NombreA" id="NombreA">
+                                        <input value="<?=$row->Nombre_A?>" readOnly class="form-control" type="text" name ="NombreA" id="NombreA">
                                         
                                     </div>
                                     <div class="form-group col-6 col-md-4">
                                         <label for="ApellidoA">Apellido:</label>
-                                        <input value="<?=$row->Apellido_A?>" disabled class="form-control" type="text" name ="ApellidoA" id="ApellidoA">
+                                        <input value="<?=$row->Apellido_A?>" readOnly class="form-control" type="text" name ="ApellidoA" id="ApellidoA">
                                     </div>
                                     <div class="form-group col-6 col-md-4">
                                         <label for="BancoA">Banco:</label>
                                         <!--  <input value="" disabled class="form-control" type="text" name ="BancoA" id="BancoA"> -->
-                                        <input value="<?=$row->Banco_A?>" class="form-control" list="BancoA" name="BancoA" id="Banco-A" disabled>
+                                        <input value="<?=$row->Banco_A?>" class="form-control" list="BancoA" name="BancoA" id="Banco-A" readOnly>
                                             <datalist id="BancoA">
                                                 <option value="BANCO NACIONAL DE CRÉDITO"></option>
                                                 <option value="BANCO DEL CARIBE"></option>
@@ -120,12 +120,12 @@
                                     </div>
                                     <div class="form-group col-6 col-md-6">
                                         <label for="NrocuentaA">Nº de Cuenta:</label>
-                                        <input value="<?=$row->Cuenta_A?>" disabled class="form-control" type="text" name ="NrocuentaA" id="NrocuentaA">
+                                        <input value="<?=$row->Cuenta_A?>" readOnly class="form-control" type="text" name ="NrocuentaA" id="NrocuentaA">
                                     </div>
                                     <div class="form-group col-6 col-md-6">
                                         <label for="TpoCuentaA">Tipo de cuenta:</label>
                                       
-                                        <input value="<?=$row->TipoCuenta_A?>" class="form-control" list="TpoCuentaA" name="TpoCuentaA" id="TpoCuenta-A" disabled>
+                                        <input value="<?=$row->TipoCuenta_A?>" class="form-control" list="TpoCuentaA" name="TpoCuentaA" id="TpoCuenta-A" readOnly>
                                             <datalist id="TpoCuentaA">
                                                 <option value="AHORRO"></option>
                                                 <option value="CORRIENTE"></option>
@@ -145,30 +145,30 @@
                             <script type="text/javascript">
                             function activarCampos(){
                                 var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('BancoP').disabled == false){
+                                if(document.getElementById('BancoP').readOnly == false){
                                     BotonCambiar.value="Modificar (Desactivado)";
-                                    document.getElementById('BancoP').disabled=true;
-                                    document.getElementById('Nrocuenta').disabled=true;
-                                    document.getElementById('TpoCuentaP').disabled=true;
+                                    document.getElementById('BancoP').readOnly=true;
+                                    document.getElementById('Nrocuenta').readOnly=true;
+                                    document.getElementById('TpoCuentaP').readOnly=true;
                                     //document.getElementById('email').disabled=true;
                                     //document.getElementById('cedula').disabled=true;
-                                    document.getElementById('NombreA').disabled=true;
-                                    document.getElementById('ApellidoA').disabled=true;
-                                    document.getElementById('Banco-A').disabled=true;
-                                    document.getElementById('Nrocuenta-A').disabled=true;
-                                    document.getElementById('TpoCuenta-A').disabled=true;
+                                    document.getElementById('NombreA').readOnly=true;
+                                    document.getElementById('ApellidoA').readOnly=true;
+                                    document.getElementById('Banco-A').readOnly=true;
+                                    document.getElementById('Nrocuenta-A').readOnly=true;
+                                    document.getElementById('TpoCuenta-A').readOnly=true;
                                 } else {
                                     BotonCambiar.value="Modificar (Activado)";
-                                    document.getElementById('BancoP').disabled=false;
-                                    document.getElementById('Nrocuenta').disabled=false;
-                                    document.getElementById('TpoCuentaP').disabled=false;
+                                    document.getElementById('BancoP').readOnly=false;
+                                    document.getElementById('Nrocuenta').readOnly=false;
+                                    document.getElementById('TpoCuentaP').readOnly=false;
                                     //document.getElementById('email').disabled=true;
                                     //document.getElementById('cedula').disabled=true;
-                                    document.getElementById('NombreA').disabled=false;
-                                    document.getElementById('ApellidoA').disabled=false;
-                                    document.getElementById('Banco-A').disabled=false;
-                                    document.getElementById('NrocuentaA').disabled=false;
-                                    document.getElementById('TpoCuenta-A').disabled=false;
+                                    document.getElementById('NombreA').readOnly=false;
+                                    document.getElementById('ApellidoA').readOnly=false;
+                                    document.getElementById('Banco-A').readOnly=false;
+                                    document.getElementById('NrocuentaA').readOnly=false;
+                                    document.getElementById('TpoCuenta-A').readOnly=false;
                                 }
                                 
                             }

@@ -33,7 +33,7 @@
             <?php
                 include("../templates/menuAgropecuaria.php");
             ?> 
-            <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78; ">
+            <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78; height: 100vh; overflow-y: scroll; ">
                 <div class="contenidoInterno" style="padding-top: 25px;">
                     <header class="row justify-content-between" style="margin-left: 10px;">
                     
@@ -68,15 +68,15 @@
                         <div class="row">
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <label for="Nombre">Nombre Completo:</label>
-                                <input disabled class="form-control" type="text" name="Nombre" id="Nombre" required>
+                                <input readOnly class="form-control" type="text" name="Nombre" id="Nombre" required>
                             </div>
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <label for="Apellido">Apellido:</label>
-                                <input disabled class="form-control" type="text" name="Apellido" id="Apellido" required>
+                                <input readOnly class="form-control" type="text" name="Apellido" id="Apellido" required>
                             </div>
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <label for="Correo">Correo de Usuario:</label>
-                                <input disabled class="form-control" type="email" name="Correo" id="Correo" required>
+                                <input readOnly class="form-control" type="email" name="Correo" id="Correo" required>
                             </div>
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <label for="CI">Cédula:</label>  
@@ -84,17 +84,17 @@
                             </div>
                             <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                 <label for="rif">RIF</label>  
-                                <input disabled class="form-control" type="text" name="rif" id="rif" required>
+                                <input readOnly class="form-control" type="text" name="rif" id="rif" required>
                             </div>
                         <!-- </div>
                         <div class="row"> -->
                             <div class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                 <label for="direccion">Dirección o Habitación:</label>
-                                <input disabled class="form-control" type="text" name="direccion" id="direccion" required>
+                                <input readOnly class="form-control" type="text" name="direccion" id="direccion" required>
                             </div>
                             <div class="form-group col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                 <label for="tlf">Teléfono:</label>
-                                <input disabled class="form-control" type="text" name="tlf" id="tlf" required>
+                                <input readOnly class="form-control" type="text" name="tlf" id="tlf" required>
                             </div>
                         </div>
                         <div class="row" style="margin-left: 10px; margin-top: 8px;">
@@ -106,7 +106,7 @@
                             <div class="form-group  col-md-6  col-sm-12  " id="div-ctaP&A">
                                 <label for="cuentapropia">Cuenta (Personal/Autorizada):</label>
                                 <!-- lista para el tipo de cuenta P/A y en al elegir una opcion se llama una funcion que mostrara solo los datos bancarios personales o autorizados segun sea el caso -->
-                                <select disabled  class="form-control"  name="cuentapropia" id="ctaP&A" onchange='mifuncionP_A(this.value,document.getElementById("Proveedor").value)' >
+                                <select  disabled class="form-control"  name="cuentapropia" id="ctaP&A" onchange='mifuncionP_A(this.value,document.getElementById("Proveedor").value)' >
                                         <option value=""> -- PERSONAL O AUTORIZADA -- </option>
                                         <option value="PERSONAL">PERSONAL</option>
                                         <option value="AUTORIZADA">AUTORIZADA</option>
@@ -116,15 +116,15 @@
                             <!-- se coloca el display: none para que los campos nombre y apellidos autorizados no aparezcan -->
                             <div class="form-group col-md  col-sm-12 " id="divNombreA"  style="display: none;">
                                 <label for="NombreA">Nombre Autorizado:</label>
-                                <input  disabled class="form-control" type="text" name ="NombreA" id="NombreA">            
+                                <input  readOnly class="form-control" type="text" name ="NombreA" id="NombreA">            
                             </div>
                             <div class="form-group col-md  col-sm-12 " id="divApellidoA" style="display: none;">
                                     <label for="ApellidoA">Apellido Autorizado:</label>
-                                    <input  disabled class="form-control" type="text" name ="ApellidoA" id="ApellidoA">
+                                    <input  readOnly class="form-control" type="text" name ="ApellidoA" id="ApellidoA">
                             </div>
                             <div id="div-Banco" class="form-group  col-md-6  col-sm-12   ">
                                 <label for="Banco">Banco:</label>
-                                <input  class="form-control" list="Banco" name="Banco" id="Banco-A" placeholder="-- SELECCIONE BANCO -- " disabled>
+                                <input  class="form-control" list="Banco" name="Banco" id="Banco-A" placeholder="-- SELECCIONE BANCO -- " readOnly>
                                         <datalist id="Banco">
                                             <option value="BANCO NACIONAL DE CRÉDITO"></option>
                                             <option value="BANCO DEL CARIBE"></option>
@@ -142,7 +142,7 @@
                          
                             <div id="div-nrocta" class="form-group  col-md-6  col-sm-12  ">
                                 <label for="numcuenta">Nº de Cuenta:</label>
-                                <input disabled class="form-control"  type="text" name="numcuenta" id="numcuenta" >
+                                <input readOnly class="form-control"  type="text" name="numcuenta" id="numcuenta" >
                             </div>
                             <div id="div-tcuenta" class="form-group  col-md-6  col-sm-12  ">
                                 <label for="tipocuenta">Tipo de Cuenta:</label>
@@ -168,35 +168,35 @@
                     <script type="text/javascript">
                             function activarCampos(){
                                 var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('Nombre').disabled == false){
+                                if(document.getElementById('Nombre').readOnly == false){
                                     BotonCambiar.value="Modificar (Desactivado)";
-                                    document.getElementById('Nombre').disabled=true;
-                                    document.getElementById('Apellido').disabled=true;
-                                    document.getElementById('tlf').disabled=true;
+                                    document.getElementById('Nombre').readOnly=true;
+                                    document.getElementById('Apellido').readOnly=true;
+                                    document.getElementById('tlf').readOnly=true;
                                     //document.getElementById('email').disabled=true;
                                     //document.getElementById('cedula').disabled=true;
-                                    document.getElementById('rif').disabled=true;
-                                    document.getElementById('direccion').disabled=true;
+                                    document.getElementById('rif').readOnly=true;
+                                    document.getElementById('direccion').readOnly=true;
                                     document.getElementById('ctaP&A').disabled=true;
-                                    document.getElementById('NombreA').disabled=true;
-                                    document.getElementById('ApellidoA').disabled=true;
-                                    document.getElementById('Banco-A').disabled=true;
-                                    document.getElementById('numcuenta').disabled=true;
+                                    document.getElementById('NombreA').readOnly=true;
+                                    document.getElementById('ApellidoA').readOnly=true;
+                                    document.getElementById('Banco-A').readOnly=true;
+                                    document.getElementById('numcuenta').readOnly=true;
                                     document.getElementById('TpoCuenta-A').disabled=true;
                                 } else {
                                     BotonCambiar.value="Modificar (Activado)";
-                                    document.getElementById('Nombre').disabled=false;
-                                    document.getElementById('Apellido').disabled=false;
-                                    document.getElementById('tlf').disabled=false;
+                                    document.getElementById('Nombre').readOnly=false;
+                                    document.getElementById('Apellido').readOnly=false;
+                                    document.getElementById('tlf').readOnly=false;
                                     //document.getElementById('email').disabled=false;
                                     //document.getElementById('cedula').disabled=false;
-                                    document.getElementById('rif').disabled=false;
-                                    document.getElementById('direccion').disabled=false;
+                                    document.getElementById('rif').readOnly=false;
+                                    document.getElementById('direccion').readOnly=false;
                                     document.getElementById('ctaP&A').disabled=false;
-                                    document.getElementById('NombreA').disabled=false;
-                                    document.getElementById('ApellidoA').disabled=false;
-                                    document.getElementById('Banco-A').disabled=false;
-                                    document.getElementById('numcuenta').disabled=false;
+                                    document.getElementById('NombreA').readOnly=false;
+                                    document.getElementById('ApellidoA').readOnly=false;
+                                    document.getElementById('Banco-A').readOnly=false;
+                                    document.getElementById('numcuenta').readOnly=false;
                                     document.getElementById('TpoCuenta-A').disabled=false;
                                 }
                                 
