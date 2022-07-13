@@ -35,7 +35,7 @@
                         </header>
                         <hr>
                         <!-- FORMULARIO DE LOS DATOS BANCARIOS PERSONALES -->
-                        <form action="../../controllers/proveedor/ctrl_bancarioPersonal.php" method="POST" >
+                        <form action="../../controllers/proveedor/ctrl_bancarioPersonal&A.php" method="POST" >
                             <div class="row">
                                 <div class="form-group col-12 col-md-4">
                                     <label for="Nombre">Nombre:</label>

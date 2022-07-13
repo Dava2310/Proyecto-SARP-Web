@@ -1,6 +1,18 @@
 <?php
+    session_start();
+    $usuario = $_SESSION['ID'];
+
     $_titulo = "Añadir Siembras!";
     include('../templates/head.php');
+
+    include("../../controllers/conexion.php");
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    }
+    
+
 ?>
     <div class="container-fluid">
         <div class="row">
@@ -18,11 +30,11 @@
                         </header>
                         <hr>
                         <!-- FORMULARIO DE LA SIEMBRA -->
-                        <form action="../../controllers/proveedor/ctrl_addSiembra.php" method='post'>
+                        <form action="../../controllers/proveedor/ctrl_addSiembra.php" method="POST">
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="fecha_inicio">Fecha de Inicio</label>
-                                    <input class="form-control" type="text" name="fecha_inicio" id="fecha_inicio" required>
+                                    <input class="form-control" type="date" name="fecha_inicio" id="fecha_inicio" required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="kilos_totales">Kilos Totales por Lote:</label> 
@@ -43,7 +55,7 @@
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="fecha_cosecha">Fecha Estimada de Cosecha:</label>
-                                    <input class="form-control"  type="text" name="fecha_cosecha" id="fecha_cosecha" required>
+                                    <input class="form-control"  type="date" name="fecha_cosecha" id="fecha_cosecha" required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="rendimiento">Rendimiento Esperado:</label>
