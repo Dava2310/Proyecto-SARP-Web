@@ -35,23 +35,23 @@
                                 </div>
                             </div>
                             <div class="form-group  col-md-6 col-sm-12 ">
-                            <div class="row">
-                                <label for="Proveedores" class="col-sm-5 col-form-label">Lista de Proveedores</label>
-                                <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
-                                <div class="col-sm-7">
-                                    <input placeholder="-- SELECCIONE PROVEEDOR --" class="form-control" list="Proveedores" name="Proveedores" id="Proveedor" onchange='mifuncion(this.value)'>
-                                        <datalist id="Proveedores" >
-                                            <?php
-                                                while($valores = mysqli_fetch_array($result)){
-                                                    $id = $valores['ID_Siembra'];
-                                                    $idP = $valores['ID_Proveedor'];
-                                                    echo "<option value=$id></option>";
-                                                }
-                                            ?>
-                                        </datalist>
+                                <div class="row">
+                                    <label for="Proveedores" class="col-sm-5 col-form-label">Lista de Siembra</label>
+                                    <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
+                                    <div class="col-sm-7">
+                                        <input placeholder="-- SELECCIONE SIEMBRA --" class="form-control" list="Proveedores" name="Proveedores" id="Proveedor" onchange='mifuncion(this.value)'>
+                                            <datalist id="Proveedores" >
+                                                <?php
+                                                    while($valores = mysqli_fetch_array($result)){
+                                                        $id = $valores['ID_Siembra'];
+                                                        $idP = $valores['ID_Proveedor'];
+                                                        echo "<option value=$id></option>";
+                                                    }
+                                                ?>
+                                            </datalist>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </header>
                         <hr>
                         <form action="../../controllers/proveedor/ctrl_consultarSiembra.php" method="POST">
