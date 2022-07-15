@@ -43,12 +43,12 @@
                                 </div>
                                 <div class="row ">
                                     <div class="col-12">
-                                        <button onclick="fase1()" type="submit" class="btn btn-success glyphicon glyphicon-pencil">Agregar</button>
+                                        <button onclick="fase1()" type="submit" id="boton1" class="btn btn-success glyphicon glyphicon-pencil" >Agregar</button>
                                     </div>
                                 </div>
                             </div>
                             <hr>
-                            <div class="row" id="fase_2" style="display: none;">
+                            <div class="row justify-content-center" id="fase_2" style="display: none;">
                                 
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="Proveedores">Proveedores:</label>
@@ -83,7 +83,7 @@
                             
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="disponibilidad">disponibilidad</label>
-                                    <input  class="form-control" type="text" name="disponibilidad" id="disponibilidad" required readonly>
+                                    <input  class="form-control" type="number" name="disponibilidad" id="disponibilidad" required readonly>
                                 </div>
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="IDLote">ID Lote:</label>
@@ -91,10 +91,13 @@
                                 </div>
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="SolicitudSiembraStda">Solicitud:</label>  
-                                    <input  class="form-control" type="text" name="SolicitudSiembraStda" id="SolicitudSiembraStda" >
+                                    <input  class="form-control" type="number" name="SolicitudSiembraStda" id="Solicitud" >
                                 </div>
                                 <div class="row">
-                                    <button onclick="fase2()" type="button" class="btn btn-success glyphicon glyphicon-pencil">Agregar</button>
+                                    <div class="col-12">
+                                        <button onclick="fase2()" type="submit" class="btn btn-success glyphicon glyphicon-pencil">Agregar</button>
+                                    </div>
+                                    
                                 </div>
                                 
                             </div>
@@ -102,8 +105,10 @@
                             
                             <div class="row" id="fase_3" style="display: none;">
                                 <div class="form-group  col-md-6 col-sm-12">
-                                    <label for="SiembraStda">Siembra Solicitada</label>
-                                    <input  class="form-control" type="date" name="SiembraStda" id="SiembraStda" required>
+                                    <label >Siembra Solicitada</label>
+                                    <select id="SiembraStda" disabled class="form-control " onchange='getsiembraPLA(this.value)'>
+                                        <option value="">-- SELECCIONE SIEMBRA --</option>
+                                    </select>
                                 </div>
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="cantidadtemp">Cantidad temporal:</label>
@@ -130,13 +135,11 @@
                                 var sem = document.querySelector('#semana').value;
                                 var cda = document.querySelector('#cantidad').value;
 
-                                if(  sem === "" || cda === null  ){
+                                if(  sem === "" || cda == null || cda === "" ){
                                     alert('rellene los campos correspondientes');
                                 }else{
 
-                                    document.getElementById('fase_2').style.display="flex";
-                                    document.getElementById('semana').readOnly=true;
-                                    document.getElementById('cantidad').readOnly=true;
+                                   
 
                                     let form = document.getElementById('formulario');
                                     let data = new FormData(form);
@@ -146,6 +149,18 @@
                                         body:data
                                         
 
+                                    }).then(response => response.text()).then(response => {
+                                        if(response === "ok"){
+                                            alert('Registrado con exito');
+                                            document.getElementById('fase_2').style.display="flex";
+                                            document.getElementById('semana').readOnly=true;
+                                            document.getElementById('cantidad').readOnly=true;
+                                            document.getElementById('boton1').disabled = true;
+                                        }else if(response === "no"){
+                                            alert('Semana ya registrada');
+                                        }else{
+                                            alert('no recibo nada');
+                                        }
                                     })
                                 }
                                 
@@ -251,23 +266,77 @@
                                 var Nombre = document.querySelector('#Nombre').value;
                                 var disponibilidad = document.querySelector('#disponibilidad').value;
                                 var IDLote = document.querySelector('#IDLote').value;
-                                var SolicitudSiembraStda = document.querySelector('#SolicitudSiembraStda').value;
+                                var Stda = document.querySelector('#Solicitud').value;
                                 var cda = document.querySelector('#cantidad').value;
+
+                              
+                                
                                 if(
-                                    Proveedor == null || Siembra == '' || Nombre == '' || disponibilidad == '' || IDLote =='' || SolicitudSiembraStda == '' 
+                                    Proveedor == null || Siembra == '' || Nombre == '' || disponibilidad == '' || IDLote =='' || Stda == '' 
                                 ){
                                     alert('rellene los campos correspondientes');
 
-                                }else if (SolicitudSiembraStda > cda || SolicitudSiembraStda > disponibilidad){
-                                    alert('Cantidad de MP solicitada no admisible');
+                                }else if (Stda > cda ){
+                                   
+                                    alert('Cantidad de MP solicitada supera la planificacion');
 
+                                }else if(Stda > disponibilidad){
+                                    alert('Cantidad de MP solicitada supera la disponibilidad de la siembra ');
+                                    
+                                    
                                 }else{
                                     document.getElementById('fase_3').style.display="flex";
-                                    
+
+                                    let form = document.getElementById('formulario');
+                                    let data = new FormData(form);
+
+                                    fetch('../../controllers/agropecuaria/set_datosFase2.php',{
+                                        method: 'POST',
+                                        body:data
+                                        
+
+                                    }).then(response => response.json()).then(datas => {
+
+                                       var nuevactda = datas;
+                                       $("#cantidad").val(nuevactda);
+                                        
+                                        
+                                        
+                                    })
+                                    // OBTENER LISTA DE SIEMBRAS PLANIFICADAS
+                                    var sema = document.querySelector('#semana').value;
+                                    var Sipla = $('#SiembraStda');
+                                  
+                                    $.ajax({
+                                        data: {sema:sema}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
+                                        dataType: 'html', //tipo de datos que esperamos de regreso
+                                        type: 'POST', //mandar variables como post o get
+                                        url: '../../controllers/agropecuaria/get_SiembraPla.php' //url que recibe las variables
+                                    }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
+                                        Sipla.prop('disabled', false); //habilitar el select       
+
+                                        Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
+                                        
+                                    });
                                 }
 
-
                             }
+                            //OBTENER CANTIDAD TOTAL SOLICITADA 
+                            function getsiembraPLA(IDs){
+                                $.ajax({
+                                    data: {IDs:IDs},
+                                    dataType: 'json',
+                                    type: 'POST',
+                                    url: '../../controllers/agropecuaria/get_totalSolicitud.php',
+                                    success : function(json){
+                                        $('#cantidadtemp').val(json.totalsolicitud);
+                                    },
+                                    error:function(xhr, status){
+                                        alert('Disculpe, existió un problema');
+                                    }
+                                })
+                            }
+                            
                         </script>
                             
                          
