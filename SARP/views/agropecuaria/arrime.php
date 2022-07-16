@@ -4,12 +4,14 @@
 
     $_titulo = "Planificacion arrime";
     include('../templates/headFletero.php');
+    include("../../controllers/conexion.php");
 
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
         echo "<script> window.location='../registros/login.php'; </script>";
         die();
     }
+    $result = $con->query("select Semana from planificaciones;");
 ?>
 <body>
     <div class="container-fluid">
@@ -37,13 +39,25 @@
                             
                             </div>
                             
-                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
+                            <div class="row" style="margin-left: 10px; margin-bottom: 20px;">
                                 <div class="  col-md-6 col-sm-12 ">
                                     <h3>Seguir modificando una planificacion:</h3>
                                 </div>
-                                <div class="form-group col-md-6 col-sm-12">
-                                    <label for="Semana">semana</label>
-                                    <input  type="week" name ="Semana" id="Semana">
+                                <div class="form-group row col-md-6 col-sm-12">
+                                    <div class="col-4">
+                                        <label for="Semana">semana</label>
+                                    </div>
+                                    <select  class="form-control col-4"  name="Semana" id="Semanas"  >
+                                        <option value=""> --SEMANA-- </option>
+                                        <?php
+                                            while($valores = mysqli_fetch_array($result)){
+                                                $id = $valores['ID_Planificacion'];
+                                                $Semana = $valores['Semana'];
+                                                echo "<option value=$id>$Semana</option>";
+                                            }
+                                        ?>
+                                    
+                                    </select>
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
                                 </div>
                             

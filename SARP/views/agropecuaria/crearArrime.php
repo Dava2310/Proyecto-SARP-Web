@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="row ">
                                     <div class="col-12">
-                                        <button onclick="fase1()" type="submit" id="boton1" class="btn btn-success glyphicon glyphicon-pencil" >Agregar</button>
+                                        <button onclick="fase1()" type="button" id="boton1" class="btn btn-success glyphicon glyphicon-pencil" >Agregar</button>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <button onclick="fase2()" type="submit" class="btn btn-success glyphicon glyphicon-pencil">Agregar</button>
+                                        <button onclick="fase2()" type="button" class="btn btn-success glyphicon glyphicon-pencil">Agregar</button>
                                     </div>
                                     
                                 </div>
@@ -103,30 +103,32 @@
                             </div>
                             <hr>
                             
-                            <div class="row" id="fase_3" style="display: none;">
-                                <div class="form-group  col-md-6 col-sm-12">
-                                    <label >Siembra Solicitada</label>
-                                    <select id="SiembraStda" disabled class="form-control " onchange='getsiembraPLA(this.value)'>
-                                        <option value="">-- SELECCIONE SIEMBRA --</option>
-                                    </select>
-                                </div>
-                                <div class="form-group  col-md-6 col-sm-12">
-                                    <label for="cantidadtemp">Cantidad temporal:</label>
-                                    <input  class="form-control" type="number" name="cantidadtemp" id="cantidadtemp" required>
-                                </div>
+                            <div class="row align-items-center" id="fase_3" style="display: none;">
+                                    
+                                    <div class="form-group  col-md-6 col-sm-12">
+                                        <label >Siembra Solicitada</label>
+                                        <select id="SiembraStda" disabled class="form-control " >
+                                            <option value="">-- SELECCIONE SIEMBRA --</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                            <button  type="button" id="borrar" name="borrar" class="btn btn-danger glyphicon glyphicon-pencil">Eliminar</button>
+                                    </div>
+                                
+                                
+                                    <div class="form-group  col-md-6 col-sm-12">
+                                        <label for="cantidadtemp">Cantidad temporal:</label>
+                                        <input  class="form-control" type="number" name="cantidadtemp" id="cantidadtemp" readonly>
+                                    </div>
+                                
+                                
                                 
                             </div>
                             <hr>
                             
                            
-                            <div class="row" >
-                                <div class="form-group col-md-12">
-                                    <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
-                                    <input id="botonCambiar" type="" onclick="activarCampos()" class="btn btn-primary glyphicon glyphicon-pencil" 
-                                    value="Modificar (Desactivado)" style="color: black; font-weight: bold;">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
-                                </div>
-                            </div>
+                            
                             
                         </form>
                         <script>
@@ -318,13 +320,29 @@
                                         Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
                                         
                                     });
+
+                                   /*  $.ajax({
+                                        data: {sema:sema},
+                                        dataType: 'json',
+                                        type: 'POST',
+                                        url: '../../controllers/agropecuaria/get_totalSolicitud.php',
+                                        success : function(json){
+                                            $('#cantidadtemp').val(json.totalsolicitud);
+                                        },
+                                        error:function(xhr, status){
+                                            alert('Disculpe, existió un problema');
+                                        }
+                                    }) */
                                 }
 
                             }
                             //OBTENER CANTIDAD TOTAL SOLICITADA 
-                            function getsiembraPLA(IDs){
+                            var ctdadTemp = document.getElementById('cantidadtemp');
+
+                            ctdadTemp.addEventListener('click',function(){
+                                var sema = document.querySelector('#semana').value;
                                 $.ajax({
-                                    data: {IDs:IDs},
+                                    data: {sema:sema},
                                     dataType: 'json',
                                     type: 'POST',
                                     url: '../../controllers/agropecuaria/get_totalSolicitud.php',
@@ -335,7 +353,68 @@
                                         alert('Disculpe, existió un problema');
                                     }
                                 })
+                            })
+
+                            function getsiembraPLA(ids){
+                                $.ajax({
+                                    url: '../../controllers/agropecuaria/get_datosSiembraPla.php',
+                                    data: {ids:ids},
+
+                                    type:'POST',
+                                    dataType: 'json',
+                                    success: function(json){
+                                        $('#stda').val(json.ctda);
+
+                                    },
+                                    error: function(xhr, status) {
+                                        alert('Disculpe, existió un problema');
+                                    }
+                                })
+
                             }
+                            //ELIMINAR SOLICITUD
+                            var botonEliminar = document.getElementById('borrar');
+
+                            botonEliminar.addEventListener('click',function(){
+                                var se = document.getElementById('SiembraStda').value;
+                                if(se === ""){
+                                    alert('Selecione solicitud a eliminar')
+
+                                }else{
+                                    if(confirm('¿Seguro de eliminar?')){
+                                    $.ajax({
+                                        data : { se : se },
+
+                                        // especifica si será una petición POST o GET
+                                        type : 'POST',
+                                        
+                                        dataType: 'json',
+                                        // la URL para la petición
+                                        url : '../../controllers/agropecuaria/ctrl_eliminarSolicitud.php',
+                            
+                                        // la información a enviar en este caso el valor de lo que seleccionaste en el select
+                        
+                                    // código a ejecutar si la petición es satisfactoria;
+                                    success : function(json) {
+                                        alert('eliminada con exito');
+
+                                        $('#cantidad').val(json.Rango)
+                                        
+                                    },
+                        
+                                    // código a ejecutar si la petición falla;
+                                    error : function(xhr, status) {
+                                        alert('Disculpe, existió un problema');
+                                    }
+                                    })
+
+                                    }
+                                    
+                                }
+                                
+
+
+                            })
                             
                         </script>
                             

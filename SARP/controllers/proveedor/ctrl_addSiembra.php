@@ -24,13 +24,12 @@
             echo "<script> window.alert('No tiene terreno registrado');</script>";
             echo "<script> window.location='../../views/proveedor/addSiembra.php'; </script>";
 
+        }else {
+            $result2 = $con->query("insert into siembras
+            (ID_Terreno, ID_Proveedor, Fecha_Inicio, Variedad, Fecha_Cosecha, Hectareas, Kilos_Totales, Kilos_Arrimados, Saldo_Restante)
+            values
+            ('$IDTerreno','$IDproveedor','$Finicio','$variedad','$Fcosecha','$hectareas', '$kilosT', '0','$kilosT');");
+            echo "<script>window.alert('Se ha agregado con exito');</script>";    
         }
-
-        $result2 = $con->query("insert into siembras
-        (ID_Terreno, ID_Proveedor, Fecha_Inicio, Variedad, Fecha_Cosecha, Hectareas, Rendimiento, Kilos_Totales)
-        values
-        ('$IDTerreno','$IDproveedor','$Finicio','$variedad','$Fcosecha','$hectareas', '$rendimiento', '$kilosT');");
-        echo "<script>window.alert('Se ha modificado con exito');</script>";
-        header("location: ../../views/proveedor/addSiembra.php");
     }
 ?>

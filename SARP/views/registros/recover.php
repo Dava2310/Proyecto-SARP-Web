@@ -25,23 +25,38 @@
                     <hr>
                     <div class="contenedorform">
                         <h2>Datos de usuario:</h2> <hr>
-                        <form action="" method="post">
+                        <form action="../../controllers/registros/recuperarPassword.php" method="post">
                             <div class="form-group">
                                 <label for="email">Correo de usuario:</label>
                                 <input type="text" name="email" id="email" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="newP">Nueva contraseña:</label>
-                                <input type="text" name="newP" id="newP" class="form-control" required>
-                            </div>
-                            <div class="descripcion">
-                                <p> <b> cargo designado debe ser el mismo de la cuenta. </b></p>
+                                <input type="password" name="newP" id="newP" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="cargo">Cargo designado:</label>
-                                <input type="text" name="cargo" id="cargo" class="form-control" required>
+                                <label for="question">Pregunta de seguridad:</label>
+                                <input type="text" name="question" id="question" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="answer">Respuesta:</label>
+                                <input type="text" name="answer" id="answer" class="form-control" required>
+                            </div>
+                            <div class="descripcion">
+                                <p> <b> Tipo de usuario debe ser el mismo de la cuenta original. </b></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoUsuario">Tipo de Usuario:</label>
+                                <select name="tipoUsuario" id="tipoUsuario" class="form-control" required>
+                                    <option value="">-- SELECCIONE TIPO -- </option>
+                                    <option value="1">Contralor</option>
+                                    <option value="2">Agropecuario</option>
+                                    <option value="3">Proveedor</option>
+                                    <option value="4">Fletero</option>
+                                </select>
                             </div>
                             <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión aquí</a>.</p>
+                            <p class="inicioSesion">¿No tienes una cuenta? <a href="register.php">Create una aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>
                                 <button type="submit" class="btn btn-success">Aceptar</button>

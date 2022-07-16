@@ -92,10 +92,6 @@
                                     <label for="hectareas">Hectáreas Sembradas:</label>
                                     <input class="form-control" type="text" name="hectareas" id="hectareas" required readOnly>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="rendimiento">Rendimiento Esperado:</label>
-                                    <input class="form-control" type="text" name="rendimiento" id="rendimiento" required readOnly>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
@@ -146,7 +142,6 @@
                                     document.getElementById('kilosT').readOnly=true;
                                     document.getElementById('fechaC').readOnly=true;
                                     document.getElementById('hectareas').readOnly=true;
-                                    document.getElementById('rendimiento').readOnly=true;
                                 } else {
                                     BotonCambiar.value="Modificar (Activado)";
                                     document.getElementById('kilosA').readOnly=false;
@@ -157,7 +152,6 @@
                                     document.getElementById('kilosT').readOnly=false;
                                     document.getElementById('fechaC').readOnly=false;
                                     document.getElementById('hectareas').readOnly=false;
-                                    document.getElementById('rendimiento').readOnly=false;
                                 }
                                 
                             }
@@ -177,18 +171,19 @@
                         
                                     // código a ejecutar si la petición es satisfactoria;
                                     success : function(json) {
-                                        //aqui recibimos el "echo" del php(ajax.php)
-                                        //y ahora solo colocas el valor en los campos
+                                        
                                         $("#fechaI").val(json.Fecha_Inicio);
-                                       /*  $("#kilosA").val(json.Apellido);
-                                        $("#saldoR").val(json.Cedula); */
+                                        $("#kilosA").val(json.Kilos_Arrimados);
+                                        $("#saldoR").val(json.Saldo_Restante);
                                         $("#variedad").val(json.Variedad);
                                         $("#idLote").val(json.ID_Siembra);
                                         $("#kilosT").val(json.Kilos_Totales);
                                         $("#fechaC").val(json.Fecha_Cosecha);
                                         $("#hectareas").val(json.Hectareas);
-                                        $("#rendimiento").val(json.Rendimiento);
-                                       
+                                        $("#analisis").val(json.Analisis);
+                                        $("#materiaS").val(json.MateriaSeca);
+                                        $("#impureza").val(json.Impureza);
+                                        $("#kilos").val(json.KilosMuestra);
                                         //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
                                         
                                     },

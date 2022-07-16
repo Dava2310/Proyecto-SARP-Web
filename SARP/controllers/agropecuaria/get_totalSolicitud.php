@@ -1,13 +1,14 @@
 <?php
  include("../../controllers/conexion.php");
 //el dato que enviamos a traves de ajax
-$valor=$_POST['IDs'];
+$valor=$_POST['sema'];
  
 //esta variable es para retornar los datos
 $jsondata = array();
  
 //la consulta que necesites para trer datos del camion del fletero
-$usuario= "SELECT Cantidad_MP from solicitud_proveedor where ID_Siembra = $valor";
+$usuario= "SELECT Cantidad_MP from solicitud_proveedor s INNER JOIN planificaciones p on s.ID_Planificacion=p.ID_Planificacion WHERE p.Semana = '$valor'
+";
 $result= mysqli_query($con,$usuario);
 
 $ctdadTotal = 0;

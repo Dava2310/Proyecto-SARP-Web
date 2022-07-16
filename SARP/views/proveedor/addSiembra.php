@@ -47,19 +47,11 @@
                                     <label for="variedad">Variedad</label>
                                     <input class="form-control" type="text" name="variedad" id="variedad" required>
                                 </div>
-                                <div class="form-group col-md-5">
-                                    <label  for="id_lote">ID del Lote Generado:</label> 
-                                    <input class="form-control" type="text" name="id_lote" id="id_lote">
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="fecha_cosecha">Fecha Estimada de Cosecha:</label>
                                     <input class="form-control"  type="date" name="fecha_cosecha" id="fecha_cosecha" required>
-                                </div>
-                                <div class="form-group col-md-5">
-                                    <label for="rendimiento">Rendimiento Esperado:</label>
-                                    <input class="form-control" type="text" name="rendimiento" id="rendimiento" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -72,7 +64,6 @@
                                 <div class="form-group col-md-12">
                                     <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Terminar Registro</button>
-                                    <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Terminar y Añadir Otro</button>
                                 </div>
                             </div>
                         </form>

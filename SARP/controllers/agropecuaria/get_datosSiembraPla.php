@@ -1,7 +1,7 @@
 <?php
  include("../../controllers/conexion.php");
  //el dato que enviamos a traves de ajax
- $valor= filter_input(INPUT_POST, 'sema');
+ $valor= filter_input(INPUT_POST, 'ids');
 
   
  $sql = "SELECT * FROM solicitud_proveedor INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion=planificaciones.ID_Planificacion WHERE planificaciones.Semana = '$valor'";
@@ -12,7 +12,3 @@
 
  
 ?>
-<option value="">- Seleccione Siembra-</option>
-<?php foreach($filas as $op): //creamos las opciones a partir de los datos obtenidos ?>
-<option value="<?= $op['ID_Solicitud_Proveedor'] ?>"><?= "ID:",$op['ID_Siembra']," -> ","Solicitud:",$op['Cantidad_MP']?></option>
-<?php endforeach; ?>

@@ -10,10 +10,6 @@
                                         <h4 class="mt-0">Modo:Agro-
                                             pecuario</h4>
                                 </div>
-                                   
-                                    
-                               
-                               
                             </div>
                             <hr>
                         </div>
@@ -24,7 +20,8 @@
                         <nav class="nav flex-column"style="list-style: none;">
                             <a class="nav-link active"  href="../agropecuaria/datosPersonales.php">Datos Personales</a>
                             <a class="nav-link active" href="../agropecuaria/datosProveedores.php">Datos Proveedores</a>
-                            <a class="nav-link active" href="../agropecuaria/datosFleteros.php">Datos Fleteros</a>                                
+                            <a class="nav-link active" href="../agropecuaria/datosFleteros.php">Datos Fleteros</a>
+                            <a class="nav-link active" href="../agropecuaria/datosSiembras.php">Muestras de Siembras</a>                                   
                             <a class="nav-link active" href="../agropecuaria/reportes.php">Generacion de Reportes</a>
                             <a class="nav-link active" href="../agropecuaria/arrime.php">arrime</a>
                             <a class="nav-link active" href="../agropecuaria/ODP.php">Plantillas de ODP</a>
@@ -32,9 +29,7 @@
                         </nav>   
                     </div>
                     <div class="row align-items-end">
-                       
                             <img class= "img-fluid mx-auto d-blok" src="../../assets/images/LOGOTIPO SARP+mediano.png" style="">
-                        
                     </div>
                     
 </div>

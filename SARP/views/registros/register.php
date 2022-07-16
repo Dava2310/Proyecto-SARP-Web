@@ -52,6 +52,17 @@
                                 <label for="password">Contraseña: </label>
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
+                            <div class="descripcion">
+                                <p> <b> Asegúrese de resguardar la pregunta de seguridad y su respuesta </b></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="question">Pregunta de seguridad: </label>
+                                <input type="text" name="question" id="question" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="answer">Respuesta: </label>
+                                <input type="text" name="answer" id="answer" class="form-control" required>
+                            </div>
                             <div class="form-group">
                                 <label for="tipoUsuario">Tipo de Usuario:</label>
                                 <select name="tipoUsuario" id="tipoUsuario" class="form-control" required>
@@ -66,6 +77,7 @@
                                 <label for="codigo">Codigo de Seguridad:</label>
                                 <input type="text" name="codigo" id="codigo" class="form-control" required>
                             </div>
+                            <p class="inicioSesion">¿Olvidaste la contraseña de tu cuenta? <a href="login.php">Recupera tu contraseña aquí.</a>.</p>
                             <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>

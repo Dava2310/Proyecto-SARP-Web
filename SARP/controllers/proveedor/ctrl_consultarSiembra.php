@@ -18,7 +18,6 @@
             set Kilos_Totales='$kilosT',
             Variedad = '$variedad',
             Fecha_Cosecha = '$Fcosecha',
-            Rendimiento = '$rendimiento',
             Hectareas = '$hectareas'
             where ID_Siembra = '$idSiembra';");
         echo "<script> alert('Se ha modificado con exito');</script>";
