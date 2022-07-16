@@ -1,14 +1,19 @@
 <?php
  include("../../controllers/conexion.php");
  //el dato que enviamos a traves de ajax
- $valor= filter_input(INPUT_POST, 'ids');
+ $valor= $_POST['IDPL'];
 
-  
- $sql = "SELECT * FROM solicitud_proveedor INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion=planificaciones.ID_Planificacion WHERE planificaciones.Semana = '$valor'";
- $result= mysqli_query($con,$sql);
- $filas = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-  mysqli_close($con);
+ $jsondata= array(); 
+
+ $sql = $con->query("SELECT Rango from planificaciones where ID_Planificacion = '$valor'");
+ $resultados= mysqli_fetch_array($sql);
+	$Rango=$resultados['Rango'];
 
 
+  $jsondata['Rango'] = $Rango;
+
+ //este header es para el retorno correcto de datos con json
+ header('Content-type: application/json; charset=utf-8');
+ echo json_encode($jsondata);
  
 ?>

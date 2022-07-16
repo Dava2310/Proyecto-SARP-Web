@@ -11,7 +11,7 @@
         echo "<script> window.location='../registros/login.php'; </script>";
         die();
     }
-    $result = $con->query("select Semana from planificaciones;");
+    
 ?>
 <body>
     <div class="container-fluid">
@@ -44,21 +44,9 @@
                                     <h3>Seguir modificando una planificacion:</h3>
                                 </div>
                                 <div class="form-group row col-md-6 col-sm-12">
-                                    <div class="col-4">
-                                        <label for="Semana">semana</label>
-                                    </div>
-                                    <select  class="form-control col-4"  name="Semana" id="Semanas"  >
-                                        <option value=""> --SEMANA-- </option>
-                                        <?php
-                                            while($valores = mysqli_fetch_array($result)){
-                                                $id = $valores['ID_Planificacion'];
-                                                $Semana = $valores['Semana'];
-                                                echo "<option value=$id>$Semana</option>";
-                                            }
-                                        ?>
+                                  
                                     
-                                    </select>
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                    <button type="submit" onclick="location.href='../agropecuaria/modificarArrime.php'" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
                                 </div>
                             
                             </div>

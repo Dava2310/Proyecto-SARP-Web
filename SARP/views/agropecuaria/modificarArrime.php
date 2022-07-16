@@ -14,6 +14,9 @@
 
     $usuario= "SELECT ID_Usuario,Cedula FROM usuario WHERE tipo_Usuario = 3; ";
     $result= mysqli_query($con,$usuario);
+
+    $result2= $con->query("select Semana,ID_Planificacion from planificaciones;");
+
 ?>
 <body>
     <div class="container-fluid">
@@ -35,7 +38,17 @@
                             <div class="row justify-content-center" id="fase_1">
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="semana">Semana</label>
-                                    <input  class="form-control" type="week" name="semana" id="semana" required>
+                                    <select  class="form-control "  name="Semana" id="Semanas" onchange='cargarArrime(this.value)' >
+                                        <option value=""> --SEMANA-- </option>
+                                        <?php
+                                            while($valores = mysqli_fetch_array($result2)){
+                                                $id = $valores['ID_Planificacion'];
+                                                $Semana = $valores['Semana'];
+                                                echo "<option value=$id>$Semana</option>";
+                                            }
+                                        ?>
+                                    
+                                    </select>
                                 </div>
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="cantidad">Cantidad:</label>
@@ -132,39 +145,46 @@
                             
                         </form>
                         <script>
-                        //------ EJECUCION AGREGAR FASE 1 --------
-                            function fase1(){
-                                var sem = document.querySelector('#semana').value;
-                                var cda = document.querySelector('#cantidad').value;
-
-                                if(  sem === "" || cda == null || cda === "" ){
-                                    alert('rellene los campos correspondientes');
-                                }else{
-
-                                   
-
-                                    let form = document.getElementById('formulario');
-                                    let data = new FormData(form);
-
-                                    fetch('../../controllers/agropecuaria/set_datosFase1.php',{
-                                        method: 'POST',
-                                        body:data
+                            function cargarArrime(IDPL){ 
+                                $.ajax({
+                                    // la URL para la petición
+                                    url : '../../controllers/agropecuaria/get_datosSiembraPla.php',
+                        
+                                    // la información a enviar en este caso el valor de lo que seleccionaste en el select
+                                    data : { IDPL : IDPL },
+                        
+                                    // especifica si será una petición POST o GET
+                                    type : 'POST',
+                        
+                                    // el tipo de información que se espera de respuesta
+                                    dataType : 'json',
+                        
+                                    // código a ejecutar si la petición es satisfactoria;
+                                    success : function(json) {
+                                        //aqui recibimos el "echo" del php(ajax.php)
+                                        //y ahora solo colocas el valor en los campos
+                                        $("#cantidad").val(json.Rango);
                                         
+                                    },
+                        
+                                    // código a ejecutar si la petición falla;
+                                    error : function(xhr, status) {
+                                        alert('Disculpe, existió un problema');
+                                    }
+                                })
 
-                                    }).then(response => response.text()).then(response => {
-                                        if(response === "ok"){
-                                            alert('Registrado con exito');
-                                            document.getElementById('fase_2').style.display="flex";
-                                            document.getElementById('semana').readOnly=true;
-                                            document.getElementById('cantidad').readOnly=true;
-                                            document.getElementById('boton1').disabled = true;
-                                        }else if(response === "no"){
-                                            alert('Semana ya registrada');
-                                        }else{
-                                            alert('no recibo nada');
-                                        }
-                                    })
-                                }
+
+                            }
+                        //------ EJECUCION AGREGAR FASE 1 --------
+                        function fase1(){
+                                
+                                document.getElementById('fase_2').style.display="flex";
+                                document.getElementById('semana').readOnly=true;
+                                document.getElementById('cantidad').readOnly=true;
+                                document.getElementById('boton1').disabled = true;
+
+                                        
+                                
                                 
                             }
                             //-------- OBTENER DATOS DE LOS PROVEEDORES PARA LISTA DESPLEGABLE-----
