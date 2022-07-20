@@ -12,7 +12,7 @@
         die();
     } 
 
-    $usuario= "SELECT ID_Usuario,Cedula FROM usuario WHERE tipo_Usuario = 3; ";
+    $usuario= "SELECT * FROM usuario WHERE tipo_Usuario = 3; ";
     $result= mysqli_query($con,$usuario);
 ?>
 <body>
@@ -56,9 +56,10 @@
                                         <datalist id="Proveedores" >
                                             <?php
                                                 while($valores = mysqli_fetch_array($result)){
-                                                    $id = $valores['ID_Usuario'];
+                                                    $nombre = $valores['Nombre'];
+                                                    $apellido=$valores['Apellido'];
                                                     $cedula = $valores['Cedula'];
-                                                    echo "<option value=$cedula></option>";
+                                                    echo "<option value=$cedula> $nombre $apellido </option>";
                                                 }
                                             ?>
                                         </datalist>
@@ -301,6 +302,7 @@
 
                                        var nuevactda = datas;
                                        $("#cantidad").val(nuevactda);
+                                       alert('Solicitud realizada con exito')
                                         
                                         
                                         
@@ -399,6 +401,21 @@
                                         alert('eliminada con exito');
 
                                         $('#cantidad').val(json.Rango)
+                                         // Recargar lista de siembra
+                                        var sema = document.querySelector('#semana').value;
+                                        var Sipla = $('#SiembraStda');
+                                    
+                                        $.ajax({
+                                            data: {sema:sema}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
+                                            dataType: 'html', //tipo de datos que esperamos de regreso
+                                            type: 'POST', //mandar variables como post o get
+                                            url: '../../controllers/agropecuaria/get_SiembraPla.php' //url que recibe las variables
+                                        }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
+                                            Sipla.prop('disabled', false); //habilitar el select       
+
+                                            Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
+                                            
+                                        });
                                         
                                     },
                         

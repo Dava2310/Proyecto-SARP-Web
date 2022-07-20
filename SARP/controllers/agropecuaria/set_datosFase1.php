@@ -23,6 +23,7 @@
             
             if($semana === $op['Semana']){
                 $aceptar = false;
+                break;
 
             }else{
                 $aceptar = true;

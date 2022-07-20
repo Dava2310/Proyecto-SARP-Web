@@ -44,11 +44,11 @@
                             <div class="row">
                                 <div class="form-group col-sm">
                                     <label for="Nombre">Nombre:</label>
-                                    <input value="<?=$row->Nombre?>" readonly class="form-control" type="text" name ="Nombre" id="Nombre">
+                                    <input value="<?=$row->Nombre?>" readonly class="form-control" type="text" name ="Nombre" id="Nombre" pattern="([a-z]|[A-Z]){3,15}">
                                 </div>
                                 <div class="form-group col-sm">
                                     <label for="apellido">Apellido:</label>
-                                    <input value="<?=$row->Apellido?>" readonly class="form-control" type="text" name ="apellido" id="apellido">
+                                    <input value="<?=$row->Apellido?>" readonly class="form-control" type="text" name ="apellido" id="apellido" pattern="([a-z]|[A-Z]){3,15}">
                                 </div>
                                 
                             </div>

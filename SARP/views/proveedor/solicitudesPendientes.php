@@ -1,6 +1,21 @@
 <?php
+    session_start();
+    $usuario = $_SESSION['ID'];
     $_titulo = "Solicitudes Pendientes";
     include('../templates/head.php');
+ 
+    include("../../controllers/conexion.php");
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    }
+    $n = $usuario;
+
+    $sql= "SELECT * FROM solicitud_proveedor INNER JOIN siembras ON solicitud_proveedor.ID_Siembra=siembras.ID_Siembra WHERE siembras.ID_Proveedor = $n; ";
+    $result= mysqli_query($con,$sql);
+    //YA AQUI TENGO LOS DATOS DEL USUARIO
+
 ?>
     <div class="container-fluid">
         <div class="row">
@@ -21,14 +36,22 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="solicitudes">Lista de solicitudes:</label>
-                                <input list="solicitudes" name="solicitudes">
-                                    <datalist id="solicitudes">
-                                        <option value="JavaScript"></option>
-                                        <option value="HTML5"></option>
-                                        <option value="CSS3"></option>
-                                    </datalist>
-                                <input type="submit" value="Buscar" class="btn btn-info glyphicon glyphicon-pencil" style="color: black; font-weight: bold;">
+                                <div class="row">
+                                    <label for="solicitudes" class="col-sm-5 col-form-label">Lista de Solicitudes</label>
+                                    <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
+                                    <div class="col-sm-7">
+                                        <input placeholder="-- SELECCIONE SOLICITUD --" class="form-control" list="solicitudes" name="solicitudes" id="solicitud" >
+                                            <datalist id="solicitudes" >
+                                                <?php
+                                                    while($valores = mysqli_fetch_array($result)){
+                                                        $id = $valores['ID_Solicitud_Proveedor'];
+                                                        $cantidad = $valores['Cantidad_MP'];
+                                                        echo "<option value=$id></option>";
+                                                    }
+                                                ?>
+                                            </datalist>
+                                    </div>
+                                </div>
                             </div>
                         </header>
                         <hr>

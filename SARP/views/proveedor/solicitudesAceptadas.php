@@ -1,6 +1,20 @@
 <?php
-    $_titulo = "Solicitudes Aceptadas";
-    include('../templates/head.php');
+     session_start();
+     $usuario = $_SESSION['ID'];
+     $_titulo = "Solicitudes Aceptadas";
+     include('../templates/head.php');
+  
+     include("../../controllers/conexion.php");
+     if(!(isset($usuario))){
+         echo "<script> window.alert('No ha iniciado sesion');</script>";
+         echo "<script> window.location='../registros/login.php'; </script>";
+         die();
+     }
+     $n = $usuario;
+ 
+     $sql= "SELECT * FROM solicitud_proveedor INNER JOIN siembras ON solicitud_proveedor.ID_Siembra=siembras.ID_Siembra WHERE siembras.ID_Proveedor = $n and Estado_Aprobacion = 1; ";
+     $result= mysqli_query($con,$sql);
+     //YA AQUI TENGO LOS DATOS DEL USUARIO
 ?>
 
     <div class="container-fluid">
@@ -20,18 +34,26 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="solicitudes">Lista de Solicitudes:</label>
-                                <input list="solicitudes" name="solicitudes">
-                                    <datalist id="solicitudes">
-                                        <option value="JavaScript"></option>
-                                        <option value="HTML5"></option>
-                                        <option value="CSS3"></option>
-                                    </datalist>
-                                <input type="submit" value="Buscar" class="btn btn-info glyphicon glyphicon-pencil" style="color: black; font-weight: bold;">
+                            <div class="row">
+                                    <label for="solicitudes" class="col-sm-5 col-form-label">Lista de Solicitudes</label>
+                                    <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
+                                    <div class="col-sm-7">
+                                        <input placeholder="-- SELECCIONE SOLICITUD --" class="form-control" list="solicitudes" name="solicitudes" id="solicitud" >
+                                            <datalist id="solicitudes" >
+                                                <?php
+                                                    while($valores = mysqli_fetch_array($result)){
+                                                        $id = $valores['ID_Solicitud_Proveedor'];
+                                                        $cantidad = $valores['Cantidad_MP'];
+                                                        echo "<option value=$id></option>";
+                                                    }
+                                                ?>
+                                            </datalist>
+                                    </div>
+                                </div>
                             </div>
                         </header>
                         <hr>
-                        <form action="../../controllers/proveedor/ctrl_solicitudAceptada.php">
+                        <form action="../../controllers/proveedor/ctrl_solicitudAceptada.php" style="margin-left: 10px;">
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="cantidadA">Cantidad a Arrimar:</label>
@@ -54,124 +76,43 @@
                         </div>
                     </form>
                     <hr>
-                    <header class="titulo-formulario">
+                    <header class="titulo-formulario" style="margin-left: 10px;">
                         <h1>Dias Asignados de la Solicitud</h1>
                     </header>
                     <br>
-                    <form action="">
-                        <div class="row">
+                    <form action="" style="margin-left: 10px;">
+                        <div class="row ">
                             <!-- Dias -->
-                            <div class="col-sm">
+                            <div class="col-3">
                                 <label for="dias">Días:</label>
                                 <img class="imagen-titulo" src="../../assets/images/si.png" name= "dias"alt="" style="width: 50px; height: 50px;">
+                                <input class="form-control"type="text" name="dias" id="dias">
                             </div>
-                            <!-- Martes -->
-                            <div class="form-group col-sm">
-                                <label for="martes">Martes:</label>
-                                <input class="form-control"type="text" name="martes" id="martes">
-                            </div>
-                            <!-- Miercoles -->
-                            <div class="form-group col-sm">
-                                <label for="miercoles">Miércoles:</label>
-                                <input class="form-control" type="text" name="miercoles" id="miercoles">
-                                
-                            </div>
-                            <!-- Jueves -->
-                            <div class="form-group col-sm">
-                                <label for="jueves">Jueves:</label>
-                                <input class="form-control" type="text" name="jueves" id="jueves">
-                            </div>
-                            <!-- Viernes -->
-                            <div class="form-group col-sm">
-                                <label for="viernes">Viernes:</label>
-                                <input class="form-control" type="text" name="viernes" id="viernes">
-                                
-                            </div>
-                            <!-- Sabado -->
-                            <div class="form-group col-sm">
-                                <label for="sabado">Sábado:</label>
-                                <input class="form-control" type="text" name="sabado" id="sabado">
-                            </div>
+                            
                         </div>
-                        <h1>Datos de los Fleteros:</h1>
+                        <h1 style="margin-left: 10px; margin-top: 20px;">Datos de los Fleteros:</h1>
                         <div class="row">
                             <!-- Dias -->
                             <div class="col-sm">
                                 <label for="dias">Nombre:</label>
+                            
+                                <input class="form-control"type="text" name="namefletero" id="namefletero">
                             </div>
-                            <!-- Martes -->
-                            <div class="form-group col-sm">
-                                <input class="form-control"type="text" name="namefleteroMartes" id="namefleteroMartes">
-                            </div>
-                            <!-- Miercoles -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="namefleteroMiercoles" id="namefleteroMiercoles">
-                            </div>
-                            <!-- Jueves -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="namefleteroJueves" id="namefleteroJueves">
-                            </div>
-                            <!-- Viernes -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="namefleteroViernes" id="namefleteroViernes">
-                            </div>
-                            <!-- Sabado -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="namefleteroSabado" id="namefleteroSabado">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <!-- Dias -->
+                            
                             <div class="col-sm">
                                 <label for="dias">C.I:</label>
+                            
+                                <input class="form-control"type="text" name="cifletero" id="cifletero">
                             </div>
-                            <!-- Martes -->
-                            <div class="form-group col-sm">
-                                <input class="form-control"type="text" name="cifleteroMartes" id="cifleteroMartes">
-                            </div>
-                            <!-- Miercoles -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="cifleteroMiercoles" id="cifleteroMiercoles">
-                            </div>
-                            <!-- Jueves -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="cifleteroJueves" id="cifleteroJueves">
-                            </div>
-                            <!-- Viernes -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="cifleteroViernes" id="cifleteroViernes">
-                            </div>
-                            <!-- Sabado -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="cifleteroSabado" id="cifleteroSabado">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <!-- Dias -->
+
                             <div class="col-sm">
                                 <label for="dias">Placa:</label>
-                            </div>
-                            <!-- Martes -->
-                            <div class="form-group col-sm">
-                                <input class="form-control"type="text" name="placafleteroMartes" id="placafleteroMartes">
-                            </div>
-                            <!-- Miercoles -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="placafleteroMiercoles" id="placafleteroMiercoles">
-                            </div>
-                            <!-- Jueves -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="placafleteroJueves" id="placafleteroJueves">
-                            </div>
-                            <!-- Viernes -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="placafleteroViernes" id="placafleteroViernes">
-                            </div>
-                            <!-- Sabado -->
-                            <div class="form-group col-sm">
-                                <input class="form-control" type="text" name="placafleteroSabado" id="placafleteroSabado">
+                          
+                                <input class="form-control"type="text" name="placafletero" id="placafletero">
                             </div>
                         </div>
+                        
+                       
                     </form>
     <?php
         include('../templates/footer.php');

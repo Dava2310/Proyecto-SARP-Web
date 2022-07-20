@@ -38,13 +38,13 @@
                             <div class="row justify-content-center" id="fase_1">
                                 <div class="form-group  col-md-6 col-sm-12">
                                     <label for="semana">Semana</label>
-                                    <select  class="form-control "  name="Semana" id="Semanas" onchange='cargarArrime(this.value)' >
+                                    <select  class="form-control "  name="semana" id="semana" onchange='cargarArrime(this.value)' >
                                         <option value=""> --SEMANA-- </option>
                                         <?php
                                             while($valores = mysqli_fetch_array($result2)){
                                                 $id = $valores['ID_Planificacion'];
                                                 $Semana = $valores['Semana'];
-                                                echo "<option value=$id>$Semana</option>";
+                                                echo "<option value=$Semana>$Semana</option>";
                                             }
                                         ?>
                                     
@@ -179,7 +179,7 @@
                         function fase1(){
                                 
                                 document.getElementById('fase_2').style.display="flex";
-                                document.getElementById('semana').readOnly=true;
+                                /* document.getElementById('semana').disabled=true; */
                                 document.getElementById('cantidad').readOnly=true;
                                 document.getElementById('boton1').disabled = true;
 
@@ -321,7 +321,7 @@
 
                                        var nuevactda = datas;
                                        $("#cantidad").val(nuevactda);
-                                        
+                                       alert('Solicitud realizada con exito')
                                         
                                         
                                     })
@@ -333,11 +333,15 @@
                                         data: {sema:sema}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
                                         dataType: 'html', //tipo de datos que esperamos de regreso
                                         type: 'POST', //mandar variables como post o get
-                                        url: '../../controllers/agropecuaria/get_SiembraPla.php' //url que recibe las variables
-                                    }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
+                                        url: '../../controllers/agropecuaria/get_SiembraPla.php', //url que recibe las variables
+                                        success : function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
                                         Sipla.prop('disabled', false); //habilitar el select       
 
-                                        Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
+                                        Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax     
+                                        },
+                                        error:function(xhr, status){
+                                        alert('Disculpe, existió un problema');
+                                        }        
                                         
                                     });
 
@@ -419,6 +423,21 @@
                                         alert('eliminada con exito');
 
                                         $('#cantidad').val(json.Rango)
+                                         // Recargar lista de siembra
+                                         var sema = document.querySelector('#semana').value;
+                                        var Sipla = $('#SiembraStda');
+                                    
+                                        $.ajax({
+                                            data: {sema:sema}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
+                                            dataType: 'html', //tipo de datos que esperamos de regreso
+                                            type: 'POST', //mandar variables como post o get
+                                            url: '../../controllers/agropecuaria/get_SiembraPla.php' //url que recibe las variables
+                                        }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
+                                            Sipla.prop('disabled', false); //habilitar el select       
+
+                                            Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
+                                            
+                                        });
                                         
                                     },
                         

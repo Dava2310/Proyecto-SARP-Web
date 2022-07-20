@@ -4,7 +4,7 @@
 
     $IDsiembra=$_POST['IDLote'] ?? "";
     $solicitudMP=$_POST['SolicitudSiembraStda'] ?? "";
-    $semana = $_POST['semana'];
+    $IDP = $_POST['semana'];
 
     
 
@@ -15,7 +15,7 @@
         include('../conexion.php');
 
         //obtener ID planificacion de la semana correspondiente
-        $resultP = $con -> query("SELECT * from planificaciones where Semana = '$semana';");
+        $resultP = $con -> query("SELECT * from planificaciones where Semana = '$IDP';");
         $row = $resultP -> fetch_object();
         $IDP = $row->ID_Planificacion;
         //OBTENER CANTIDAD TOTAL EN PLANIFICACION
@@ -38,7 +38,7 @@
        
         
         
-       echo json_encode($nuevactdad );
+       echo json_encode($semana);
 
         
     }

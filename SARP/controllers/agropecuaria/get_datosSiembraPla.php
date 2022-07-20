@@ -5,7 +5,7 @@
 
  $jsondata= array(); 
 
- $sql = $con->query("SELECT Rango from planificaciones where ID_Planificacion = '$valor'");
+ $sql = $con->query("SELECT Rango from planificaciones where Semana = '$valor'");
  $resultados= mysqli_fetch_array($sql);
 	$Rango=$resultados['Rango'];
 
