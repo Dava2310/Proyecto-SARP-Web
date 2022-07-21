@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2022-07-21 02:34:23
+Date: 2022-07-21 06:48:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -113,22 +113,20 @@ CREATE TABLE `fleteros` (
 DROP TABLE IF EXISTS `odp_fletero`;
 CREATE TABLE `odp_fletero` (
   `ID_ODP_Fletero` int(11) NOT NULL AUTO_INCREMENT,
-  `ID_Tarifa` int(11) DEFAULT NULL,
   `ID_Contralor` int(11) DEFAULT NULL,
   `ID_Solicitud` int(11) DEFAULT NULL,
   `Estado_Pago` int(11) NOT NULL,
   PRIMARY KEY (`ID_ODP_Fletero`),
-  KEY `Tarifa_ID` (`ID_Tarifa`),
   KEY `Usuario_ID` (`ID_Contralor`),
   KEY `Solicitud_ID` (`ID_Solicitud`),
   CONSTRAINT `fk_odp_fletero_solicitud_fletero_1` FOREIGN KEY (`ID_Solicitud`) REFERENCES `solicitud_fletero` (`ID_Solicitud_Fletero`),
-  CONSTRAINT `fk_odp_fletero_usuario_1` FOREIGN KEY (`ID_Contralor`) REFERENCES `usuario` (`ID_Usuario`),
-  CONSTRAINT `odp_ibfk_1` FOREIGN KEY (`ID_Tarifa`) REFERENCES `tarifas` (`ID_Tarifa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `fk_odp_fletero_usuario_1` FOREIGN KEY (`ID_Contralor`) REFERENCES `usuario` (`ID_Usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of odp_fletero
 -- ----------------------------
+INSERT INTO `odp_fletero` VALUES ('1', '1', '6', '0');
 
 -- ----------------------------
 -- Table structure for odp_proveedor
@@ -137,21 +135,19 @@ DROP TABLE IF EXISTS `odp_proveedor`;
 CREATE TABLE `odp_proveedor` (
   `ID_ODP_Proveedor` int(11) NOT NULL AUTO_INCREMENT,
   `ID_Contralor` int(11) NOT NULL,
-  `ID_Tarifa` int(11) NOT NULL,
   `ID_Solicitud` int(11) NOT NULL,
   `Estado_Pago` int(11) NOT NULL,
   PRIMARY KEY (`ID_ODP_Proveedor`),
-  KEY `fk_odp_proveedor_tarifas_1` (`ID_Tarifa`),
   KEY `fk_odp_proveedor_solicitud_proveedor_1` (`ID_Solicitud`),
   KEY `fk_odp_proveedor_usuario_1` (`ID_Contralor`),
   CONSTRAINT `fk_odp_proveedor_solicitud_proveedor_1` FOREIGN KEY (`ID_Solicitud`) REFERENCES `solicitud_proveedor` (`ID_Solicitud_Proveedor`),
-  CONSTRAINT `fk_odp_proveedor_tarifas_1` FOREIGN KEY (`ID_Tarifa`) REFERENCES `tarifas` (`ID_Tarifa`),
   CONSTRAINT `fk_odp_proveedor_usuario_1` FOREIGN KEY (`ID_Contralor`) REFERENCES `usuario` (`ID_Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of odp_proveedor
 -- ----------------------------
+INSERT INTO `odp_proveedor` VALUES ('3', '1', '38', '0');
 
 -- ----------------------------
 -- Table structure for planificaciones
@@ -273,12 +269,16 @@ CREATE TABLE `tarifas` (
   `Pago_Flete` float NOT NULL,
   `Pago_MP` float NOT NULL,
   `Pago_Cuadrilla` float NOT NULL,
-  PRIMARY KEY (`ID_Tarifa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ID_Solicitud_Proveedor` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID_Tarifa`),
+  KEY `fr_key_SP` (`ID_Solicitud_Proveedor`),
+  CONSTRAINT `fr_key_SP` FOREIGN KEY (`ID_Solicitud_Proveedor`) REFERENCES `solicitud_proveedor` (`ID_Solicitud_Proveedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tarifas
 -- ----------------------------
+INSERT INTO `tarifas` VALUES ('5', '6', '1000', '200', '38');
 
 -- ----------------------------
 -- Table structure for terrenos
