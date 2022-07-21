@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2022-07-15 16:31:50
+Date: 2022-07-21 02:34:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,6 +73,24 @@ INSERT INTO `choferes` VALUES ('15487695', 'manuel', 'blanco');
 INSERT INTO `choferes` VALUES ('195462354', 'eden', 'hazard');
 INSERT INTO `choferes` VALUES ('27465814', 'josue', 'paredes');
 INSERT INTO `choferes` VALUES ('45621305', 'luka', 'modric');
+
+-- ----------------------------
+-- Table structure for codigo
+-- ----------------------------
+DROP TABLE IF EXISTS `codigo`;
+CREATE TABLE `codigo` (
+  `idCodigos` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoProveedor` varchar(15) NOT NULL,
+  `codigoFletero` varchar(15) NOT NULL,
+  `codigoAgropecuaria` varchar(15) NOT NULL,
+  `codigoContraloria` varchar(15) NOT NULL,
+  PRIMARY KEY (`idCodigos`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of codigo
+-- ----------------------------
+INSERT INTO `codigo` VALUES ('1', 'proveedor', 'fletero', 'agropecuaria', 'contraloria');
 
 -- ----------------------------
 -- Table structure for fleteros
@@ -168,14 +186,12 @@ CREATE TABLE `siembras` (
   `Hectareas` float NOT NULL,
   `Rendimiento` float NOT NULL,
   `Kilos_Totales` float NOT NULL,
-  -- DATOS CON RESPECTO A ARRIME
-	`Kilos_Arrimados` float,
-	`Saldo_Restante` float,
--- DATOS DE LA MUESTRA
-	`Analisis` varchar(20),
-	`MateriaSeca` float,
-	`Impureza` float,
-	`KilosMuestra` float,
+  `Kilos_Arrimados` float DEFAULT NULL,
+  `Saldo_Restante` float DEFAULT NULL,
+  `Analisis` varchar(20) DEFAULT NULL,
+  `MateriaSeca` float DEFAULT NULL,
+  `Impureza` float DEFAULT NULL,
+  `KilosMuestra` float DEFAULT NULL,
   PRIMARY KEY (`ID_Siembra`),
   KEY `ID_T` (`ID_Terreno`),
   KEY `ID_Proveedor` (`ID_Proveedor`),
@@ -186,11 +202,10 @@ CREATE TABLE `siembras` (
 -- ----------------------------
 -- Records of siembras
 -- ----------------------------
-INSERT INTO `siembras`(ID_Siembra,ID_Terreno,ID_Proveedor,Fecha_Inicio,Variedad,Fecha_Cosecha,Hectareas,Kilos_Totales,Kilos_Arrimados, Saldo_Restante) VALUES ('2', '1', '9', '2022-07-13', '80', '2022-08-28', '14','500','0','500');
-INSERT INTO `siembras`(ID_Siembra,ID_Terreno,ID_Proveedor,Fecha_Inicio,Variedad,Fecha_Cosecha,Hectareas,Kilos_Totales,Kilos_Arrimados, Saldo_Restante) VALUES ('6', '4', '3', '2022-07-21', 'cosas', '2022-09-30', '1222', '55555','0','55555');
-INSERT INTO `siembras`(ID_Siembra,ID_Terreno,ID_Proveedor,Fecha_Inicio,Variedad,Fecha_Cosecha,Hectareas,Kilos_Totales,Kilos_Arrimados, Saldo_Restante) VALUES ('9', '1', '9', '2022-07-21', '58', '2022-07-30', '22222', '1234','0','1234');
-INSERT INTO `siembras`(ID_Siembra,ID_Terreno,ID_Proveedor,Fecha_Inicio,Variedad,Fecha_Cosecha,Hectareas,Kilos_Totales,Kilos_Arrimados, Saldo_Restante) VALUES ('10', '4', '3', '2022-07-15', '80', '2022-11-28', '44', '300','0','300');
-
+INSERT INTO `siembras` VALUES ('2', '1', '9', '2022-07-13', '80', '2022-08-28', '14', '0', '500', '0', '500', null, null, null, null);
+INSERT INTO `siembras` VALUES ('6', '4', '3', '2022-07-21', 'cosas', '2022-09-30', '1222', '0', '55555', '0', '55555', null, null, null, null);
+INSERT INTO `siembras` VALUES ('9', '1', '9', '2022-07-21', '58', '2022-07-30', '22222', '0', '1234', '0', '1234', null, null, null, null);
+INSERT INTO `siembras` VALUES ('10', '4', '3', '2022-07-15', '80', '2022-11-28', '44', '0', '300', '0', '300', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for solicitud_fletero
@@ -198,24 +213,25 @@ INSERT INTO `siembras`(ID_Siembra,ID_Terreno,ID_Proveedor,Fecha_Inicio,Variedad,
 DROP TABLE IF EXISTS `solicitud_fletero`;
 CREATE TABLE `solicitud_fletero` (
   `ID_Solicitud_Fletero` int(11) NOT NULL AUTO_INCREMENT,
-  `Placa` varchar(10) NOT NULL DEFAULT '',
-  `Observaciones` varchar(40) NOT NULL,
+  `Placa` varchar(10) DEFAULT '',
+  `Observaciones` varchar(40) DEFAULT NULL,
   `Estado_Aprobacion` int(11) NOT NULL,
-  `Sector` varchar(20) NOT NULL DEFAULT '',
-  `Martes` int(11) DEFAULT NULL,
-  `Miercoles` int(11) DEFAULT NULL,
-  `Jueves` int(11) DEFAULT NULL,
-  `Viernes` int(11) DEFAULT NULL,
-  `Sabado` int(11) DEFAULT NULL,
+  `Dia` date DEFAULT NULL,
   `ID_Planificacion` varchar(255) DEFAULT NULL,
+  `ID_chofer` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID_Solicitud_Fletero`),
   KEY `ID_U` (`Placa`),
-  CONSTRAINT `fk_solicitud_fletero_camiones_1` FOREIGN KEY (`Placa`) REFERENCES `camiones` (`Placa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  KEY `fk_solicitud_fletero_chofer_1` (`ID_chofer`),
+  CONSTRAINT `fk_solicitud_fletero_camiones_1` FOREIGN KEY (`Placa`) REFERENCES `camiones` (`Placa`),
+  CONSTRAINT `fk_solicitud_fletero_chofer_1` FOREIGN KEY (`ID_chofer`) REFERENCES `camion_chofer` (`ID_Chofer`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of solicitud_fletero
 -- ----------------------------
+INSERT INTO `solicitud_fletero` VALUES ('6', '5e4h4', 'voy', '1', '0000-00-00', '146', '27465814');
+INSERT INTO `solicitud_fletero` VALUES ('11', '7h895v', 'no voy', '1', '2022-07-21', '145', '195462354');
+INSERT INTO `solicitud_fletero` VALUES ('12', '7h895v', null, '0', null, '146', null);
 
 -- ----------------------------
 -- Table structure for solicitud_proveedor
@@ -244,8 +260,8 @@ CREATE TABLE `solicitud_proveedor` (
 INSERT INTO `solicitud_proveedor` VALUES ('34', '6', null, '0', '300', '143', null);
 INSERT INTO `solicitud_proveedor` VALUES ('35', '10', null, '0', '100', '144', null);
 INSERT INTO `solicitud_proveedor` VALUES ('36', '10', null, '0', '200', '145', null);
-INSERT INTO `solicitud_proveedor` VALUES ('37', '6', null, '0', '200', '145', null);
-INSERT INTO `solicitud_proveedor` VALUES ('38', '10', null, '0', '100', '146', null);
+INSERT INTO `solicitud_proveedor` VALUES ('37', '6', null, '1', '200', '145', '11');
+INSERT INTO `solicitud_proveedor` VALUES ('38', '10', null, '1', '100', '146', '6');
 INSERT INTO `solicitud_proveedor` VALUES ('39', '6', null, '0', '300', '146', null);
 
 -- ----------------------------
@@ -314,17 +330,6 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`ID_Usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `codigo`;
-CREATE TABLE `codigo`(
-	`idCodigos` int NOT NULL AUTO_INCREMENT,
-	`codigoProveedor` varchar(15) NOT NULL,
-	`codigoFletero` varchar(15) NOT NULL,
-	`codigoAgropecuaria` varchar(15) NOT NULL,
-	`codigoContraloria` varchar(15) NOT NULL,
-	PRIMARY KEY (`idCodigos`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
-
-
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
@@ -336,8 +341,5 @@ INSERT INTO `usuario` VALUES ('6', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'jos
 INSERT INTO `usuario` VALUES ('7', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'luis', 'hernandez', '134567', '04124865977', 'luis@gmail.com', 'calle', '1345672', 'BANCO PROVINCIAL', '45678941234', 'CORRIENTE', 'BANCO PROVINCIAL', '1247892154', 'AHORRO', 'Geronimo', 'Benavidez', '', '');
 INSERT INTO `usuario` VALUES ('8', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'liomar', 'masacre', '6523458', '584269315426', 'lio@gmail.com', 'la callejona', '65234582', 'BANCO NACIONAL DE CRÉDITO', '54611297831', 'CORRIENTE', 'BANCO MERCANTIL', '397164825', 'CORRIENTE', 'Gabriel', 'Antuarez', '', '');
 INSERT INTO `usuario` VALUES ('9', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'jennifer', 'sucre', '123456789', '04128915616', 'jennifersu@gmail.com', 'en su casa', '1234567891', 'BANCO DEL TESORO', '936852174', 'AHORRO', 'BANCO MERCANTIL', '825647139', 'CORRIENTE', 'jose', 'luis', '', '');
-
 INSERT INTO `usuario` VALUES ('11', '2', '83b4ef5ae4bb360c96628aecda974200', 'Josue', 'henriquez', '45369781', '0412654897', 'jj@gmail.com', 'calle 1', '45652213', '', '', '', '', '', '', '', null, '', '');
 INSERT INTO `usuario` VALUES ('12', '2', '81dc9bdb52d04dc20036dbd8313ed055', 'illo', 'juan', '12456839', '0412587469', 'illo@gmail.com', 'depto 101', '12456839', '', '', '', '', '', '', '', null, '', '');
-
-INSERT INTO `codigo`(codigoProveedor, codigoFletero, codigoAgropecuaria, codigoContraloria) VALUES('proveedor','fletero','agropecuaria','contraloria');

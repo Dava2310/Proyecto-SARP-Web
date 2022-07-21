@@ -12,13 +12,9 @@ $usuario= "SELECT
 FROM
 solicitud_proveedor
 INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
-INNER JOIN camiones ON solicitud_fletero.Placa = camiones.Placa
 INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion
-INNER JOIN camion_chofer ON camion_chofer.ID_Camion = camiones.Placa AND solicitud_fletero.ID_chofer = camion_chofer.ID_Chofer
-INNER JOIN choferes ON camion_chofer.ID_Chofer = choferes.Cedula
 WHERE
-solicitud_fletero.ID_Solicitud_Fletero = $valor;
-";
+solicitud_fletero.ID_Solicitud_Fletero = $valor;";
 $result= mysqli_query($con,$usuario);
 
 $resultados= mysqli_fetch_array($result);

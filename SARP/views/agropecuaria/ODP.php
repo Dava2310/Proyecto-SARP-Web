@@ -22,9 +22,8 @@
                                     <h3> Reporte ODP General</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label for="Semana">semana</label>
-                                    <input  type="week" name ="Semana" id="Semana">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                    
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../agropecuaria/ODPgeneral.php'">Generar reporte</button>
                                 </div>
                             
                             </div>
@@ -33,9 +32,8 @@
                                     <h3> Reporte ODP No Pagadas</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label for="Semana">semana</label>
-                                    <input  type="week" name ="Semana" id="Semana">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                   
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../agropecuaria/ODP_NP.php'">Generar reporte</button>
                                 </div>
                             
                             </div>
@@ -44,9 +42,8 @@
                                     <h3> Reporte ODP Pagadas</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label for="Semana">semana</label>
-                                    <input  type="week" name ="Semana" id="Semana">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                    
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../agropecuaria/ODP_P.php'">Generar reporte</button>
                                 </div>
                             
                             </div>

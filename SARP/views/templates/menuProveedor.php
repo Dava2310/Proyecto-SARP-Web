@@ -28,7 +28,7 @@
                     <ul>
                         <li><a class="nav-link active" href="./solicitudesPendientes.php">Solicitudes Pendientes</a></li>
                         <li><a class="nav-link active" href="./solicitudesAceptadas.php">Solicitudes Aceptadas</a></li>
-                        <li><a class="nav-link active" href="./solicitudesPospuestas.php">Solicitudes Pospuestas</a></li>
+                        
                     </ul>
                 </li>
                 <li><a class="nav-link active" href="../../controllers/salir.php">Cerrar Sesion</a></li>

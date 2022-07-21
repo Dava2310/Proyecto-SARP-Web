@@ -1,6 +1,17 @@
 <?php
-    $_titulo = "Reportes";
+    session_start();
+    $usuario = $_SESSION['ID'];
+
+    $_titulo = "Reporte";
     include('../templates/headFletero.php');
+    include("../../controllers/conexion.php");
+
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    }
+    
 ?>
 <body>
     <div class="container-fluid">
@@ -31,7 +42,7 @@
                                     <h3> Planificaciones confirmadas.</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <button type="submit"  onclick="location.href='../agropecuaria/PlanificacionesC.php'" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                    <button type="button" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../agropecuaria/PlanificacionesC.php'">Generar reporte</button>
                                 </div>
                             
                            

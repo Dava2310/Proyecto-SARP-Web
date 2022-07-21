@@ -110,7 +110,7 @@
                                     $("#semana").val(json.Semana);
                                     $("#idLote").val(json.ID_Siembra);
                                     $("#observacion").val(json.Observaciones);
-                                    $('#idsoli').val(json.idsoli)
+                                    $('#idsoli').val(json.idsoli);
                                
                                     
                                 },
