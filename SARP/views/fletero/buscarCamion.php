@@ -91,10 +91,7 @@
                                                     <option value="">-- SELECCIONE CHOFER --</option>
                                                 </select>
 
-                                                <!-- <input placeholder="-- SELECCIONE CHOFER --" class="form-control" list="choferes" name="choferes" id="chofer" onchange='mifuncionCh(this.value)'>
-                                                    <datalist id="choferes" >
-                                                        <
-                                                    </datalist> -->
+                                          
                                             </div>
                                         </div>
                                     </div>

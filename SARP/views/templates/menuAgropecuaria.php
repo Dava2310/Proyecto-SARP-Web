@@ -24,6 +24,7 @@
                             <a class="nav-link active" href="../agropecuaria/datosSiembras.php">Muestras de Siembras</a>                                   
                             <a class="nav-link active" href="../agropecuaria/reportes.php">Generacion de Reportes</a>
                             <a class="nav-link active" href="../agropecuaria/arrime.php">arrime</a>
+                            <a class="nav-link active" href="../agropecuaria/Transporte.php">Transporte</a>
                             <a class="nav-link active" href="../agropecuaria/ODP.php">Plantillas de ODP</a>
                             <a class="nav-link active" href="../../controllers/salir.php">Cerrar Sesion</a>
                         </nav>   

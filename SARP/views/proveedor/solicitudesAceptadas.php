@@ -1,22 +1,22 @@
 <?php
-     session_start();
-     $usuario = $_SESSION['ID'];
-     $_titulo = "Solicitudes Aceptadas";
-     include('../templates/head.php');
-  
-     include("../../controllers/conexion.php");
-     if(!(isset($usuario))){
-         echo "<script> window.alert('No ha iniciado sesion');</script>";
-         echo "<script> window.location='../registros/login.php'; </script>";
-         die();
-     }
-     $n = $usuario;
+    session_start();
+    $usuario = $_SESSION['ID'];
+    $_titulo = "Solicitudes Pendientes";
+    include('../templates/head.php');
  
-     $sql= "SELECT * FROM solicitud_proveedor INNER JOIN siembras ON solicitud_proveedor.ID_Siembra=siembras.ID_Siembra WHERE siembras.ID_Proveedor = $n and Estado_Aprobacion = 1; ";
-     $result= mysqli_query($con,$sql);
-     //YA AQUI TENGO LOS DATOS DEL USUARIO
-?>
+    include("../../controllers/conexion.php");
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    }
+    $n = $usuario;
 
+    $sql= "SELECT * FROM solicitud_proveedor INNER JOIN siembras ON solicitud_proveedor.ID_Siembra=siembras.ID_Siembra WHERE siembras.ID_Proveedor = $n and solicitud_proveedor.Estado_Aprobacion=1 ; ";
+    $result= mysqli_query($con,$sql);
+    //YA AQUI TENGO LOS DATOS DEL USUARIO
+
+?>
     <div class="container-fluid">
         <div class="row">
                 <!-- CONTENIDO DEL MENU DE NAVEGACION -->
@@ -38,13 +38,13 @@
                                     <label for="solicitudes" class="col-sm-5 col-form-label">Lista de Solicitudes</label>
                                     <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
                                     <div class="col-sm-7">
-                                        <input placeholder="-- SELECCIONE SOLICITUD --" class="form-control" list="solicitudes" name="solicitudes" id="solicitud" >
+                                        <input placeholder="-- SELECCIONE SOLICITUD --" class="form-control" list="solicitudes" name="solicitudes" id="solicitud" onchange="cargarSoli(this.value)" >
                                             <datalist id="solicitudes" >
                                                 <?php
                                                     while($valores = mysqli_fetch_array($result)){
                                                         $id = $valores['ID_Solicitud_Proveedor'];
                                                         $cantidad = $valores['Cantidad_MP'];
-                                                        echo "<option value=$id></option>";
+                                                        echo "<option value=$id>Cantidad = $cantidad</option>";
                                                     }
                                                 ?>
                                             </datalist>
@@ -71,7 +71,7 @@
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="observacion">Observación (opcional):</label>
-                                <p><textarea class="observaciones" name="observacion" placeholder="Coloca tus observaciones!"></textarea></p>
+                                <p><textarea class="observaciones" name="observacion" id="observacion" placeholder="Coloca tus observaciones!"></textarea></p>
                             </div>
                         </div>
                     </form>
@@ -114,6 +114,43 @@
                         
                        
                     </form>
+                    <script type="text/javascript">
+
+                        function cargarSoli(idso){
+                            $.ajax({
+                                    // la URL para la petición
+                                url : '../../controllers/proveedor/get_datosSoli.php',
+
+                                // la información a enviar en este caso el valor de lo que seleccionaste en el select
+                                data : { idso : idso },
+
+                                // especifica si será una petición POST o GET
+                                type : 'POST',
+
+                                // el tipo de información que se espera de respuesta
+                                dataType : 'json',
+
+                                // código a ejecutar si la petición es satisfactoria;
+                                success : function(json) {
+                                    
+                                    $("#cantidadA").val(json.Cantidad_MP);
+                                    $("#semana").val(json.Semana);
+                                    $("#idLote").val(json.ID_Siembra);
+                                    $("#observacion").val(json.Observaciones);
+                                    
+                            
+                                    
+                                },
+
+                                // código a ejecutar si la petición falla;
+                                error : function(xhr, status) {
+                                    alert('Disculpe, existió un problema');
+                                }
+                            })
+
+                        }                           
+
+                    </script>
     <?php
         include('../templates/footer.php');
     ?>
