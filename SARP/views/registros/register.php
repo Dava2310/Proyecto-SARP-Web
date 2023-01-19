@@ -28,30 +28,40 @@
                     <div class="contenedorform">
                         <h2>Datos Personales:</h2>
                         <hr>
-                        <form action="../../controllers/registros/agregarUsuario.php" method="post">
+                        <form id="form" action="../../controllers/registros/agregarUsuario.php" method="post">
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" required>
                             </div>
+                            <p id='errorName'></p>
+
                             <div class="form-group">
                                 <label for="apellido">Apellido:
                                 </label>
                                 <input type="text" name="apellido" id="apellido" class="form-control" required>
                             </div>
+                            <p id='errorApellido'></p>
+
                             <div class="form-group">
                                 <label for="cedula">Cedula:
                                 </label>
                                 <input type="text" name="cedula" id="cedula" class="form-control" required>
                             </div>
+                            <p id='errorCedula'></p>
+                            
                             <h2>Datos de Usuario:</h2> <hr>
                             <div class="form-group">
                                 <label for="email">Correo de Usuario:</label>
                                 <input type="text" name="email" id="email" class="form-control" required>
                             </div>
+                            <p id='errorCorreo'></p>
+
                             <div class="form-group">
                                 <label for="password">Contraseña: </label>
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
+                            <p id='errorPassword'></p>
+
                             <div class="descripcion">
                                 <p> <b> Asegúrese de resguardar la pregunta de seguridad y su respuesta </b></p>
                             </div>
@@ -92,7 +102,7 @@
 
     <!-- Include formulario.js -->
 
-    <script src="../../assets/js/formulario.js"></script>
+    <script src="../../assets/js/registros/formulario.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script src="../../assets/js/jquery-3.2.1.min.js"></script>
 </body>
