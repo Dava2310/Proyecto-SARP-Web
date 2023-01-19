@@ -14,6 +14,7 @@ form.addEventListener("submit", e=>{
 
     //console.log(nombre.value)
     alert(email.value)
+    
     if(!expresiones.email.test(email.value)){
         //alert("hola")
         warnings += `El email no es valido\n`;
