@@ -89,6 +89,10 @@
             
         </div>
     </div>
+
+    <!-- Include formulario.js -->
+
+    <script src="../../assets/js/formulario.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script src="../../assets/js/jquery-3.2.1.min.js"></script>
 </body>
