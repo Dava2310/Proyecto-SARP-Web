@@ -1,3 +1,5 @@
+// Archivo JS para validar el formulario de register.php
+
 const form = document.getElementById('form');
 
 const nombre = document.getElementById("nombre")
@@ -93,6 +95,7 @@ form.addEventListener("submit", (e) => {
         password.style.borderColor = '';
     }
     
+    // Si la variable entrar es true, no se direcciona hacia el servidor
     if(entrar){
         e.preventDefault()
         alert(warnings);

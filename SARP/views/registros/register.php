@@ -28,7 +28,7 @@
                     <div class="contenedorform">
                         <h2>Datos Personales:</h2>
                         <hr>
-                        <form id="form" action="../../controllers/registros/agregarUsuario.php" method="post">
+                        <form id="form" action="../../controllers/registros/agregarUsuario.php" method="POST">
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" required>
@@ -91,7 +91,7 @@
                             <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>
-                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                <button name="submit" type="submit" class="btn btn-success">Aceptar</button>
                             </div>
                         </form>
                     </div>
