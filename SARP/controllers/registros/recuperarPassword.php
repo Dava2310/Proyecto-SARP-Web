@@ -11,7 +11,8 @@
         echo "<script> window.location('../../views/registros/recover.php');</script>";
     } else {
         include("../conexion.php");
-
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
         //Se hace primero la validacion que se encuentre
         //Un usuario con todos los datos excepto la password
         $result1 = $con->query("select * from usuario

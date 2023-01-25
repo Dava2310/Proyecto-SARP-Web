@@ -19,6 +19,8 @@
 
  
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection(); 
         if($P_A == "PERSONAL"){
             $result = $con->query("update usuario
                                 set Nombre='$nombre',

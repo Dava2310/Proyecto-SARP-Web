@@ -14,6 +14,8 @@
         echo "<script> window.location='../registros/login.php'; </script>";
     } else {
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
         //se obtienen id del usuario y terreno de la tabla "terrenos"
         $result = $con->query("select * from terrenos t inner join usuario u on t.ID_Usuario = u.ID_Usuario where  u.ID_Usuario= '$usuario';");
         $row = $result->fetch_object();

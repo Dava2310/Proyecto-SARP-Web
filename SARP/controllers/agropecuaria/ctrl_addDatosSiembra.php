@@ -11,7 +11,9 @@
         echo "<script> window.location('../../views/agropecuaria/datosSiembras.php');</script>";
     } else {
         include("../conexion.php");
-
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
+        
         $result = $con->query("update siembras set
         Analisis = '$analisis', MateriaSeca = '$materiaS',
         Impureza = '$impureza', KilosMuestra = '$kilos'

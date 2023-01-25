@@ -20,6 +20,8 @@
         echo "<script> window.location='../registros/login.php'; </script>";
     } else {
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
         // se registran datos del camion
         $resultC = $con->query("insert into camiones
         (Placa, Modelo, Capacidad, ID_Fleteros)

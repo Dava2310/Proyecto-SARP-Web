@@ -32,7 +32,7 @@
                                     <h3> Reporte ODP No Pagadas</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                   
+
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../agropecuaria/ODP_NP.php'">Generar reporte</button>
                                 </div>
                             
@@ -47,8 +47,6 @@
                                 </div>
                             
                             </div>
-                         
-                       
                         
 <?php
     include ("../templates/footerFletero.php")

@@ -3,8 +3,10 @@
     $usuario = $_SESSION['ID'];
     $_titulo = "Tarifas";
     include('../templates/head.php');
- 
+
     include("../../controllers/conexion.php");
+    $connection = Connection::getInstance();
+    $con = $connection->getConnection();
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
         echo "<script> window.location='../registros/login.php'; </script>";
@@ -13,15 +15,15 @@
     $n = $usuario;
     $result = $con->query("SELECT
      *
-     FROM
-     solicitud_proveedor
-     INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
-     INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
-     INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
-     INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion
-     WHERE
-     solicitud_fletero.Estado_Aprobacion = 1 AND
-     solicitud_proveedor.Estado_Aprobacion = 1");
+    FROM
+    solicitud_proveedor
+    INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
+    INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
+    INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
+    INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion
+    WHERE
+    solicitud_fletero.Estado_Aprobacion = 1 AND
+    solicitud_proveedor.Estado_Aprobacion = 1");
 ?>
 <body>
     <div class="container-fluid">   
@@ -90,7 +92,7 @@
                                     <label for="idsoli">ID solicitud:</label>
                                     <input class="form-control" type="text" name="idsoli" id="idsoli" required readonly>
                                 </div>
-                          
+
                             </div>
 
                             <div class="row">
@@ -109,7 +111,7 @@
                                     <input class="form-control" type="number" name="TotalCA" id="TotalCA" readonly placeholder="Cuadrilla * Precio" onclick="CalcularCA()">
                                     
                                 </div>
-                          
+
                             </div>
                             <hr>
                             <div class=" col-md-6 col-sm-12 " style="margin-bottom: 20px;">
@@ -135,7 +137,7 @@
                                     <input class="form-control" type="number" name="TotalFL" id="TotalFL" readonly placeholder="nro de viajes * Precio flete" onclick="CalcularFL()">
                                     
                                 </div>
-                          
+
                             </div>
 
                             <div class="row" >
@@ -175,7 +177,7 @@
                                     $("#observacion").val(json.Obser);
                                     $('#idsoli').val(json.idsoli);
                                     
-                               
+
                                     
                                 },
                     

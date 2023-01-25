@@ -1,50 +1,52 @@
 <?php
-     session_start();
-     $usuario = $_SESSION['ID'];
- 
-     $_titulo = "Planificacion arrime";
-     include('../templates/headFletero.php');
-     include("../../controllers/conexion.php");
- 
-     if(!(isset($usuario))){
-         echo "<script> window.alert('No ha iniciado sesion');</script>";
-         echo "<script> window.location='../registros/login.php'; </script>";
-         die();
-     }
-     
-     $result = $con->query("SELECT
-     *
-     FROM
-     solicitud_proveedor
-     INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
-     INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
-     INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
-     INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion
-     WHERE
-     solicitud_fletero.Estado_Aprobacion = 1 AND
-     solicitud_proveedor.Estado_Aprobacion = 1");
+    session_start();
+    $usuario = $_SESSION['ID'];
 
-     $fletero = $con->query("SELECT
-     *
-     FROM
-     solicitud_proveedor
-     INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
-     INNER JOIN camiones ON solicitud_fletero.Placa = camiones.Placa
-     INNER JOIN usuario ON camiones.ID_Fleteros = usuario.ID_Usuario
-     WHERE
-     solicitud_fletero.Estado_Aprobacion = 1 AND
-     solicitud_proveedor.Estado_Aprobacion = 1");
+    $_titulo = "Planificacion arrime";
+    include('../templates/headFletero.php');
+    include("../../controllers/conexion.php");
+    $connection = Connection::getInstance();
+    $con = $connection->getConnection();
 
-     $Chofer = $con->query("SELECT
-     *
-     FROM
-     solicitud_proveedor
-     INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
-     INNER JOIN camion_chofer ON solicitud_fletero.ID_chofer = camion_chofer.ID_Chofer
-     INNER JOIN choferes ON camion_chofer.ID_Chofer = choferes.Cedula
-     WHERE
-     solicitud_fletero.Estado_Aprobacion = 1 AND
-     solicitud_proveedor.Estado_Aprobacion = 1");
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    }
+    
+    $result = $con->query("SELECT
+    *
+    FROM
+    solicitud_proveedor
+    INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
+    INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
+    INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
+    INNER JOIN planificaciones ON solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion
+    WHERE
+    solicitud_fletero.Estado_Aprobacion = 1 AND
+    solicitud_proveedor.Estado_Aprobacion = 1");
+
+    $fletero = $con->query("SELECT
+    *
+    FROM
+    solicitud_proveedor
+    INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
+    INNER JOIN camiones ON solicitud_fletero.Placa = camiones.Placa
+    INNER JOIN usuario ON camiones.ID_Fleteros = usuario.ID_Usuario
+    WHERE
+    solicitud_fletero.Estado_Aprobacion = 1 AND
+    solicitud_proveedor.Estado_Aprobacion = 1");
+
+    $Chofer = $con->query("SELECT
+    *
+    FROM
+    solicitud_proveedor
+    INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
+    INNER JOIN camion_chofer ON solicitud_fletero.ID_chofer = camion_chofer.ID_Chofer
+    INNER JOIN choferes ON camion_chofer.ID_Chofer = choferes.Cedula
+    WHERE
+    solicitud_fletero.Estado_Aprobacion = 1 AND
+    solicitud_proveedor.Estado_Aprobacion = 1");
 ?>
 <body>
     <div class="container-fluid">

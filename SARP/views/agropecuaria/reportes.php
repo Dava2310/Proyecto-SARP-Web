@@ -33,12 +33,7 @@
                                 <div class="form-group col-md-6 col-sm-12">
                                     <button type="submit"  onclick="location.href='../agropecuaria/PlanificacionesC.php'" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
                                 </div>
-                            
-                           
-                          
-                         
-                       
-                        
+
 <?php
     include ("../templates/footerFletero.php")
 ?>

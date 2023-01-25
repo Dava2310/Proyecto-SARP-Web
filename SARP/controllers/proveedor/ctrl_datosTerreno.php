@@ -10,6 +10,8 @@
         echo "<script> window.location='../registros/login.php'; </script>";
     } else {
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
         $result = $con->query("update terrenos
             set Tamanio='$tamanio',
             Ubicacion = '$ubicacion'

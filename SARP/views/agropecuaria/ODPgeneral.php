@@ -1,34 +1,36 @@
 <?php
-     session_start();
-     $usuario = $_SESSION['ID'];
- 
-     $_titulo = "ODP GENERAL";
-     include('../templates/headFletero.php');
-     include("../../controllers/conexion.php");
- 
-     if(!(isset($usuario))){
-         echo "<script> window.alert('No ha iniciado sesion');</script>";
-         echo "<script> window.location='../registros/login.php'; </script>";
-         die();
-     }
-     
-     $result = $con->query("SELECT *
-     FROM
-     tarifas
-     INNER JOIN solicitud_proveedor ON tarifas.ID_Solicitud_Proveedor = solicitud_proveedor.ID_Solicitud_Proveedor
-     INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
-     INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
-     ");
+    session_start();
+    $usuario = $_SESSION['ID'];
 
-     $fletero = $con->query("SELECT *
-     FROM
-     tarifas
-     INNER JOIN solicitud_proveedor ON tarifas.ID_Solicitud_Proveedor = solicitud_proveedor.ID_Solicitud_Proveedor
-     INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
-     INNER JOIN camiones ON solicitud_fletero.Placa = camiones.Placa
-     INNER JOIN usuario ON camiones.ID_Fleteros = usuario.ID_Usuario");
+    $_titulo = "ODP GENERAL";
+    include('../templates/headFletero.php');
+    include("../../controllers/conexion.php");
+    $connection = Connection::getInstance();
+    $con = $connection->getConnection();
 
-     
+    if(!(isset($usuario))){
+        echo "<script> window.alert('No ha iniciado sesion');</script>";
+        echo "<script> window.location='../registros/login.php'; </script>";
+        die();
+    }
+    
+    $result = $con->query("SELECT *
+    FROM
+    tarifas
+    INNER JOIN solicitud_proveedor ON tarifas.ID_Solicitud_Proveedor = solicitud_proveedor.ID_Solicitud_Proveedor
+    INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
+    INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
+    ");
+
+    $fletero = $con->query("SELECT *
+    FROM
+    tarifas
+    INNER JOIN solicitud_proveedor ON tarifas.ID_Solicitud_Proveedor = solicitud_proveedor.ID_Solicitud_Proveedor
+    INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
+    INNER JOIN camiones ON solicitud_fletero.Placa = camiones.Placa
+    INNER JOIN usuario ON camiones.ID_Fleteros = usuario.ID_Usuario");
+
+    
 ?>
 <body>
     <div class="container-fluid">

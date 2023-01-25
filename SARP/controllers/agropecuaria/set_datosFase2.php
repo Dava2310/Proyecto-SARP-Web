@@ -13,6 +13,8 @@
         echo "<script> window.location='../registros/login.php'; </script>";
     } else {
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();    
 
         //obtener ID planificacion de la semana correspondiente
         $resultP = $con -> query("SELECT * from planificaciones where Semana = '$semana';");

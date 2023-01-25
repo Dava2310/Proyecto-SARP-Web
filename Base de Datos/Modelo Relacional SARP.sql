@@ -84,13 +84,14 @@ CREATE TABLE `codigo` (
   `codigoFletero` varchar(15) NOT NULL,
   `codigoAgropecuaria` varchar(15) NOT NULL,
   `codigoContraloria` varchar(15) NOT NULL,
+  `ultima_actualizacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idCodigos`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of codigo
 -- ----------------------------
-INSERT INTO `codigo` VALUES ('1', 'proveedor', 'fletero', 'agropecuaria', 'contraloria');
+INSERT INTO `codigo` VALUES ('1', 'proveedor', 'fletero', 'agropecuaria', 'contraloria', NOW());
 
 -- ----------------------------
 -- Table structure for fleteros

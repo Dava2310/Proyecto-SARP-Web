@@ -52,11 +52,7 @@
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
                                 </div>
                             
-                            </div>
-                          
-                         
-                       
-                        
+                            </div>                        
 <?php
     include ("../templates/footerFletero.php")
 ?>

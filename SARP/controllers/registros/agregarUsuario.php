@@ -11,6 +11,11 @@
     global $tipoUsuario;
     global $codigo;
 
+    /**
+     * Esta funcion devuelve un valor booleano verdado o falso
+     * Determinando mediante RegEx (Regular Expressions)
+     * Si los datos ingresados son validos o no
+     */
     function validateForm(){
 
         // Accediendo a las variables globales
@@ -99,6 +104,57 @@
         return $isValid;
     }
 
+    /**
+     * Esta funcion busca cambiar los codigos despues de que alguien se haya registrado
+     * Y hayan pasado +24 horas antes del ultimo usuario antes de el
+     */
+    function cambiarCodigos($con){
+
+        // Se manda a ejecutar una sentencia para seleccionar la fecha de la ultima actualizacion de codigos
+        $query5 = "SELECT ultima_actualizacion FROM codigo ORDER BY idCodigos DESC LIMIT 1";
+        $stmt5 = $con->prepare($query5);
+        $stmt5->execute();
+
+        // Si sucede un error
+        if(!($stmt5->errno === 0)){
+            echo "Error al buscar la ultima actualizacion de la tabla de codigos: ".$stmt5->error;
+            //echo "<script>window.location='../../views/registros/register.php'</script>";
+            exit;
+        }
+
+        // En caso de que no de error la ejecucion, se recogen los datos
+        $result5 = $stmt5->get_result();
+        $row5 = $result5->fetch_assoc();
+
+        // Guardamos la hora actual del sistema
+        $hora_actual = time();
+
+        // Verificamos si han pasado 24 horas desde la ultima vez
+        if($hora_actual - strtotime($row5['ultima_actualizacion']) > 86400) {
+
+            // Generamos nuevos codigos de seguridad
+            $code1 = rand(1000, 9999);
+            $code2 = rand(1000, 9999);
+            $code3 = rand(1000, 9999);
+            $code4 = rand(1000, 9999);
+
+            // Actualizamos los codigos en la base de datos
+            $query2 = "UPDATE codigo SET codigoProveedor = ?, codigoFletero = ?, codigoAgropecuaria = ?, codigoContraloria = ?, ultima_actualizacion = ? WHERE idCodigos = 1";
+            $stmt2 = $con->prepare($query2);
+            $stmt2->bind_param("iiiii", $code1, $code2, $code3, $code4, $hora_actual);
+            $stmt2->execute();
+
+            if ($stmt2->errno === 0) {
+                echo "Security codes have been updated in the database.";
+            } else {
+                echo "Error al intentar actualizar los codigos: " . $stmt2->error;
+            }
+            
+        } else {
+            echo "Security codes have not been updated yet.";
+        }
+    }
+
     function registroUsuario(){
         $formIsValid = validateForm();
 
@@ -108,7 +164,7 @@
         // Validando que el formulario sea correcto gracias a la funcion
         if (!$formIsValid) {
             echo "<script> alert('Los datos del formulario no son validos'); </script>";
-            echo "<script> window.location='../../views/registros/register.php';</script>";
+            //echo "<script> window.location='../../views/registros/register.php';</script>";
             exit;
         }
         
@@ -116,33 +172,44 @@
 
         // Incluir la conexion con la base de datos
         include("../conexion.php");
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
 
         //Para hacer la validacion de la pregunta, tenemos que verificar
         //Que corresponda el tipo de usuario con ese codigo de seguridad
 
-        $result1 = $con->query("select * from codigo;");
-        $row = $result1->fetch_object();
+        $query3 = "SELECT * FROM codigo ORDER BY idCodigos DESC LIMIT 1";
+        $stmt3 = $con->prepare($query3);
+
+        if (!$stmt3->execute()) {
+            echo "<script> alert('Error al buscar la informacion de los codigos);</script>";
+            //echo "<script>window.location='../../views/registros/register.php'</script>";
+            exit;
+        }
+
+        $result3 = $stmt3->get_result();
+        $row3 = $result3->fetch_assoc();
 
         $proceder = 0;
 
         switch($tipoUsuario){
             case 1:
-                if($codigo == $row->codigoContraloria){
+                if($codigo == $row3['codigoContraloria']){
                     $proceder = 1;
                 }
                 break;
             case 2:
-                if($codigo == $row->codigoAgropecuaria){
+                if($codigo == $row3['codigoAgropecuaria']){
                     $proceder = 1;
                 }
                 break;
             case 3:
-                if($codigo == $row->codigoProveedor){
+                if($codigo == $row3['codigoProveedor']){
                     $proceder = 1;
                 }
                 break;
             case 4:
-                if($codigo == $row->codigoFletero){
+                if($codigo == $row3['codigoFletero']){
                     $proceder = 1;
                 }
                 break;
@@ -151,15 +218,29 @@
         // Si el codigo no coincide, no procede
         if ($proceder == 0) {
             echo "<script> alert('Codigo invalido de seguridad');</script>";
-            echo "<script>window.location='../../views/registros/register.php'</script>";
+            //echo "<script>window.location='../../views/registros/register.php'</script>";
             exit;
         }
 
-        $result2 = $con->query("insert into usuario
-            (tipo_Usuario, Nombre, Apellido, Cedula, Email, Password, Pregunta, Respuesta)
-            values
-            ('$tipoUsuario','$nombre','$apellido','$cedula','$email',md5('$password'), '$pregunta', '$respuesta');");
-            echo "<script> alert('agregado con exito');</script>";
+        // Proceso de registro de usuario con mySQL
+        // Usando prepared statements como medida de seguridad
+        $stmt = $con->prepare("INSERT INTO usuario (tipo_Usuario, Nombre, Apellido, Cedula, Email, Password, Pregunta, Respuesta) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $password_md5 = md5($password);
+        $stmt->bind_param("isssssss", $tipoUsuario, $nombre, $apellido, $cedula, $email, $password_md5, $pregunta, $respuesta);
+
+        if (!$stmt->execute()) {
+            echo "<script> alert('Error al agregar');</script>";
+            //echo "<script>window.location='../../views/registros/register.php'</script>";
+            exit;
+        }
+
+        // Unicamente en la seccion donde si se ejecuto el registro de usuario
+        echo "<script> alert('agregado con exito');</script>";
+        
+        // Despues de que se haya logrado agregar con exito un usuario
+        // Mandamos a revisar si se tienen que cambiar los codigos
+        // Y hacerlo en casod e que sea necesario
+        cambiarCodigos($con);
 
     }
 
@@ -169,4 +250,4 @@
 
     main();
 ?>
-<script>window.location="../../views/registros/login.php"</script>
+<!-- <script>window.location="../../views/registros/login.php"</script> -->

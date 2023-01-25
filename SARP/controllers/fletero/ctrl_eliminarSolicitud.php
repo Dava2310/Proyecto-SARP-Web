@@ -9,6 +9,8 @@
 	}else{
 		
 		include("../../controllers/conexion.php");
+		$connection = Connection::getInstance();
+        $con = $connection->getConnection();
 		//devolver la cantidad solicitada a la planificacion al ser eliminada
 		$resultctdad = $con->query("UPDATE solicitud_Proveedor, solicitud_fletero SET solicitud_proveedor.ID_Solicitud_Fletero= null WHERE solicitud_fletero.ID_Solicitud_Fletero=solicitud_proveedor.ID_Solicitud_Fletero AND solicitud_fletero.ID_Solicitud_Fletero = $idSf
 		");

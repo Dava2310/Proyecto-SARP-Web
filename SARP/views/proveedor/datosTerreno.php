@@ -5,6 +5,8 @@
 
     include('../templates/head.php');
     include("../../controllers/conexion.php");
+    $connection = Connection::getInstance();
+    $con = $connection->getConnection();
 
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
@@ -13,12 +15,12 @@
 
     $result = $con->query("select * from terrenos t inner join usuario u on t.ID_Usuario = u.ID_Usuario where  u.ID_Usuario= '$usuario';");
     $row = $result->fetch_object();
-   if( $row -> ID_Terreno == NULL){
+    if( $row -> ID_Terreno == NULL){
 
         echo "<script>window.alert('No posee terreno registrado');</script>";
         echo "<script> window.location='addTerreno.php'; </script>";
 
-   }
+    }
     
 
     

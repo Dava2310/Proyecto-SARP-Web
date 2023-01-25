@@ -7,6 +7,8 @@
 	}else{
 		
 		include("../../controllers/conexion.php");
+		$connection = Connection::getInstance();
+        $con = $connection->getConnection();
 		
 		$result = $con->query("delete from siembras where ID_Siembra='$idSiembra';");
 		echo "<script> alert('eliminado con exito'); </script>";

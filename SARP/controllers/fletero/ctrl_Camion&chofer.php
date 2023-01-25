@@ -16,6 +16,8 @@
         echo "<script> window.location='../registros/login.php'; </script>";
     } else {
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
         //actualizar camion
         $resultC = $con->query("update camiones
             set Modelo = '$modelo',

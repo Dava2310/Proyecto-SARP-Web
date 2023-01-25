@@ -13,6 +13,9 @@
         echo "<script> window.location='../registros/login.php'; </script>";
     } else {
         include('../conexion.php');
+        $connection = Connection::getInstance();
+        $con = $connection->getConnection();
+        
         $result = $con->query("update usuario
             set Nombre='$nombre',
             Apellido = '$apellido',

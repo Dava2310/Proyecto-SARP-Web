@@ -32,13 +32,7 @@
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
                                     <button type="submit"  onclick="location.href='./TarifaF.php'" class="btn btn-success glyphicon glyphicon-pencil">Asignar</button>
-                                </div>
-                            
-                           
-                          
-                         
-                       
-                        
+                                </div>                        
 <?php
     include ("../templates/footerFletero.php")
 ?>

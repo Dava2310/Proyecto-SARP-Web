@@ -8,6 +8,9 @@
     include('../templates/headFletero.php');
     
     include("../../controllers/conexion.php");
+    $connection = Connection::getInstance();
+    $con = $connection->getConnection();
+    
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
         echo "<script> window.location='../registros/login.php'; </script>";
@@ -21,7 +24,7 @@
         }
         */
     }
- 
+
     //se seleccionan todos los datos de los usuarios que sean de tipo fletero
     $usuario= "SELECT ID_Usuario,Cedula FROM usuario WHERE tipo_Usuario = $n; ";
     $result= mysqli_query($con,$usuario);

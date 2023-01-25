@@ -50,7 +50,7 @@
                             <p class="inicioSesion">¿No tienes una cuenta?<a href="register.php"> Crea una cuenta aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>
-                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                <button name="submit" type="submit" class="btn btn-success">Aceptar</button>
                             </div>
                         </form>
                     </div>

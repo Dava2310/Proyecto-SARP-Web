@@ -1,5 +1,7 @@
 <?php
- include("../../controllers/conexion.php");
+    include("../../controllers/conexion.php");
+    $connection = Connection::getInstance();
+    $con = $connection->getConnection();
 //el dato que enviamos a traves de ajax
 $valor=$_POST['idP'];
  
