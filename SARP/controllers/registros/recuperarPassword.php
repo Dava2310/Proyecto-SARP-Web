@@ -7,8 +7,7 @@
     $tipoUsuario = $_POST['tipoUsuario'] ?? "";
 
     if($email == ""){
-        echo "<script> alert('No me indicaron los datos del usuario'); </script>";
-        echo "<script> window.location('../../views/registros/recover.php');</script>";
+        echo json_encode('No me indicaron los datos del usuario');
     } else {
         include("../conexion.php");
         $connection = Connection::getInstance();
@@ -22,8 +21,7 @@
         //validando que se encuentre el usuario
         if(!($row = $result1->fetch_object())){
             //Si no se encuentra
-            echo "<script>window.alert('No se ha encontrado el usuario con estos datos');</script>";
-            echo "<script>window.location='../../views/registros/recover.php';</script>";
+            echo json_encode('No se ha encontrado el usuario con estos datos');
         } else {
             //Si se encuentra
             //Se captura el ID del usuario encontrado
@@ -32,12 +30,7 @@
             $result2 = $con->query("update usuario
             set Password = md5('$password') 
             where ID_Usuario = '$id';");
-            echo "<script> alert('Contraseña recuperada con éxito.'); </script>";
+            echo json_encode('Contraseña recuperada con éxito.'); 
         }
     }
-
-
-
-
 ?>
-<script>window.location="../../views/registros/login.php"</script>

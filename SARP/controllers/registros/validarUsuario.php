@@ -23,12 +23,12 @@
         error_log("Empezara validacion", 0  , "error.log");
 
         // Si no se encuentra que hubo datos enviados via POST
-        if (!(isset($_POST['submit']))) {
+        /* if (!(isset($_POST['submit']))) {
 
             $isValid = false;
             echo "No se encontraron datos via POST";
             exit;
-        }
+        } */
 
         // Se le ingresa a las variables globales, los valores del Formulario
         // En caso de que no encuentre alguna variable
@@ -103,9 +103,8 @@
         
         // Si da error la ejecucion
         if (!$stmt->execute()){
-            echo "<script> alert('Error al validar usuario');</script>";
+            echo json_encode('Error al validar usuario');
             session_destroy();
-            echo "<script>window.location='../../views/registros/login.php';</script>";
             exit;
         }
 
@@ -115,8 +114,8 @@
 
         // Si no hay nadie
         if (!($row)) {
-            echo "<script>window.alert('No se ha encontrado el usuario con estos datos');</script>";
-            echo "<script>window.location='../../views/registros/login.php';</script>";
+            http_response_code(401); // se establece el codigo de estado http 401, que significa 'error' 
+            echo json_encode(array('message' => 'Credenciales de inicio de sesión incorrectas'));
             session_destroy();
             exit;
         }
@@ -127,9 +126,10 @@
         error_log("Valor de la sesion: $usuario", 0  , "error.log");
 
         //Si se encontró al usuario, se le dirige a la página que le corresponde
-        echo "<script>window.alert('Encontrado con exito, bienvenido: $row['Nombre'] $row->['Apellido'] ');</script>";
+        http_response_code(200); // se estable el codigo de estado http 200, que significa 'ok' y que se hizo la solicitud correctamente
+        echo json_encode(array('message' => 'Inicio de sesión exitoso'));
         
-        switch($cargo){
+       /*  switch($cargo){
         case 1:
             // header("location: ../../views/contraloria/datosPersonales.php");
             
@@ -155,7 +155,7 @@
             session_destroy();
             echo "<script> window.location='../../views/registros/register.html'; </script>";
             echo "<script> window.alert('No se ha logrado identificar el tipo de Usuario Ingresado');</script>";           
-        }
+        } */
 
     }
 

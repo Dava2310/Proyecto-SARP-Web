@@ -103,6 +103,25 @@
 
         return $isValid;
     }
+    // valida si la cedula y el correo registrado ya existen
+    function validaExistencia($con, $email, $cedula){
+        // Variable que mantiene el estado de correccion del formulario
+        $isValid = true;
+        // Query buscando al usuario
+        $stmt = $con->prepare("SELECT * FROM usuario WHERE Email = ? or Cedula = ?  LIMIT 1"); 
+        $stmt->bind_param("ss", $email, $cedula);
+        $stmt->execute();
+        // Recogiendo los resultados de la query
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        // Si hay alguien igual, no es valido
+        if (($row)) {
+            $isValid = false;
+        }
+
+        return $isValid;
+    }
 
     /**
      * Esta funcion busca cambiar los codigos despues de que alguien se haya registrado
@@ -117,7 +136,7 @@
 
         // Si sucede un error
         if(!($stmt5->errno === 0)){
-            echo "Error al buscar la ultima actualizacion de la tabla de codigos: ".$stmt5->error;
+            echo json_encode("Error al buscar la ultima actualizacion de la tabla de codigos: ".$stmt5->error);
             //echo "<script>window.location='../../views/registros/register.php'</script>";
             exit;
         }
@@ -145,13 +164,14 @@
             $stmt2->execute();
 
             if ($stmt2->errno === 0) {
-                echo "Security codes have been updated in the database.";
+                /* echo "Security codes have been updated in the database."; */
+                //----proceso exitoso, envia el mensaje directamente de "agregado con exito" ubicado enlas funcion registroUsuario()-----
             } else {
-                echo "Error al intentar actualizar los codigos: " . $stmt2->error;
+                echo json_encode("Error al intentar actualizar los codigos: " . $stmt2->error);
             }
             
         } else {
-            echo "Security codes have not been updated yet.";
+            echo json_encode("Security codes have not been updated yet.");
         }
     }
 
@@ -159,7 +179,15 @@
         $formIsValid = validateForm();
 
         // Accediendo a las variables globales
-        global $nombre, $apellido, $cedula, $email, $password, $pregunta, $respuesta, $tipoUsuario, $codigo;
+            $nombre = $_POST['nombre'] ?? "";
+            $apellido = $_POST['apellido'] ?? "";
+            $cedula = $_POST['cedula'] ?? "";
+            $email = $_POST['email'] ?? "";
+            $password = $_POST['password'] ?? "";
+            $pregunta = $_POST['question'] ?? "";
+            $respuesta = $_POST['answer'] ?? "";
+            $tipoUsuario = $_POST['tipoUsuario'] ?? "";
+            $codigo = $_POST['codigo'] ?? "";
 
         // Validando que el formulario sea correcto gracias a la funcion
         if (!$formIsValid) {
@@ -175,6 +203,14 @@
         $connection = Connection::getInstance();
         $con = $connection->getConnection();
 
+        //se valida la existencia del usuariuo registrado
+        $formIsValid = validaExistencia($con, $email, $cedula);
+        //si existe se temina el proceso
+        if (!$formIsValid) {
+            echo json_encode('La cedula o el correo ya existen');
+            //echo "<script> window.location='../../views/registros/register.php';</script>";
+            exit;
+        }
         //Para hacer la validacion de la pregunta, tenemos que verificar
         //Que corresponda el tipo de usuario con ese codigo de seguridad
 
@@ -195,6 +231,7 @@
         switch($tipoUsuario){
             case 1:
                 if($codigo == $row3['codigoContraloria']){
+                    
                     $proceder = 1;
                 }
                 break;
@@ -217,7 +254,9 @@
 
         // Si el codigo no coincide, no procede
         if ($proceder == 0) {
-            echo "<script> alert('Codigo invalido de seguridad');</script>";
+            //se codifica el ECHO ya que va a ser la respuesta que se envia al fetch
+            echo json_encode("codigo no coincide");
+            /* echo "<script> alert('Codigo invalido de seguridad');</script>"; */
             //echo "<script>window.location='../../views/registros/register.php'</script>";
             exit;
         }
@@ -229,18 +268,22 @@
         $stmt->bind_param("isssssss", $tipoUsuario, $nombre, $apellido, $cedula, $email, $password_md5, $pregunta, $respuesta);
 
         if (!$stmt->execute()) {
-            echo "<script> alert('Error al agregar');</script>";
-            //echo "<script>window.location='../../views/registros/register.php'</script>";
+            //se codifica el ECHO ya que va a ser la respuesta que se envia al fetch
+            echo json_encode("Error al agregar");
             exit;
         }
 
         // Unicamente en la seccion donde si se ejecuto el registro de usuario
-        echo "<script> alert('agregado con exito');</script>";
+        cambiarCodigos($con);
+        //se codifica el ECHO ya que va a ser la respuesta que se envia al fetch
+        echo json_encode("agregado con exito");
+        exit;
+        /* echo "<script> alert('agregado con exito');</script>"; */
         
         // Despues de que se haya logrado agregar con exito un usuario
         // Mandamos a revisar si se tienen que cambiar los codigos
         // Y hacerlo en casod e que sea necesario
-        cambiarCodigos($con);
+        /* cambiarCodigos($con); */
 
     }
 

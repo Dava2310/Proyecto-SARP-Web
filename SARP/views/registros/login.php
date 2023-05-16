@@ -17,7 +17,6 @@
 
                         <img src="../../assets/images/verificar.png" alt="" style="width: 50px; height: 50px;">
                         <h1>Inicio de Sesión</h1>
-
                     </div>
                     <!-- DESCRIPCION DEL INICIO DE SESION -->
                     <div class="descripcion row justify-content-center">
@@ -26,16 +25,18 @@
                     <hr>
                     <!-- FORMULARIO -->
                     <div class="contenedorform">
-                        <form action="../../controllers/registros/validarUsuario.php" method="post">
+                        <form id="form">
                             <h2>Datos de Usuario:</h2> <hr>
                             <div class="form-group">
                                 <label for="email">Correo de Usuario</label>
                                 <input class="form-control" type="text" name="email" id="email" required>
                             </div>
+                            <p id='errorCorreo'></p>
                             <div class="form-group">
                                 <label for="password">Contraseña:</label>
                                 <input class="form-control" type="password" name="password" id="password" required>
                             </div>
+                            <p id='errorPassword'></p>
                             <div class="form-group">
                                 <label for="tipoUsuario">Cargo Designado:</label>
                                 <select name="tipoUsuario" id="tipoUsuario" class="form-control" required>
@@ -63,4 +64,3 @@
 	<script src="../../assets/js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
-

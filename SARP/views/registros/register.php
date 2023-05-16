@@ -28,7 +28,7 @@
                     <div class="contenedorform">
                         <h2>Datos Personales:</h2>
                         <hr>
-                        <form id="form" action="../../controllers/registros/agregarUsuario.php" method="POST">
+                        <form id="form" >
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" required>

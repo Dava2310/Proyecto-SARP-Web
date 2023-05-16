@@ -25,23 +25,27 @@
                     <hr>
                     <div class="contenedorform">
                         <h2>Datos de usuario:</h2> <hr>
-                        <form action="../../controllers/registros/recuperarPassword.php" method="post">
+                        <form id="form">
                             <div class="form-group">
                                 <label for="email">Correo de usuario:</label>
                                 <input type="text" name="email" id="email" class="form-control" required>
                             </div>
+                            <p id='errorCorreo'></p>
                             <div class="form-group">
                                 <label for="newP">Nueva contraseña:</label>
                                 <input type="password" name="newP" id="newP" class="form-control" required>
                             </div>
+                            <p id='errorPassword'></p>
                             <div class="form-group">
                                 <label for="question">Pregunta de seguridad:</label>
                                 <input type="text" name="question" id="question" class="form-control" required>
                             </div>
+                            <p id='errorPregunta'></p>
                             <div class="form-group">
                                 <label for="answer">Respuesta:</label>
                                 <input type="text" name="answer" id="answer" class="form-control" required>
                             </div>
+                            <p id='errorRespuesta'></p>
                             <div class="descripcion">
                                 <p> <b> Tipo de usuario debe ser el mismo de la cuenta original. </b></p>
                             </div>
@@ -59,7 +63,7 @@
                             <p class="inicioSesion">¿No tienes una cuenta? <a href="register.php">Create una aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>
-                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                <button name="submit" type="submit" class="btn btn-success">Aceptar</button>
                             </div>
                         </form>
                     </div>

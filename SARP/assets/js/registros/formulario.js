@@ -1,7 +1,7 @@
 // Archivo JS para validar el formulario de register.php
 
-const form = document.getElementById('form');
-
+/* const form = document.getElementById('form');
+ */
 const nombre = document.getElementById("nombre")
 const apellido = document.getElementById("apellido")
 const cedula = document.getElementById("cedula")
@@ -24,13 +24,14 @@ const expresiones = {
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 }
 
+const form = document.getElementById('form');
+
+
 
 form.addEventListener("submit", (e) => {
     
     let entrar = false;
     let warnings = "";
-
-    console.log(nombre.value)
 
     if(!(expresiones.nombre.test(nombre.value))){
         
@@ -86,7 +87,7 @@ form.addEventListener("submit", (e) => {
     if(!expresiones.password.test(password.value)){
         warnings += `La contraseña no es valida\n`;
         entrar = true;
-        errorPassword.innerHTML = '<b>¡La contraseña debe ser de 4 a 12 digitos </b>';
+        errorPassword.innerHTML = '<b>¡La contraseña debe ser de 4 a 12 digitos!</b>';
         password.style.borderColor ='red';
     }
     else
@@ -100,5 +101,30 @@ form.addEventListener("submit", (e) => {
         e.preventDefault()
         alert(warnings);
         //location.reload()
-    } 
+    }else{
+        //si la vairable entrar es false, se procede a enviar datos al servidor mediante el fetch
+        
+        e.preventDefault();
+        //se gguardan los datos del formulario en formData
+        const formData = new FormData(form);
+    
+        //usamos la API fetch para enviar datos al agregarUsuario.php 
+        fetch('../../controllers/registros/agregarUsuario.php',{
+            //metodo de envio
+            method : 'POST',
+            //datos enviados
+            body: formData
+        })
+        //se indica que la respuesta obtenida es en formato json
+        .then(response => response.json())
+        .then(data => {
+            //data contiene la respuesta obtenida de agregarUsuario.php
+            if(data == "agregado con exito"){
+                alert(data);
+                location.reload();
+            }else{
+                alert(data)
+            }
+        })
+    }    
 })
