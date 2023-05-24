@@ -3,8 +3,8 @@
 /* const form = document.getElementById('form');
  */
 const nombre = document.getElementById("nombre")
-const apellido = document.getElementById("apellido")
-const cedula = document.getElementById("cedula")
+const Apellido = document.getElementById("Apellido")
+const Cedula = document.getElementById("Cedula")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 
@@ -18,9 +18,9 @@ const errorPassword = document.getElementById("errorPassword")
 
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+	Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
     password: /^.{4,12}$/, // 4 a 12 digitos.
-    cedula: /^([VE]-)?\d{6,8}$/i,
+    Cedula: /^([VE]-)?\d{6,8}$/i,
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 }
 
@@ -46,36 +46,36 @@ form.addEventListener("submit", (e) => {
         nombre.style.borderColor = '';
     }
 
-    if(!expresiones.apellido.test(apellido.value)){
-        warnings += `El apellido no es valido\n`;
+    if(!expresiones.Apellido.test(Apellido.value)){
+        warnings += `El Apellido no es valido\n`;
         entrar = true;
-        errorApellido.innerHTML = '<b>¡El apellido solo debe contener letras, maximo 40 caracteres!<b>'
-        apellido.style.borderColor ='red';
+        errorApellido.innerHTML = '<b>¡El Apellido solo debe contener letras, maximo 40 caracteres!<b>'
+        Apellido.style.borderColor ='red';
     }
     else
     {
         errorApellido.innerHTML = "";
-        apellido.style.borderColor = '';
+        Apellido.style.borderColor = '';
     }
 
 
-    if(!expresiones.cedula.test(cedula.value)){
-        warnings += `La cedula no es valida\n`;
+    if(!expresiones.Cedula.test(Cedula.value)){
+        warnings += `La Cedula no es valida\n`;
         entrar = true;
-        errorCedula.innerHTML = '<b>¡La cedula debe contener de 6 a 8 numeros. Los formatos pueden ser: V-XXXXXXXX ; E-XXXXXXXX ; XXXXXXXX';
-        cedula.style.borderColor ='red';
+        errorCedula.innerHTML = '<b>¡La Cedula debe contener de 6 a 8 numeros. Los formatos pueden ser: V-XXXXXXXX ; E-XXXXXXXX ; XXXXXXXX';
+        Cedula.style.borderColor ='red';
     }
     else
     {
         errorCedula.innerHTML = ""; 
-        cedula.style.borderColor = '';
+        Cedula.style.borderColor = '';
     }
 
 
     if(!expresiones.email.test(email.value)){
         warnings += `El email no es valido\n`;
         entrar = true;
-        errorCorreo.innerHTML = '<b>¡El correo no es valido!</b>';
+        errorCorreo.innerHTML = '<b>¡El Email no es valido!</b>';
         email.style.borderColor ='red';
     }
     else

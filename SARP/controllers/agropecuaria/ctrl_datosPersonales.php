@@ -1,28 +1,28 @@
+
 <?php
+ //PARA GUARDAR PAGINA DE DATOS PERSONALES DE AGROPECUARIO -->
     session_start();
     $usuario = $_SESSION['ID'];
 
     $nombre = $_POST['Nombre'] ?? "";
-    $apellido = $_POST['apellido'] ?? "";
+    $Apellido = $_POST['Apellido'] ?? "";
     $telefono = $_POST['tlf'] ?? "";
     $rif = $_POST['rif'] ?? "";
     $direccion = $_POST['direccion'] ?? "";
 
     if(!(isset($usuario))){
-        echo "<script> window.alert('No ha iniciado sesion');</script>";
-        echo "<script> window.location='../registros/login.php'; </script>";
+        echo json_encode("no");
     } else {
         include('../conexion.php');
         $connection = Connection::getInstance();
         $con = $connection->getConnection();
         $result = $con->query("update usuario
             set Nombre='$nombre',
-            Apellido = '$apellido',
+            Apellido = '$Apellido',
             Telefono = '$telefono',
             RIF = '$rif',
             Direccion = '$direccion'
             where ID_Usuario = '$usuario';");
-        echo "<script>window.alert('Se ha modificado con exito');</script>";
-        header("location: ../../views/agropecuaria/datosPersonales.php");
+        echo json_encode("agregado con exito");
     }
 ?>

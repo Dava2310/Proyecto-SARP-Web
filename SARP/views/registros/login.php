@@ -28,7 +28,7 @@
                         <form id="form">
                             <h2>Datos de Usuario:</h2> <hr>
                             <div class="form-group">
-                                <label for="email">Correo de Usuario</label>
+                                <label for="email">Email de Usuario</label>
                                 <input class="form-control" type="text" name="email" id="email" required>
                             </div>
                             <p id='errorCorreo'></p>

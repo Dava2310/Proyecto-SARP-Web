@@ -51,15 +51,15 @@
                                     <input value="<?=$row->Nombre?>" readOnly class="form-control" type="text" name ="nombre" id="nombre">
                                 </div>
                                 <div class="form-group col-sm">
-                                    <label for="apellido">Apellido:</label>
-                                    <input value="<?=$row->Apellido?>" readOnly class="form-control" type="text" name ="apellido" id="apellido">
+                                    <label for="Apellido">Apellido:</label>
+                                    <input value="<?=$row->Apellido?>" readOnly class="form-control" type="text" name ="Apellido" id="Apellido">
                                 </div>
                                
                             </div>
                             <div class="row">
                                  <div class="form-group col-sm">
-                                    <label for="cedula">Cédula:</label>
-                                    <input value="<?=$row->Cedula?>" readOnly class="form-control" type="text" name ="cedula" id="cedula">
+                                    <label for="Cedula">Cédula:</label>
+                                    <input value="<?=$row->Cedula?>" readOnly class="form-control" type="text" name ="Cedula" id="Cedula">
                                     
 
                                 </div>
@@ -74,8 +74,8 @@
                                     <input value="<?=$row->Telefono?>" readOnly class="form-control" type="text" name ="tlf" id="tlf">
                                 </div>
                                 <div class="form-group col-sm">
-                                    <label for="correo">Correo de Usuario:</label>
-                                    <input  value="<?=$row->Email?>" readOnly class="form-control" type="email" name ="correo" id="correo">
+                                    <label for="Email">Email de Usuario:</label>
+                                    <input  value="<?=$row->Email?>" readOnly class="form-control" type="email" name ="Email" id="Email">
                                 </div>
                                 
                             </div>
@@ -101,19 +101,19 @@
                                 if(document.getElementById('nombre').readOnly == false){
                                     BotonCambiar.value="Modificar (Desactivado)";
                                     document.getElementById('nombre').readOnly=true;
-                                    document.getElementById('apellido').readOnly=true;
+                                    document.getElementById('Apellido').readOnly=true;
                                     document.getElementById('tlf').readOnly=true;
                                     //document.getElementById('email').disabled=true;
-                                    //document.getElementById('cedula').disabled=true;
+                                    //document.getElementById('Cedula').disabled=true;
                                     document.getElementById('rif').readOnly=true;
                                     document.getElementById('direccion').readOnly=true;
                                 } else {
                                     BotonCambiar.value="Modificar (Activado)";
                                     document.getElementById('nombre').readOnly=false;
-                                    document.getElementById('apellido').readOnly=false;
+                                    document.getElementById('Apellido').readOnly=false;
                                     document.getElementById('tlf').readOnly=false;
                                     //document.getElementById('email').disabled=false;
-                                    //document.getElementById('cedula').disabled=false;
+                                    //document.getElementById('Cedula').disabled=false;
                                     document.getElementById('rif').readOnly=false;
                                     document.getElementById('direccion').readOnly=false;
                                 }

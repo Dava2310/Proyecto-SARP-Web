@@ -44,13 +44,13 @@
                             <div class="row">
                                 <label for="Proveedor" class="col-sm-4 col-form-label">Lista de Proveedor</label>
                                 <div class="col-sm-8">
-                                    <input placeholder="-- SELECCIONE PROVEEDOR --" class="form-control" list="Proveedores" name="Proveedores" id="Proveedor" onchange='mifuncion(this.value)'>
+                                    <input placeholder="-- SELECCIONE PROVEEDOR --" class="form-control" list="Proveedores" name="Proveedores" id="Proveedor">
                                     <datalist id="Proveedores">
                                         <?php
                                             while($valores = mysqli_fetch_array($result)){
                                                 $id = $valores['ID_Usuario'];
-                                                $cedula = $valores['Cedula'];
-                                                echo "<option value=$cedula></option>";
+                                                $Cedula = $valores['Cedula'];
+                                                echo "<option value=$Cedula></option>";
                                             }
                                         ?>
                                     </datalist>
@@ -59,12 +59,12 @@
                         </div>
                     </header>
                     <hr>
-                    <form action="../../controllers/agropecuaria/ctrl_addDatosSiembra.php" method="POST">
+                    <form id="form">
                         <div class="row">
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <label for="siembras">Siembras del Proveedor:</label>
-                                <select id="Siembra" disabled class="form-control " onchange='mifuncionSM(this.value)' >
-                                            <option value="">-- SELECCIONE SIEMBRA --</option>
+                                <select id="Siembra" disabled class="form-control " >
+                                        <option value="">-- SELECCIONE SIEMBRA --</option>
                                 </select>
                             </div>
                             <div class="form-group col-md col-sm-12 col-12">
@@ -99,109 +99,12 @@
                             <div class="form-group col-md-12">
                                 <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Deshacer</button>
                                 <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
-                                <input id="botonCambiar" type="" onclick="activarCampos()" class="btn btn-primary glyphicon glyphicon-pencil" 
-                                    value="Permitir ingreso (Desactivado)" style="color: black; font-weight: bold;">
+                                <input id="botonCambiar" type=""class="btn btn-primary glyphicon glyphicon-pencil" 
+                                value="Modificar (Desactivado)" style="color: black; font-weight: bold;">
                             </div>
                         </div>
                     </form>
-                    <script>
-
-                            function activarCampos(){
-                                var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('analisis').readOnly == false){
-                                    BotonCambiar.value="Permitir Ingreso (Desactivado)";
-                                    document.getElementById('analisis').readOnly=true;
-                                    document.getElementById('ms').readOnly=true;
-                                    document.getElementById('impureza').readOnly=true;
-                                    document.getElementById('kilos').readOnly=true;
-                                } else if(document.getElementById('analisis').readOnly == true && !(document.getElementById('idLote').value == "")) {
-                                    BotonCambiar.value="Permitir Ingreso (Activado)";
-                                    document.getElementById('analisis').readOnly=false;
-                                    document.getElementById('ms').readOnly=false;
-                                    document.getElementById('impureza').readOnly=false;
-                                    document.getElementById('kilos').readOnly=false;
-                                }
-                                
-                            }
-
-                        //LLenar lista de la siembra a partir de proveedores
-                        $(document).ready(function(){
-
-                            var siemb = $('#Siembra');
-
-                            $('#Proveedor').change(function(){
-                                var IDP = $(this).val();
-                                
-                                if(IDP !== ''){
-                                    $.ajax({
-                                        data: {IDP:IDP}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
-                                        dataType: 'html', //tipo de datos que esperamos de regreso
-                                        type: 'POST', //mandar variables como post o get
-                                        url: '../../controllers/agropecuaria/get_listaSiembra.php' //url que recibe las variables
-                                    }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
-                                        siemb.prop('disabled', false); //habilitar el select       
-
-                                        siemb.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
-                                        
-                                    });
-
-                                }else{ //en caso de seleccionar una opcion no valida
-                                    siemb.val(''); //seleccionar la opcion "- Seleccione -", osea como reiniciar la opcion del select
-                                    siemb.prop('disabled', true); //deshabilitar el select
-                                }
-                            })
-                        })
-
-                        //---------CARGAR DATOS DE LA LISTA SIEMBRA-----
-                        function mifuncionSM(idS){
-
-                                if(document.getElementById('Siembra').value == ""){
-                                    document.getElementById('idLote').value="";
-                                    document.getElementById('analisis').value="";
-                                    document.getElementById('ms').value="";
-                                    document.getElementById('impureza').value="";
-                                    document.getElementById('kilos').value="";
-                                } else {
-                                    $.ajax({
-                                    // la URL para la petición
-                                    url : '../../controllers/proveedor/get_datoSiembra.php',
-                        
-                                    // la información a enviar en este caso el valor de lo que seleccionaste en el select
-                                    data : { idS : idS },
-                        
-                                    // especifica si será una petición POST o GET
-                                    type : 'POST',
-                        
-                                    // el tipo de información que se espera de respuesta
-                                    dataType : 'json',
-                        
-                                    // código a ejecutar si la petición es satisfactoria;
-                                    success : function(json) {
-                                        
-                                        $("#idLote").val(json.ID_Siembra);
-                                        $("#analisis").val(json.Analisis);
-                                        $("#ms").val(json.MateriaSeca);
-                                        $("#impureza").val(json.Impureza);
-                                        $("#kilos").val(json.KilosMuestra);
-                                        //$("#disponibilidad").val(json.Kilos_Totales);
-
-                                        //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
-                                        
-                                    },
-                        
-                                        // código a ejecutar si la petición falla;
-                                        error : function(xhr, status) {
-                                            alert('Disculpe, existió un problema');
-                                        }
-                                    })
-                                }
-
-                                
-
-                            }
-                    
-
-                    </script> 
+                    <script type="module" src="../../assets/js/agropecuario/datosSiembra.js"></script> 
                     
 <?php
     include ("../templates/footerFletero.php")

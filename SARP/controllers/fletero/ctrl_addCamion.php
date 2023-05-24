@@ -6,9 +6,9 @@
     $modelo = $_POST['Modelo'] ?? "";
     $capacidad = $_POST['Capacidad'] ?? "";
     //----------DATOS DEL CHOFER-----------
-    $cedula = $_POST['CI'] ?? "";
+    $Cedula = $_POST['Cedula'] ?? "";
     $nombre = $_POST['Nombre'] ?? "";
-    $apellido = $_POST['Apellido'] ?? "";
+    $Apellido = $_POST['Apellido'] ?? "";
     //----------DATOS DEL CHOFER 2-----------
     $cedula2 = $_POST['CI2'] ?? "";
     $nombre2 = $_POST['Nombre2'] ?? "";
@@ -31,7 +31,7 @@
         $resultCh = $con->query("insert into choferes
         (Cedula, Nombre, Apellido)
         values
-        ('$cedula','$nombre','$apellido');");
+        ('$Cedula','$nombre','$Apellido');");
         // registro de chofer 2
         $resultCh2 = $con->query("insert into choferes
         (Cedula, Nombre, Apellido)
@@ -42,7 +42,7 @@
         $resultCyC = $con->query("insert into camion_chofer
         (ID_Camion, ID_chofer)
         values
-        ('$placa','$cedula');");
+        ('$placa','$Cedula');");
 
         //enlace chofer camion 2
         $resultCyC2 = $con->query("insert into camion_chofer

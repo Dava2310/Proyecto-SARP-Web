@@ -3,7 +3,7 @@
     $usuario = $_SESSION['ID'];
 
     $nombre = $_POST['nombre'] ?? "";
-    $apellido = $_POST['apellido'] ?? "";
+    $Apellido = $_POST['Apellido'] ?? "";
     $telefono = $_POST['tlf'] ?? "";
     $rif = $_POST['rif'] ?? "";
     $direccion = $_POST['direccion'] ?? "";
@@ -18,7 +18,7 @@
         
         $result = $con->query("update usuario
             set Nombre='$nombre',
-            Apellido = '$apellido',
+            Apellido = '$Apellido',
             Telefono = '$telefono',
             RIF = '$rif',
             Direccion = '$direccion'

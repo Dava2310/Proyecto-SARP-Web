@@ -141,7 +141,7 @@
                                     document.getElementById('saldoR').readOnly=true;
                                     document.getElementById('variedad').readOnly=true;
                                     //document.getElementById('email').disabled=true;
-                                    //document.getElementById('cedula').disabled=true;
+                                    //document.getElementById('Cedula').disabled=true;
                                     document.getElementById('kilosT').readOnly=true;
                                     document.getElementById('fechaC').readOnly=true;
                                     document.getElementById('hectareas').readOnly=true;
@@ -151,7 +151,7 @@
                                     document.getElementById('saldoR').readOnly=false;
                                     document.getElementById('variedad').readOnly=false;
                                     //document.getElementById('email').disabled=false;
-                                    //document.getElementById('cedula').disabled=false;
+                                    //document.getElementById('Cedula').disabled=false;
                                     document.getElementById('kilosT').readOnly=false;
                                     document.getElementById('fechaC').readOnly=false;
                                     document.getElementById('hectareas').readOnly=false;

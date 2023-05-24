@@ -65,8 +65,8 @@
                                     <input class="form-control" type="text" name ="Apellido" id="Apellido" required>
                                 </div>
                                 <div class="form-group col-sm">
-                                    <label for="CI">Cédula de Identidad (1):</label>
-                                    <input class="form-control" type="text" name="CI" id="CI" required>
+                                    <label for="Cedula">Cédula de Identidad (1):</label>
+                                    <input class="form-control" type="text" name="Cedula" id="Cedula" required>
                                 </div> 
                             </div> 
                             

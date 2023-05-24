@@ -2,8 +2,8 @@
 
     // Variables globales
     global $nombre;
-    global $apellido;
-    global $cedula;
+    global $Apellido;
+    global $Cedula;
     global $email;
     global $password;
     global $pregunta;
@@ -19,7 +19,7 @@
     function validateForm(){
 
         // Accediendo a las variables globales
-        global $nombre, $apellido, $cedula, $email, $password, $pregunta, $respuesta, $tipoUsuario, $codigo;
+        global $nombre, $Apellido, $Cedula, $email, $password, $pregunta, $respuesta, $tipoUsuario, $codigo;
 
         // Variable que mantiene el estado de correccion del formulario
         $isValid = true;
@@ -34,8 +34,8 @@
             // En caso de que no encuentre alguna variable
             // Le asignara un valor vacio ""
             $nombre = $_POST['nombre'] ?? "";
-            $apellido = $_POST['apellido'] ?? "";
-            $cedula = $_POST['cedula'] ?? "";
+            $Apellido = $_POST['Apellido'] ?? "";
+            $Cedula = $_POST['Cedula'] ?? "";
             $email = $_POST['email'] ?? "";
             $password = $_POST['password'] ?? "";
             $pregunta = $_POST['question'] ?? "";
@@ -54,10 +54,10 @@
                 $isValid = false;
             }
 
-            // Validacion del apellido
-            if (!empty($apellido)) {
-                if (!preg_match("/^[a-zA-Z ]{4,20}$/", $apellido)) {
-                    //echo "Formato de apellido invalido";
+            // Validacion del Apellido
+            if (!empty($Apellido)) {
+                if (!preg_match("/^[a-zA-Z ]{4,20}$/", $Apellido)) {
+                    //echo "Formato de Apellido invalido";
                     $isValid = false;
                 }
             } else {
@@ -68,11 +68,11 @@
             // Validacion del email
             if (!empty($email)) {
                 if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
-                    //echo "Formato invalido de correo";
+                    //echo "Formato invalido de Email";
                     $isValid = false;
                 }
             } else {
-                //echo "El correo es un campo requerido";
+                //echo "El Email es un campo requerido";
                 $isValid = false;
             }
 
@@ -89,27 +89,27 @@
                 //echo "Password is a required field";
             }
 
-            // Validacion de la cedula
-            if (!empty($cedula)) {
-                if (!preg_match("/^([VE]-)?\d{6,8}$/i", $cedula)) {
-                    //echo "Formato invalido de cedula";
+            // Validacion de la Cedula
+            if (!empty($Cedula)) {
+                if (!preg_match("/^([VE]-)?\d{6,8}$/i", $Cedula)) {
+                    //echo "Formato invalido de Cedula";
                     $isValid = false;
                 }
             } else {
-                //echo "La cedula es un campo requerido";
+                //echo "La Cedula es un campo requerido";
                 $isValid = false;
             }
         }
 
         return $isValid;
     }
-    // valida si la cedula y el correo registrado ya existen
-    function validaExistencia($con, $email, $cedula){
+    // valida si la Cedula y el Email registrado ya existen
+    function validaExistencia($con, $email, $Cedula){
         // Variable que mantiene el estado de correccion del formulario
         $isValid = true;
         // Query buscando al usuario
         $stmt = $con->prepare("SELECT * FROM usuario WHERE Email = ? or Cedula = ?  LIMIT 1"); 
-        $stmt->bind_param("ss", $email, $cedula);
+        $stmt->bind_param("ss", $email, $Cedula);
         $stmt->execute();
         // Recogiendo los resultados de la query
         $result = $stmt->get_result();
@@ -180,8 +180,8 @@
 
         // Accediendo a las variables globales
             $nombre = $_POST['nombre'] ?? "";
-            $apellido = $_POST['apellido'] ?? "";
-            $cedula = $_POST['cedula'] ?? "";
+            $Apellido = $_POST['Apellido'] ?? "";
+            $Cedula = $_POST['Cedula'] ?? "";
             $email = $_POST['email'] ?? "";
             $password = $_POST['password'] ?? "";
             $pregunta = $_POST['question'] ?? "";
@@ -204,10 +204,10 @@
         $con = $connection->getConnection();
 
         //se valida la existencia del usuariuo registrado
-        $formIsValid = validaExistencia($con, $email, $cedula);
+        $formIsValid = validaExistencia($con, $email, $Cedula);
         //si existe se temina el proceso
         if (!$formIsValid) {
-            echo json_encode('La cedula o el correo ya existen');
+            echo json_encode('La Cedula o el Email ya existen');
             //echo "<script> window.location='../../views/registros/register.php';</script>";
             exit;
         }
@@ -265,7 +265,7 @@
         // Usando prepared statements como medida de seguridad
         $stmt = $con->prepare("INSERT INTO usuario (tipo_Usuario, Nombre, Apellido, Cedula, Email, Password, Pregunta, Respuesta) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $password_md5 = md5($password);
-        $stmt->bind_param("isssssss", $tipoUsuario, $nombre, $apellido, $cedula, $email, $password_md5, $pregunta, $respuesta);
+        $stmt->bind_param("isssssss", $tipoUsuario, $nombre, $Apellido, $Cedula, $email, $password_md5, $pregunta, $respuesta);
 
         if (!$stmt->execute()) {
             //se codifica el ECHO ya que va a ser la respuesta que se envia al fetch

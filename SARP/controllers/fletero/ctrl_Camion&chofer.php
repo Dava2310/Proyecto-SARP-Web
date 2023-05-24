@@ -7,9 +7,9 @@
     $modelo = $_POST['Modelo'] ?? "";
     $capacidad = $_POST['Capacidad'] ?? "";
     //----------DATOS DEL CHOFER-----------
-    $cedula = $_POST['CI'] ?? "";
+    $Cedula = $_POST['Cedula'] ?? "";
     $nombre = $_POST['Nombre'] ?? "";
-    $apellido = $_POST['Apellido'] ?? "";
+    $Apellido = $_POST['Apellido'] ?? "";
 
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
@@ -26,8 +26,8 @@
         //actualizar chofer
         $resultCh = $con->query("update choferes
             set Nombre = '$nombre',
-            Apellido = '$apellido'
-            where Cedula = '$cedula';");
+            Apellido = '$Apellido'
+            where Cedula = '$Cedula';");
 
 
         echo "<script>window.alert('Se ha modificado con exito');</script>";

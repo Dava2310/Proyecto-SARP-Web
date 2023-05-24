@@ -10,8 +10,8 @@
     $result= mysqli_query($con,$proveedores);
         while($valores = mysqli_fetch_array($result)){
             $id = $valores['ID_Usuario'];
-            $cedula = $valores['Cedula'];
-            echo "<option value=$id>$cedula</option>";
+            $Cedula = $valores['Cedula'];
+            echo "<option value=$id>$Cedula</option>";
         }
     ?>
 </select> 

@@ -15,9 +15,9 @@ $result= mysqli_query($con,$usuario);
 $resultados= mysqli_fetch_array($result);
  
 $nombre=$resultados['Nombre'];
-$apellido=$resultados['Apellido'];
-$cedula=$resultados['Cedula'];
-$correo=$resultados['Email'];
+$Apellido=$resultados['Apellido'];
+$Cedula=$resultados['Cedula'];
+$Email=$resultados['Email'];
 $rif=$resultados['RIF'];
 $direc=$resultados['Direccion'];
 $tlf=$resultados['Telefono'];
@@ -33,9 +33,9 @@ $apellidoA=$resultados['Apellido_A'];
  
 //agregamos nuestros datos al array para retornarlos
 $jsondata['Nombre'] = $nombre;
-$jsondata['Apellido'] = $apellido;
-$jsondata['Cedula'] = $cedula;
-$jsondata['Email'] = $correo;
+$jsondata['Apellido'] = $Apellido;
+$jsondata['Cedula'] = $Cedula;
+$jsondata['Email'] = $Email;
 $jsondata['RIF'] = $rif;
 $jsondata['Direccion'] = $direc;
 $jsondata['Telefono'] = $tlf;

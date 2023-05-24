@@ -28,9 +28,9 @@ form.addEventListener("submit", (e) => {
     let warnings = "";
 
     if (!expresiones.email.test(email.value)){
-        warnings += `El correo electrónico no es válido.\n`;
+        warnings += `El Email electrónico no es válido.\n`;
         entrar = true;
-        errorCorreo.innerHTML = '<b>¡El correo no es valido! \n Ejemplo de correo valido: xxxx@gmail.com</b>';
+        errorCorreo.innerHTML = '<b>¡El Email no es valido! \n Ejemplo de Email valido: xxxx@gmail.com</b>';
         email.style.borderColor ='red';
     }
 

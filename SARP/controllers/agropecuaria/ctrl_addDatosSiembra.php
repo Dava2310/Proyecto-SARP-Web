@@ -19,7 +19,7 @@
         Impureza = '$impureza', KilosMuestra = '$kilos'
         where ID_Siembra = '$idSiembra';");
 
-        echo "<script> alert('agregado los datos con exito');</script>";
+        echo json_encode("agregado con exito");
     }
 ?>
-<script>window.location="../../views/agropecuaria/datosSiembras.php"</script>
+

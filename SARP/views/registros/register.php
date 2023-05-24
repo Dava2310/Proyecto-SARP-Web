@@ -36,22 +36,22 @@
                             <p id='errorName'></p>
 
                             <div class="form-group">
-                                <label for="apellido">Apellido:
+                                <label for="Apellido">Apellido:
                                 </label>
-                                <input type="text" name="apellido" id="apellido" class="form-control" required>
+                                <input type="text" name="Apellido" id="Apellido" class="form-control" required>
                             </div>
                             <p id='errorApellido'></p>
 
                             <div class="form-group">
-                                <label for="cedula">Cedula:
+                                <label for="Cedula">Cedula:
                                 </label>
-                                <input type="text" name="cedula" id="cedula" class="form-control" required>
+                                <input type="text" name="Cedula" id="Cedula" class="form-control" required>
                             </div>
                             <p id='errorCedula'></p>
                             
                             <h2>Datos de Usuario:</h2> <hr>
                             <div class="form-group">
-                                <label for="email">Correo de Usuario:</label>
+                                <label for="email">Email de Usuario:</label>
                                 <input type="text" name="email" id="email" class="form-control" required>
                             </div>
                             <p id='errorCorreo'></p>

@@ -1,9 +1,9 @@
 <?php
     $P_A = $_POST['cuentapropia'] ?? ""; //determina si la cta es personal o autorizada
-    $cedula = $_POST['CI'] ?? "";
+    $Cedula = $_POST['Cedula'] ?? "";
 
     $nombre = $_POST['Nombre'] ?? "";
-    $apellido = $_POST['Apellido'] ?? "";
+    $Apellido = $_POST['Apellido'] ?? "";
 
     $telefono = $_POST['tlf'] ?? "";
     $rif = $_POST['rif'] ?? "";
@@ -20,21 +20,23 @@
     include('../conexion.php');
     $connection = Connection::getInstance();
     $con = $connection->getConnection();
+    //si el tipo de cuenta es personal
     if($P_A == "PERSONAL"){
         $result = $con->query("update usuario
                             set Nombre='$nombre',
-                            Apellido = '$apellido',
+                            Apellido = '$Apellido',
                             Telefono = '$telefono',
                             RIF = '$rif',
                             Direccion = '$direccion',
                             Banco_P='$banco',
                             Cuenta_P = '$nrocuenta',
                             TipoCuenta_P = '$tipocta'
-                            where Cedula = '$cedula';");
+                            where Cedula = '$Cedula';");
+    //si el tipo de cta es autorizada
     }else if($P_A == "AUTORIZADA"){
         $result = $con->query("update usuario
                             set Nombre='$nombre',
-                            Apellido = '$apellido',
+                            Apellido = '$Apellido',
                             Telefono = '$telefono',
                             RIF = '$rif',
                             Direccion = '$direccion',
@@ -43,9 +45,9 @@
                             TipoCuenta_A = '$tipocta',
                             Nombre_A = '$nombreA',
                             Apellido_A='$apellidoA'
-                            where Cedula = '$cedula';");
+                            where Cedula = '$Cedula';");
     }
-    echo "<script>alert('Se ha modificado con exito');</script>";
-    header("location: ../../views/agropecuaria/datosProveedores.php");
+    echo json_encode("agregado con exito")
+    
     
 ?>

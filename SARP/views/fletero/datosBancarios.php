@@ -153,7 +153,7 @@
                                     document.getElementById('Nrocuenta').readOnly=true;
                                     document.getElementById('TpoCuentaP').readOnly=true;
                                     //document.getElementById('email').disabled=true;
-                                    //document.getElementById('cedula').disabled=true;
+                                    //document.getElementById('Cedula').disabled=true;
                                     document.getElementById('NombreA').readOnly=true;
                                     document.getElementById('ApellidoA').readOnly=true;
                                     document.getElementById('Banco-A').readOnly=true;
@@ -165,7 +165,7 @@
                                     document.getElementById('Nrocuenta').readOnly=false;
                                     document.getElementById('TpoCuentaP').readOnly=false;
                                     //document.getElementById('email').disabled=true;
-                                    //document.getElementById('cedula').disabled=true;
+                                    //document.getElementById('Cedula').disabled=true;
                                     document.getElementById('NombreA').readOnly=false;
                                     document.getElementById('ApellidoA').readOnly=false;
                                     document.getElementById('Banco-A').readOnly=false;

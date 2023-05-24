@@ -12,13 +12,13 @@ form.addEventListener("submit", e=>{
     let entrar = false;
     let warnings = "";
 
-    //se valida que el correo este escrito de forma valida
+    //se valida que el Email este escrito de forma valida
     
     if(!expresiones.email.test(email.value)){
         //alert("hola")
         warnings += `El email no es valido\n`;
         entrar = true;
-        errorCorreo.innerHTML = '<b>¡El correo no es valido! \n Ejemplo de correo valido: xxxx@gmail.com</b>';
+        errorCorreo.innerHTML = '<b>¡El Email no es valido! \n Ejemplo de Email valido: xxxx@gmail.com</b>';
         email.style.borderColor ='red';
     }
     

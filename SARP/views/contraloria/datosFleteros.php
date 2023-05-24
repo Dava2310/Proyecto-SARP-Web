@@ -59,8 +59,8 @@
                                             <?php
                                                 while($valores = mysqli_fetch_array($result)){
                                                     $id = $valores['ID_Usuario'];
-                                                    $cedula = $valores['Cedula'];
-                                                    echo "<option value=$cedula></option>";
+                                                    $Cedula = $valores['Cedula'];
+                                                    echo "<option value=$Cedula></option>";
                                                 }
                                             ?>
                                         </datalist>
@@ -80,12 +80,12 @@
                                 <input disabled class="form-control" type="text" name="Apellido" id="Apellido" required>
                             </div>
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <label for="Correo">Correo de Usuario:</label>
-                                <input disabled class="form-control" type="email" name="Correo" id="Correo" required>
+                                <label for="Email">Email de Usuario:</label>
+                                <input disabled class="form-control" type="email" name="Email" id="Email" required>
                             </div>
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                <label for="CI">Cédula:</label>  
-                                <input readonly="readonly"class="form-control" type="text" name="CI" id="CI" required>
+                                <label for="Cedula">Cédula:</label>  
+                                <input readonly="readonly"class="form-control" type="text" name="Cedula" id="Cedula" required>
                             </div>
                             <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <label for="rif">RIF</label>  
@@ -185,7 +185,7 @@
                                     document.getElementById('Apellido').disabled=true;
                                     document.getElementById('tlf').disabled=true;
                                     //document.getElementById('email').disabled=true;
-                                    //document.getElementById('cedula').disabled=true;
+                                    //document.getElementById('Cedula').disabled=true;
                                     document.getElementById('rif').disabled=true;
                                     document.getElementById('direccion').disabled=true;
                                     document.getElementById('ctaP&A').disabled=true;
@@ -200,7 +200,7 @@
                                     document.getElementById('Apellido').disabled=false;
                                     document.getElementById('tlf').disabled=false;
                                     //document.getElementById('email').disabled=false;
-                                    //document.getElementById('cedula').disabled=false;
+                                    //document.getElementById('Cedula').disabled=false;
                                     document.getElementById('rif').disabled=false;
                                     document.getElementById('direccion').disabled=false;
                                     document.getElementById('ctaP&A').disabled=false;
@@ -234,8 +234,8 @@
                                         //y ahora solo colocas el valor en los campos
                                         $("#Nombre").val(json.Nombre);
                                         $("#Apellido").val(json.Apellido);
-                                        $("#CI").val(json.Cedula);
-                                        $("#Correo").val(json.Email);
+                                        $("#Cedula").val(json.Cedula);
+                                        $("#Email").val(json.Email);
                                         $("#rif").val(json.RIF);
                                         $("#direccion").val(json.Direccion);
                                         $("#sector").val(json.Direccion);

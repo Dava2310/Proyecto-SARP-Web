@@ -42,11 +42,11 @@
         // Validacion del email
         if (!empty($email)) {
             if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
-                echo "Formato invalido de correo";
+                echo "Formato invalido de Email";
                 $isValid = false;
             }
         } else {
-            echo "El correo es un campo requerido";
+            echo "El Email es un campo requerido";
             $isValid = false;
         }
 

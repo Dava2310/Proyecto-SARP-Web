@@ -111,8 +111,8 @@
                                         <input class="form-control" type="text" name ="Apellido" id="Apellido" required readonly>
                                     </div>
                                     <div class="form-group col-sm">
-                                        <label for="CI">Cédula de Identidad :</label>
-                                        <input class="form-control" type="text" name="CI" id="CI" required readonly>
+                                        <label for="Cedula">Cédula de Identidad :</label>
+                                        <input class="form-control" type="text" name="Cedula" id="Cedula" required readonly>
                                     </div> 
                                 </div> 
                                 
@@ -244,7 +244,7 @@
                                        
                                         $("#Nombre").val(json.Nombre);
                                         $("#Apellido").val(json.Apellido);
-                                        $("#CI").val(json.Cedula);
+                                        $("#Cedula").val(json.Cedula);
                                         
                                         
                                        
@@ -258,7 +258,7 @@
                                         
                                         $("#Nombre").val("");
                                         $("#Apellido").val("");
-                                        $("#CI").val("");
+                                        $("#Cedula").val("");
                                     }
                                 })
                             }
