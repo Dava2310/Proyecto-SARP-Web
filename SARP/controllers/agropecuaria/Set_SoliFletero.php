@@ -16,18 +16,17 @@
         $connection = Connection::getInstance();
         $con = $connection->getConnection();
         
-
+        
         // se registran datos de solicitud fletero
         $resultC = $con->query("INSERT into solicitud_fletero
         (Placa, Estado_Aprobacion, ID_planificacion)
         values
         ('$Placa','0', '$IDplani');");
         
-
+        // Obtener el último ID insertado
+        $idFletero = $con -> insert_id;
         //se enlazan solicitud f con solicitud p
-       $result = $con->query("UPDATE solicitud_proveedor, solicitud_fletero set solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero 
-       where solicitud_proveedor.ID_Planificacion = solicitud_fletero.ID_Planificacion 
-       AND solicitud_fletero.ID_Planificacion = $IDplani and solicitud_proveedor.ID_Solicitud_Proveedor = $idsoli;");
+       $result = $con->query("UPDATE solicitud_proveedor SET  ID_Solicitud_Fletero= $idFletero WHERE ID_Solicitud_Proveedor = $idsoli;"); 
        
         
         

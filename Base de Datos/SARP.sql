@@ -3,15 +3,18 @@ Navicat MySQL Data Transfer
 
 Source Server         : sarp
 Source Server Version : 50505
-Source Host           : localhost:3308
+Source Host           : localhost:3306
 Source Database       : sarp
 
 Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2022-07-21 06:48:34
+Date: 2023-05-30 11:57:23
 */
+DROP DATABASE if exists SARP;
+CREATE DATABASE SARP;
+USE SARP;
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -32,8 +35,8 @@ CREATE TABLE `camiones` (
 -- ----------------------------
 -- Records of camiones
 -- ----------------------------
-INSERT INTO `camiones` VALUES ('5e4h4', 'chevrolet', '800', '8');
-INSERT INTO `camiones` VALUES ('7h895v', 'PEYOT', '200', '8');
+INSERT INTO `camiones` VALUES ('A12BC3D', 'Toyota', '200', '7');
+INSERT INTO `camiones` VALUES ('R12DG5J', 'chevrolet', '900', '7');
 
 -- ----------------------------
 -- Table structure for camion_chofer
@@ -51,9 +54,8 @@ CREATE TABLE `camion_chofer` (
 -- ----------------------------
 -- Records of camion_chofer
 -- ----------------------------
-INSERT INTO `camion_chofer` VALUES ('5e4h4', '27465814');
-INSERT INTO `camion_chofer` VALUES ('7h895v', '45621305');
-INSERT INTO `camion_chofer` VALUES ('7h895v', '195462354');
+INSERT INTO `camion_chofer` VALUES ('A12BC3D', '15487695');
+INSERT INTO `camion_chofer` VALUES ('R12DG5J', '5467894');
 
 -- ----------------------------
 -- Table structure for choferes
@@ -63,16 +65,23 @@ CREATE TABLE `choferes` (
   `Cedula` varchar(10) NOT NULL,
   `Nombre` varchar(20) DEFAULT '',
   `Apellido` varchar(20) DEFAULT '',
-  PRIMARY KEY (`Cedula`)
+  `ID_Fleteros` int(11) NOT NULL,
+  PRIMARY KEY (`Cedula`),
+  KEY `fk_choferes_fleteros_1` (`ID_Fleteros`),
+  CONSTRAINT `fk_choferes_fleteros_1` FOREIGN KEY (`ID_Fleteros`) REFERENCES `usuario` (`ID_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of choferes
 -- ----------------------------
-INSERT INTO `choferes` VALUES ('15487695', 'manuel', 'blanco');
-INSERT INTO `choferes` VALUES ('195462354', 'eden', 'hazard');
-INSERT INTO `choferes` VALUES ('27465814', 'josue', 'paredes');
-INSERT INTO `choferes` VALUES ('45621305', 'luka', 'modric');
+INSERT INTO `choferes` VALUES ('15487695', 'manuel', 'blanco', '7');
+INSERT INTO `choferes` VALUES ('195462354', 'eden', 'hazard', '3');
+INSERT INTO `choferes` VALUES ('20541369', 'pedro', 'benito', '5');
+INSERT INTO `choferes` VALUES ('27465814', 'josue', 'paredes', '3');
+INSERT INTO `choferes` VALUES ('45621305', 'luka', 'modric', '12');
+INSERT INTO `choferes` VALUES ('5467894', 'roberto', 'gomez', '7');
+INSERT INTO `choferes` VALUES ('5467895', 'jose alberto', 'Nuñes', '7');
+INSERT INTO `choferes` VALUES ('54678955', 'diegos', 'gimenez', '7');
 
 -- ----------------------------
 -- Table structure for codigo
@@ -84,14 +93,14 @@ CREATE TABLE `codigo` (
   `codigoFletero` varchar(15) NOT NULL,
   `codigoAgropecuaria` varchar(15) NOT NULL,
   `codigoContraloria` varchar(15) NOT NULL,
-  `ultima_actualizacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ultima_actualizacion` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idCodigos`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of codigo
 -- ----------------------------
-INSERT INTO `codigo` VALUES ('1', 'proveedor', 'fletero', 'agropecuaria', 'contraloria', NOW());
+INSERT INTO `codigo` VALUES ('1', '4213', '8218', '7844', '6561', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for fleteros
@@ -122,12 +131,12 @@ CREATE TABLE `odp_fletero` (
   KEY `Solicitud_ID` (`ID_Solicitud`),
   CONSTRAINT `fk_odp_fletero_solicitud_fletero_1` FOREIGN KEY (`ID_Solicitud`) REFERENCES `solicitud_fletero` (`ID_Solicitud_Fletero`),
   CONSTRAINT `fk_odp_fletero_usuario_1` FOREIGN KEY (`ID_Contralor`) REFERENCES `usuario` (`ID_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of odp_fletero
 -- ----------------------------
-INSERT INTO `odp_fletero` VALUES ('1', '1', '6', '0');
+INSERT INTO `odp_fletero` VALUES ('4', '1', '17', '1');
 
 -- ----------------------------
 -- Table structure for odp_proveedor
@@ -143,12 +152,12 @@ CREATE TABLE `odp_proveedor` (
   KEY `fk_odp_proveedor_usuario_1` (`ID_Contralor`),
   CONSTRAINT `fk_odp_proveedor_solicitud_proveedor_1` FOREIGN KEY (`ID_Solicitud`) REFERENCES `solicitud_proveedor` (`ID_Solicitud_Proveedor`),
   CONSTRAINT `fk_odp_proveedor_usuario_1` FOREIGN KEY (`ID_Contralor`) REFERENCES `usuario` (`ID_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of odp_proveedor
 -- ----------------------------
-INSERT INTO `odp_proveedor` VALUES ('3', '1', '38', '0');
+INSERT INTO `odp_proveedor` VALUES ('6', '1', '40', '0');
 
 -- ----------------------------
 -- Table structure for planificaciones
@@ -159,15 +168,23 @@ CREATE TABLE `planificaciones` (
   `Semana` varchar(10) NOT NULL,
   `Rango` int(11) NOT NULL,
   PRIMARY KEY (`ID_Planificacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of planificaciones
 -- ----------------------------
-INSERT INTO `planificaciones` VALUES ('143', '2022-W28', '400');
+INSERT INTO `planificaciones` VALUES ('143', '2022-W28', '310');
 INSERT INTO `planificaciones` VALUES ('144', '2022-W29', '700');
 INSERT INTO `planificaciones` VALUES ('145', '2022-W30', '400');
 INSERT INTO `planificaciones` VALUES ('146', '2022-W31', '200');
+INSERT INTO `planificaciones` VALUES ('147', '2023-W21', '20');
+INSERT INTO `planificaciones` VALUES ('152', '2023-W20', '500');
+INSERT INTO `planificaciones` VALUES ('153', '2023-W22', '460');
+INSERT INTO `planificaciones` VALUES ('154', '2023-W23', '85');
+INSERT INTO `planificaciones` VALUES ('155', '2023-W24', '310');
+INSERT INTO `planificaciones` VALUES ('156', '2023-W27', '90');
+INSERT INTO `planificaciones` VALUES ('157', '2023-W29', '0');
+INSERT INTO `planificaciones` VALUES ('158', '2023-W18', '270');
 
 -- ----------------------------
 -- Table structure for siembras
@@ -194,15 +211,15 @@ CREATE TABLE `siembras` (
   KEY `ID_Proveedor` (`ID_Proveedor`),
   CONSTRAINT `fk_siembras_proveedor_1` FOREIGN KEY (`ID_Proveedor`) REFERENCES `usuario` (`ID_Usuario`),
   CONSTRAINT `fk_siembras_terrenos_1` FOREIGN KEY (`ID_Terreno`) REFERENCES `terrenos` (`ID_Terreno`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of siembras
 -- ----------------------------
-INSERT INTO `siembras` VALUES ('2', '1', '9', '2022-07-13', '80', '2022-08-28', '14', '0', '500', '0', '500', null, null, null, null);
-INSERT INTO `siembras` VALUES ('6', '4', '3', '2022-07-21', 'cosas', '2022-09-30', '1222', '0', '55555', '0', '55555', null, null, null, null);
-INSERT INTO `siembras` VALUES ('9', '1', '9', '2022-07-21', '58', '2022-07-30', '22222', '0', '1234', '0', '1234', null, null, null, null);
-INSERT INTO `siembras` VALUES ('10', '4', '3', '2022-07-15', '80', '2022-11-28', '44', '0', '300', '0', '300', null, null, null, null);
+INSERT INTO `siembras` VALUES ('2', '1', '9', '2022-07-13', '80', '2022-08-28', '14', '0', '470', '20', '500', 'RECHAZADO', '20', '30', '200');
+INSERT INTO `siembras` VALUES ('6', '4', '3', '2022-07-21', 'cosas', '2022-09-30', '1222', '0', '55195', '30', '55495', 'APROBADO', '10', '40', '80');
+INSERT INTO `siembras` VALUES ('9', '1', '9', '2022-07-21', '58', '2022-07-30', '22222', '0', '1234', '0', '1234', 'APROBADO', '50', '20', '500');
+INSERT INTO `siembras` VALUES ('10', '4', '3', '2022-07-15', '80', '2022-11-28', '44', '0', '300', '0', '300', 'RECHAZADO', '20', '50', '100');
 
 -- ----------------------------
 -- Table structure for solicitud_fletero
@@ -221,14 +238,18 @@ CREATE TABLE `solicitud_fletero` (
   KEY `fk_solicitud_fletero_chofer_1` (`ID_chofer`),
   CONSTRAINT `fk_solicitud_fletero_camiones_1` FOREIGN KEY (`Placa`) REFERENCES `camiones` (`Placa`),
   CONSTRAINT `fk_solicitud_fletero_chofer_1` FOREIGN KEY (`ID_chofer`) REFERENCES `camion_chofer` (`ID_Chofer`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of solicitud_fletero
 -- ----------------------------
-INSERT INTO `solicitud_fletero` VALUES ('6', '5e4h4', 'voy', '1', '0000-00-00', '146', '27465814');
-INSERT INTO `solicitud_fletero` VALUES ('11', '7h895v', 'no voy', '1', '2022-07-21', '145', '195462354');
-INSERT INTO `solicitud_fletero` VALUES ('12', '7h895v', null, '0', null, '146', null);
+INSERT INTO `solicitud_fletero` VALUES ('17', 'R12DG5J', '', '1', '2023-05-30', '147', '5467894');
+INSERT INTO `solicitud_fletero` VALUES ('18', 'A12BC3D', null, '0', null, '147', null);
+INSERT INTO `solicitud_fletero` VALUES ('19', 'R12DG5J', '', '1', '2023-05-31', '154', '5467894');
+INSERT INTO `solicitud_fletero` VALUES ('20', 'A12BC3D', null, '0', null, '154', null);
+INSERT INTO `solicitud_fletero` VALUES ('21', 'R12DG5J', null, '0', null, '147', null);
+INSERT INTO `solicitud_fletero` VALUES ('22', 'R12DG5J', null, '0', null, '154', null);
+INSERT INTO `solicitud_fletero` VALUES ('23', 'A12BC3D', '', '1', '2023-05-31', '143', '15487695');
 
 -- ----------------------------
 -- Table structure for solicitud_proveedor
@@ -249,17 +270,41 @@ CREATE TABLE `solicitud_proveedor` (
   CONSTRAINT `fk_solicitud_proveedor_planificaciones_1` FOREIGN KEY (`ID_Planificacion`) REFERENCES `planificaciones` (`ID_Planificacion`),
   CONSTRAINT `fk_solicitud_proveedor_siembras_1` FOREIGN KEY (`ID_Siembra`) REFERENCES `siembras` (`ID_Siembra`),
   CONSTRAINT `fk_solicitud_proveedor_solicitud_fletero_1` FOREIGN KEY (`ID_Solicitud_Fletero`) REFERENCES `solicitud_fletero` (`ID_Solicitud_Fletero`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of solicitud_proveedor
 -- ----------------------------
-INSERT INTO `solicitud_proveedor` VALUES ('34', '6', null, '0', '300', '143', null);
+INSERT INTO `solicitud_proveedor` VALUES ('34', '6', '', '1', '300', '143', '23');
 INSERT INTO `solicitud_proveedor` VALUES ('35', '10', null, '0', '100', '144', null);
-INSERT INTO `solicitud_proveedor` VALUES ('36', '10', null, '0', '200', '145', null);
-INSERT INTO `solicitud_proveedor` VALUES ('37', '6', null, '1', '200', '145', '11');
-INSERT INTO `solicitud_proveedor` VALUES ('38', '10', null, '1', '100', '146', '6');
+INSERT INTO `solicitud_proveedor` VALUES ('36', '10', '', '1', '200', '145', null);
 INSERT INTO `solicitud_proveedor` VALUES ('39', '6', null, '0', '300', '146', null);
+INSERT INTO `solicitud_proveedor` VALUES ('40', '2', 'hola', '1', '10', '147', '17');
+INSERT INTO `solicitud_proveedor` VALUES ('41', '2', '', '1', '20', '147', null);
+INSERT INTO `solicitud_proveedor` VALUES ('43', '6', '', '1', '100', '154', '19');
+INSERT INTO `solicitud_proveedor` VALUES ('46', '10', '', '1', '20', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('47', '10', null, '0', '15', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('48', '10', null, '0', '16', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('49', '10', null, '0', '100', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('50', '10', null, '0', '30', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('51', '10', null, '0', '17', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('52', '10', null, '0', '17', '154', '23');
+INSERT INTO `solicitud_proveedor` VALUES ('53', '10', null, '0', '100', '154', null);
+INSERT INTO `solicitud_proveedor` VALUES ('54', '10', null, '0', '100', '155', null);
+INSERT INTO `solicitud_proveedor` VALUES ('55', '10', null, '0', '50', '155', null);
+INSERT INTO `solicitud_proveedor` VALUES ('56', '10', null, '0', '20', '155', null);
+INSERT INTO `solicitud_proveedor` VALUES ('57', '10', null, '0', '20', '155', null);
+INSERT INTO `solicitud_proveedor` VALUES ('58', '9', '', '1', '10', '156', null);
+INSERT INTO `solicitud_proveedor` VALUES ('59', '9', '', '1', '10', '153', null);
+INSERT INTO `solicitud_proveedor` VALUES ('60', '2', null, '0', '10', '153', null);
+INSERT INTO `solicitud_proveedor` VALUES ('61', '2', null, '0', '20', '153', null);
+INSERT INTO `solicitud_proveedor` VALUES ('62', '6', null, '0', '10', '143', null);
+INSERT INTO `solicitud_proveedor` VALUES ('63', '6', null, '0', '20', '143', null);
+INSERT INTO `solicitud_proveedor` VALUES ('64', '6', null, '0', '30', '143', null);
+INSERT INTO `solicitud_proveedor` VALUES ('65', '6', null, '0', '300', '157', null);
+INSERT INTO `solicitud_proveedor` VALUES ('66', '6', null, '0', '30', '143', null);
+INSERT INTO `solicitud_proveedor` VALUES ('67', '6', null, '0', '10', '158', null);
+INSERT INTO `solicitud_proveedor` VALUES ('68', '6', null, '0', '20', '158', null);
 
 -- ----------------------------
 -- Table structure for tarifas
@@ -274,12 +319,12 @@ CREATE TABLE `tarifas` (
   PRIMARY KEY (`ID_Tarifa`),
   KEY `fr_key_SP` (`ID_Solicitud_Proveedor`),
   CONSTRAINT `fr_key_SP` FOREIGN KEY (`ID_Solicitud_Proveedor`) REFERENCES `solicitud_proveedor` (`ID_Solicitud_Proveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of tarifas
 -- ----------------------------
-INSERT INTO `tarifas` VALUES ('5', '6', '1000', '200', '38');
+INSERT INTO `tarifas` VALUES ('8', '200', '200', '1000', '40');
 
 -- ----------------------------
 -- Table structure for terrenos
@@ -298,7 +343,7 @@ CREATE TABLE `terrenos` (
 -- ----------------------------
 -- Records of terrenos
 -- ----------------------------
-INSERT INTO `terrenos` VALUES ('1', '54621', 'raul leoni', '9');
+INSERT INTO `terrenos` VALUES ('1', '500', 'las flores', '9');
 INSERT INTO `terrenos` VALUES ('2', '78245', 'trinitarias', '5');
 INSERT INTO `terrenos` VALUES ('3', '888888', 'molinos', '4');
 INSERT INTO `terrenos` VALUES ('4', '4791360', 'molinos', '3');
@@ -329,18 +374,27 @@ CREATE TABLE `usuario` (
   `Pregunta` varchar(50) NOT NULL,
   `Respuesta` varchar(50) NOT NULL,
   PRIMARY KEY (`ID_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES ('1', '1', '7334ec5a5364990f83b50d2ef8403912', 'Gabriel', 'Antuarez', '28216052', '+584166284044', 'antuarez18@gmail.com', 'Calle 10 casa#535', '54646464646', '', '', '', '', '', '', null, null, '', '');
-INSERT INTO `usuario` VALUES ('3', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'diegos', 'gimenez', '12546789', '04129876411', 'diegogo@gmail.com', 'las flores', '125467892', 'BANCO PROVINCIAL', '5731956458825', 'AHORRO', 'BANCAMIGA BANCO UNIVERSAL', '0105465798132', 'AHORRO', 'javiera', 'marcano', '', '');
-INSERT INTO `usuario` VALUES ('4', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'juan', 'cortez', '89786545', '04164587979', 'juancho@hotmail.com', 'las carolinasa', '897865453', 'BANCO MERCANTIL', '264859713', 'AHORRO', 'BANCAMIGA BANCO UNIVERSAL', '564823179', 'CORRIENTE', 'kun', 'aguero', '', '');
-INSERT INTO `usuario` VALUES ('5', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'argenis', 'carrion', '47888654', '04167824561', 'argve@gmail.com', 'penelope', '478886542', 'BANCO MERCANTIL', '5412541232565', 'AHORRO', 'BANCO MERCANTIL', '279183513975', 'CORRIENTE', 'ANA', 'PALOMA', '', '');
-INSERT INTO `usuario` VALUES ('6', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'jose alberto', 'Nuñes', '10485623', '0416555553', 'acosta@gmail.com', 'boquerona', '12345', 'BANCO MERCANTIL', '78932154675', 'CORRIENTE', 'BANCAMIGA BANCO UNIVERSAL', '58237641987', 'CORRIENTE', 'alberta', 'martinelli', '', '');
-INSERT INTO `usuario` VALUES ('7', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'luis', 'hernandez', '134567', '04124865977', 'luis@gmail.com', 'calle', '1345672', 'BANCO PROVINCIAL', '45678941234', 'CORRIENTE', 'BANCO PROVINCIAL', '1247892154', 'AHORRO', 'Geronimo', 'Benavidez', '', '');
-INSERT INTO `usuario` VALUES ('8', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'liomar', 'masacre', '6523458', '584269315426', 'lio@gmail.com', 'la callejona', '65234582', 'BANCO NACIONAL DE CRÉDITO', '54611297831', 'CORRIENTE', 'BANCO MERCANTIL', '397164825', 'CORRIENTE', 'Gabriel', 'Antuarez', '', '');
-INSERT INTO `usuario` VALUES ('9', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'jennifer', 'sucre', '123456789', '04128915616', 'jennifersu@gmail.com', 'en su casa', '1234567891', 'BANCO DEL TESORO', '936852174', 'AHORRO', 'BANCO MERCANTIL', '825647139', 'CORRIENTE', 'jose', 'luis', '', '');
-INSERT INTO `usuario` VALUES ('11', '2', '83b4ef5ae4bb360c96628aecda974200', 'Josue', 'henriquez', '45369781', '0412654897', 'jj@gmail.com', 'calle 1', '45652213', '', '', '', '', '', '', '', null, '', '');
+INSERT INTO `usuario` VALUES ('1', '1', '7334ec5a5364990f83b50d2ef8403912', 'Gabriel', 'Antuarez', '28216052', '+584166284044', 'antuarez18@gmail.com', 'Calle 10 casa#535', '546464646', '', '', '', '', '', '', null, null, '', '');
+INSERT INTO `usuario` VALUES ('3', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'diegos', 'gimenez', '12546789', '4129876411', 'diegogo@gmail.com', 'las flores', '125467892', 'BANCO DE VENEZUELA', '57319564588251234567', 'AHORRO', 'BANCAMIGA BANCO UNIVERSAL', '01054657981321234567', 'AHORRO', 'javiera', 'marcano', '', '');
+INSERT INTO `usuario` VALUES ('4', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'juan', 'cortez', '89786545', '4164587979', 'juancho@hotmail.com', 'las carolinasa', '89786545', 'BANCO MERCANTIL', '26485971312345687985', 'CORRIENTE', 'BANCAMIGA BANCO UNIVERSAL', '56482317911234567897', 'CORRIENTE', 'kun', 'aguero', '', '');
+INSERT INTO `usuario` VALUES ('5', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'argenis', 'carrion', '47888654', '4167824561', 'argve@gmail.com', 'penelope', '47888654', 'BANCO MERCANTIL', '54125412325651234567', 'AHORRO', 'BANCO MERCANTIL', '27918351397512345678', 'CORRIENTE', 'ANA', 'PALOMA', '', '');
+INSERT INTO `usuario` VALUES ('6', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'jose alberto', 'Nuñes', '10485623', '4165555535', 'acosta@gmail.com', 'boquerona', '123456789', 'BANCO MERCANTIL', '78932154675123456789', 'CORRIENTE', 'BANCAMIGA BANCO UNIVERSAL', '58237641987123456789', 'CORRIENTE', 'alberta', 'martinelli', '', '');
+INSERT INTO `usuario` VALUES ('7', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'luis', 'hernandez', '134567', '4124865977', 'luis@gmail.com', 'calle', '1345672', 'BANCO PROVINCIAL', '45678941234', 'CORRIENTE', 'BANCO PROVINCIAL', '1247892154', 'AHORRO', 'Geronimo', 'Benavidez', '', '');
+INSERT INTO `usuario` VALUES ('8', '4', '827ccb0eea8a706c4c34a16891f84e7b', 'liomar', 'masacre', '6523458', '+584269315426', 'lio@gmail.com', 'la callejona', '65234582', 'BANCO NACIONAL DE CRÉDITO', '54611297831123456789', 'CORRIENTE', 'BANCO MERCANTIL', '39716482512345678945', 'CORRIENTE', 'Gabriel', 'Antuarez', '', '');
+INSERT INTO `usuario` VALUES ('9', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'jennifer', 'sucre', '123456789', '4128915616', 'jennifersu@gmail.com', 'en su casa', '123456789', 'BANCO DEL TESORO', '93685217412345678945', 'AHORRO', 'BANCO DEL CARIBE', '01054657981321234567', 'CORRIENTE', 'javiera', 'PALOMA', '', '');
+INSERT INTO `usuario` VALUES ('11', '2', '81dc9bdb52d04dc20036dbd8313ed055', 'Josues', 'henriquezes', '45369781', '4126548970', 'jj@gmail.com', 'calle 12', '456522132', '', '', '', '', '', '', '', null, 'si?', 'si');
 INSERT INTO `usuario` VALUES ('12', '2', '81dc9bdb52d04dc20036dbd8313ed055', 'illo', 'juan', '12456839', '0412587469', 'illo@gmail.com', 'depto 101', '12456839', '', '', '', '', '', '', '', null, '', '');
+INSERT INTO `usuario` VALUES ('36', '2', '81dc9bdb52d04dc20036dbd8313ed055', 'pedro', 'Nuñes', '123456', '', 'pn@gmail.com', '', '', '', '', '', '', '', '', '', null, 'si?', 'si');
+DROP TRIGGER IF EXISTS `nombre_del_disparador`;
+DELIMITER ;;
+CREATE TRIGGER `nombre_del_disparador` AFTER INSERT ON `solicitud_fletero` FOR EACH ROW BEGIN
+  -- Actualizar el campo en la otra tabla con el nuevo valor
+  UPDATE solicitud_proveedor SET  ID_Solicitud_Fletero= NEW.ID_Solicitud_Fletero WHERE ID_Solicitud_Proveedor = 52; -- Coloca las condiciones adecuadas para identificar el registro en la tabla_destino
+END
+;;
+DELIMITER ;

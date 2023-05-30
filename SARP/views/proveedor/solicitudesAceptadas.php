@@ -1,7 +1,7 @@
 <?php
     session_start();
     $usuario = $_SESSION['ID'];
-    $_titulo = "Solicitudes Pendientes";
+    $_titulo = "Solicitudes Aceptadas";
     include('../templates/head.php');
 
     include("../../controllers/conexion.php");
@@ -60,21 +60,21 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="cantidadA">Cantidad a Arrimar:</label>
-                                <input class="form-control" type="text" name="cantidadA" id="cantidadA" required>
+                                <input class="form-control" type="text" name="cantidadA" id="cantidadA" required readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="semana">Semana #:</label>
-                                <input class="form-control" type="text" name="semana" id="semana" required>
+                                <input class="form-control" type="text" name="semana" id="semana" required readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="idLote">ID del Lote Solicitado:</label>
-                                <input class="form-control" type="text" name="idLote" id="idLote" required>
+                                <input class="form-control" type="text" name="idLote" id="idLote" required readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="observacion">Observación (opcional):</label>
-                                <p><textarea class="observaciones" name="observacion" id="observacion" placeholder="Coloca tus observaciones!"></textarea></p>
+                                <p><textarea class="observaciones" name="observacion" id="observacion" placeholder="Coloca tus observaciones!" readonly></textarea></p>
                             </div>
                         </div>
                     </form>
@@ -89,7 +89,7 @@
                             <div class="col-3">
                                 <label for="dias">Días:</label>
                                 <img class="imagen-titulo" src="../../assets/images/si.png" name= "dias"alt="" style="width: 50px; height: 50px;">
-                                <input class="form-control"type="text" name="dias" id="dias">
+                                <input class="form-control"type="date" name="dias" id="dias" disabled>
                             </div>
                             
                         </div>
@@ -97,21 +97,21 @@
                         <div class="row">
                             <!-- Dias -->
                             <div class="col-sm">
-                                <label for="dias">Nombre:</label>
+                                <label for="namefletero" >Nombre:</label>
                             
-                                <input class="form-control"type="text" name="namefletero" id="namefletero">
+                                <input class="form-control"type="text" name="namefletero" id="namefletero" readonly>
                             </div>
                             
                             <div class="col-sm">
                                 <label for="dias">C.I:</label>
                             
-                                <input class="form-control"type="text" name="cifletero" id="cifletero">
+                                <input class="form-control"type="text" name="cifletero" id="cifletero" readonly>
                             </div>
 
                             <div class="col-sm">
                                 <label for="dias">Placa:</label>
                           
-                                <input class="form-control"type="text" name="placafletero" id="placafletero">
+                                <input class="form-control"type="text" name="placafletero" id="placafletero" readonly>
                             </div>
                         </div>
                         
@@ -140,6 +140,10 @@
                                     $("#semana").val(json.Semana);
                                     $("#idLote").val(json.ID_Siembra);
                                     $("#observacion").val(json.Observaciones);
+                                     $("#dias").val(json.Dia);
+                                     $("#namefletero").val(json.Nombre);  
+                                    $("#cifletero").val(json.Cedula)
+                                    $("#placafletero").val(json.Placa);
                                     
                             
                                     

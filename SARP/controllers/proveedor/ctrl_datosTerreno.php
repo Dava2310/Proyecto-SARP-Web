@@ -3,7 +3,7 @@
     $usuario = $_SESSION['ID'];
 
     $tamanio = $_POST['espacio'] ?? "";
-    $ubicacion = $_POST['ubicacion'] ?? "";
+    $ubicacion = $_POST['direccion'] ?? "";
 
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
@@ -16,8 +16,7 @@
             set Tamanio='$tamanio',
             Ubicacion = '$ubicacion'
             where ID_Usuario = '$usuario';");
-        echo "<script>window.alert('Se ha modificado con exito');</script>";
-        header("location: ../../views/proveedor/datosTerreno.php");
+        echo json_encode('agregado con exito');
     }
 
 

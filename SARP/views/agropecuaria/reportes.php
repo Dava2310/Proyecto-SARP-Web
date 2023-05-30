@@ -22,7 +22,7 @@
                                     <h3> Disponibilidad de Arrime en el Campo.</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../agropecuaria/Arrime_campo.php'">Generar reporte</button>
                                 </div>
                             
                             </div>

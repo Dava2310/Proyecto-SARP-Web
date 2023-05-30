@@ -1,0 +1,135 @@
+# Details
+
+Date : 2023-05-24 18:00:08
+
+Directory c:\\xampp\\htdocs\\Proyecto-SARP-Web-1\\SARP
+
+Total : 120 files,  7578 codes, 902 comments, 1694 blanks, all 10174 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [SARP/assets/css/bootstrap.min.css](/SARP/assets/css/bootstrap.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [SARP/assets/css/datos.css](/SARP/assets/css/datos.css) | CSS | 45 | 67 | 21 | 133 |
+| [SARP/assets/css/fletero.css](/SARP/assets/css/fletero.css) | CSS | 34 | 14 | 8 | 56 |
+| [SARP/assets/css/register.css](/SARP/assets/css/register.css) | CSS | 21 | 0 | 2 | 23 |
+| [SARP/assets/js/agropecuario/DatosFleteros.js](/SARP/assets/js/agropecuario/DatosFleteros.js) | JavaScript | 143 | 47 | 37 | 227 |
+| [SARP/assets/js/agropecuario/DatosPersonales.js](/SARP/assets/js/agropecuario/DatosPersonales.js) | JavaScript | 48 | 14 | 9 | 71 |
+| [SARP/assets/js/agropecuario/crearArrime.js](/SARP/assets/js/agropecuario/crearArrime.js) | JavaScript | 182 | 59 | 79 | 320 |
+| [SARP/assets/js/agropecuario/datosProveedores.js](/SARP/assets/js/agropecuario/datosProveedores.js) | JavaScript | 152 | 48 | 41 | 241 |
+| [SARP/assets/js/agropecuario/datosSiembra.js](/SARP/assets/js/agropecuario/datosSiembra.js) | JavaScript | 91 | 22 | 31 | 144 |
+| [SARP/assets/js/agropecuario/modificarArrime.js](/SARP/assets/js/agropecuario/modificarArrime.js) | JavaScript | 193 | 68 | 85 | 346 |
+| [SARP/assets/js/agropecuario/transporte.js](/SARP/assets/js/agropecuario/transporte.js) | JavaScript | 106 | 15 | 55 | 176 |
+| [SARP/assets/js/bootstrap.min.js](/SARP/assets/js/bootstrap.min.js) | JavaScript | 2 | 5 | 0 | 7 |
+| [SARP/assets/js/jquery-3.2.1.min.js](/SARP/assets/js/jquery-3.2.1.min.js) | JavaScript | 3 | 1 | 1 | 5 |
+| [SARP/assets/js/login.js](/SARP/assets/js/login.js) | JavaScript | 6 | 0 | 0 | 6 |
+| [SARP/assets/js/registros/formulario.js](/SARP/assets/js/registros/formulario.js) | JavaScript | 97 | 12 | 22 | 131 |
+| [SARP/assets/js/registros/formularioLogin.js](/SARP/assets/js/registros/formularioLogin.js) | JavaScript | 53 | 9 | 10 | 72 |
+| [SARP/assets/js/registros/recover.js](/SARP/assets/js/registros/recover.js) | JavaScript | 64 | 11 | 12 | 87 |
+| [SARP/assets/js/validacion.js](/SARP/assets/js/validacion.js) | JavaScript | 140 | 7 | 35 | 182 |
+| [SARP/controllers/agropecuaria/Get_listaCamion.php](/SARP/controllers/agropecuaria/Get_listaCamion.php) | PHP | 16 | 1 | 7 | 24 |
+| [SARP/controllers/agropecuaria/Set_SoliFletero.php](/SARP/controllers/agropecuaria/Set_SoliFletero.php) | PHP | 23 | 2 | 14 | 39 |
+| [SARP/controllers/agropecuaria/ctrl_addArrime.php](/SARP/controllers/agropecuaria/ctrl_addArrime.php) | PHP | 0 | 0 | 1 | 1 |
+| [SARP/controllers/agropecuaria/ctrl_addDatosSiembra.php](/SARP/controllers/agropecuaria/ctrl_addDatosSiembra.php) | PHP | 20 | 0 | 6 | 26 |
+| [SARP/controllers/agropecuaria/ctrl_datosF.php](/SARP/controllers/agropecuaria/ctrl_datosF.php) | PHP | 46 | 0 | 6 | 52 |
+| [SARP/controllers/agropecuaria/ctrl_datosP.php](/SARP/controllers/agropecuaria/ctrl_datosP.php) | PHP | 46 | 2 | 5 | 53 |
+| [SARP/controllers/agropecuaria/ctrl_datosPersonales.php](/SARP/controllers/agropecuaria/ctrl_datosPersonales.php) | PHP | 24 | 1 | 3 | 28 |
+| [SARP/controllers/agropecuaria/ctrl_eliminarSolicitud.php](/SARP/controllers/agropecuaria/ctrl_eliminarSolicitud.php) | PHP | 19 | 2 | 14 | 35 |
+| [SARP/controllers/agropecuaria/get_SiembraPla.php](/SARP/controllers/agropecuaria/get_SiembraPla.php) | PHP | 14 | 1 | 5 | 20 |
+| [SARP/controllers/agropecuaria/get_datoP.php](/SARP/controllers/agropecuaria/get_datoP.php) | PHP | 42 | 5 | 9 | 56 |
+| [SARP/controllers/agropecuaria/get_datoSiembra.php](/SARP/controllers/agropecuaria/get_datoSiembra.php) | PHP | 16 | 5 | 12 | 33 |
+| [SARP/controllers/agropecuaria/get_datosSiembraPla.php](/SARP/controllers/agropecuaria/get_datosSiembraPla.php) | PHP | 13 | 2 | 6 | 21 |
+| [SARP/controllers/agropecuaria/get_listaProveedores.php](/SARP/controllers/agropecuaria/get_listaProveedores.php) | PHP | 14 | 1 | 5 | 20 |
+| [SARP/controllers/agropecuaria/get_listaSiembra.php](/SARP/controllers/agropecuaria/get_listaSiembra.php) | PHP | 18 | 1 | 7 | 26 |
+| [SARP/controllers/agropecuaria/get_listaSoli.php](/SARP/controllers/agropecuaria/get_listaSoli.php) | PHP | 14 | 1 | 6 | 21 |
+| [SARP/controllers/agropecuaria/get_totalSolicitud.php](/SARP/controllers/agropecuaria/get_totalSolicitud.php) | PHP | 17 | 4 | 13 | 34 |
+| [SARP/controllers/agropecuaria/set_datosArrimeM.php](/SARP/controllers/agropecuaria/set_datosArrimeM.php) | PHP | 28 | 6 | 14 | 48 |
+| [SARP/controllers/agropecuaria/set_datosFase1.php](/SARP/controllers/agropecuaria/set_datosFase1.php) | PHP | 35 | 12 | 27 | 74 |
+| [SARP/controllers/agropecuaria/set_datosFase2.php](/SARP/controllers/agropecuaria/set_datosFase2.php) | PHP | 28 | 6 | 14 | 48 |
+| [SARP/controllers/conexion.php](/SARP/controllers/conexion.php) | PHP | 18 | 6 | 6 | 30 |
+| [SARP/controllers/contraloria/Set_Tarifa.php](/SARP/controllers/contraloria/Set_Tarifa.php) | PHP | 32 | 0 | 18 | 50 |
+| [SARP/controllers/contraloria/ctrl_datosF.php](/SARP/controllers/contraloria/ctrl_datosF.php) | PHP | 47 | 0 | 6 | 53 |
+| [SARP/controllers/contraloria/ctrl_datosP.php](/SARP/controllers/contraloria/ctrl_datosP.php) | PHP | 47 | 0 | 4 | 51 |
+| [SARP/controllers/contraloria/ctrl_datosPersonales.php](/SARP/controllers/contraloria/ctrl_datosPersonales.php) | PHP | 24 | 0 | 3 | 27 |
+| [SARP/controllers/contraloria/get_datoP.php](/SARP/controllers/contraloria/get_datoP.php) | PHP | 42 | 5 | 9 | 56 |
+| [SARP/controllers/fletero/ctrl_Camion&chofer.php](/SARP/controllers/fletero/ctrl_Camion&chofer.php) | PHP | 28 | 4 | 4 | 36 |
+| [SARP/controllers/fletero/ctrl_aceptarsoli.php](/SARP/controllers/fletero/ctrl_aceptarsoli.php) | PHP | 23 | 0 | 3 | 26 |
+| [SARP/controllers/fletero/ctrl_addCamion.php](/SARP/controllers/fletero/ctrl_addCamion.php) | PHP | 43 | 8 | 10 | 61 |
+| [SARP/controllers/fletero/ctrl_datosBancarios.php](/SARP/controllers/fletero/ctrl_datosBancarios.php) | PHP | 32 | 0 | 2 | 34 |
+| [SARP/controllers/fletero/ctrl_datosPersonales.php](/SARP/controllers/fletero/ctrl_datosPersonales.php) | PHP | 26 | 0 | 2 | 28 |
+| [SARP/controllers/fletero/ctrl_eliminarSolicitud.php](/SARP/controllers/fletero/ctrl_eliminarSolicitud.php) | PHP | 17 | 2 | 13 | 32 |
+| [SARP/controllers/fletero/get_datosCamion.php](/SARP/controllers/fletero/get_datosCamion.php) | PHP | 20 | 6 | 17 | 43 |
+| [SARP/controllers/fletero/get_datosChofer.php](/SARP/controllers/fletero/get_datosChofer.php) | PHP | 18 | 6 | 13 | 37 |
+| [SARP/controllers/fletero/get_datosSoli.php](/SARP/controllers/fletero/get_datosSoli.php) | PHP | 32 | 5 | 13 | 50 |
+| [SARP/controllers/fletero/get_listaChofer.php](/SARP/controllers/fletero/get_listaChofer.php) | PHP | 14 | 1 | 2 | 17 |
+| [SARP/controllers/proveedor/ctrl_aceptarsoli.php](/SARP/controllers/proveedor/ctrl_aceptarsoli.php) | PHP | 20 | 0 | 3 | 23 |
+| [SARP/controllers/proveedor/ctrl_addSiembra.php](/SARP/controllers/proveedor/ctrl_addSiembra.php) | PHP | 32 | 1 | 4 | 37 |
+| [SARP/controllers/proveedor/ctrl_addTerreno.php](/SARP/controllers/proveedor/ctrl_addTerreno.php) | PHP | 20 | 0 | 3 | 23 |
+| [SARP/controllers/proveedor/ctrl_bancarioPersonal&A.php](/SARP/controllers/proveedor/ctrl_bancarioPersonal&A.php) | PHP | 32 | 0 | 2 | 34 |
+| [SARP/controllers/proveedor/ctrl_consultarSiembra.php](/SARP/controllers/proveedor/ctrl_consultarSiembra.php) | PHP | 26 | 0 | 2 | 28 |
+| [SARP/controllers/proveedor/ctrl_datosPersonales.php](/SARP/controllers/proveedor/ctrl_datosPersonales.php) | PHP | 26 | 0 | 3 | 29 |
+| [SARP/controllers/proveedor/ctrl_datosTerreno.php](/SARP/controllers/proveedor/ctrl_datosTerreno.php) | PHP | 20 | 0 | 4 | 24 |
+| [SARP/controllers/proveedor/ctrl_eliminarSiembra.php](/SARP/controllers/proveedor/ctrl_eliminarSiembra.php) | PHP | 14 | 0 | 5 | 19 |
+| [SARP/controllers/proveedor/ctrl_solicitudAceptada.php](/SARP/controllers/proveedor/ctrl_solicitudAceptada.php) | PHP | 0 | 0 | 1 | 1 |
+| [SARP/controllers/proveedor/ctrl_solicitudPendiente.php](/SARP/controllers/proveedor/ctrl_solicitudPendiente.php) | PHP | 0 | 0 | 1 | 1 |
+| [SARP/controllers/proveedor/get_datoSiembra.php](/SARP/controllers/proveedor/get_datoSiembra.php) | PHP | 40 | 5 | 9 | 54 |
+| [SARP/controllers/proveedor/get_datosSoli.php](/SARP/controllers/proveedor/get_datosSoli.php) | PHP | 21 | 5 | 10 | 36 |
+| [SARP/controllers/registros/agregarUsuario.php](/SARP/controllers/registros/agregarUsuario.php) | PHP | 178 | 72 | 47 | 297 |
+| [SARP/controllers/registros/recuperarPassword.php](/SARP/controllers/registros/recuperarPassword.php) | PHP | 26 | 7 | 4 | 37 |
+| [SARP/controllers/registros/validarUsuario.php](/SARP/controllers/registros/validarUsuario.php) | PHP | 75 | 65 | 28 | 168 |
+| [SARP/controllers/salir.php](/SARP/controllers/salir.php) | PHP | 7 | 0 | 1 | 8 |
+| [SARP/views/agropecuaria/ODP.php](/SARP/views/agropecuaria/ODP.php) | PHP | 44 | 0 | 9 | 53 |
+| [SARP/views/agropecuaria/ODP_NP.php](/SARP/views/agropecuaria/ODP_NP.php) | PHP | 110 | 0 | 18 | 128 |
+| [SARP/views/agropecuaria/ODP_P.php](/SARP/views/agropecuaria/ODP_P.php) | PHP | 110 | 0 | 17 | 127 |
+| [SARP/views/agropecuaria/ODPgeneral.php](/SARP/views/agropecuaria/ODPgeneral.php) | PHP | 110 | 0 | 22 | 132 |
+| [SARP/views/agropecuaria/PlanificacionesC.php](/SARP/views/agropecuaria/PlanificacionesC.php) | PHP | 105 | 0 | 18 | 123 |
+| [SARP/views/agropecuaria/Transporte.php](/SARP/views/agropecuaria/Transporte.php) | PHP | 107 | 9 | 25 | 141 |
+| [SARP/views/agropecuaria/arrime.php](/SARP/views/agropecuaria/arrime.php) | PHP | 46 | 0 | 15 | 61 |
+| [SARP/views/agropecuaria/arrimeCampo.php](/SARP/views/agropecuaria/arrimeCampo.php) | PHP | 45 | 0 | 12 | 57 |
+| [SARP/views/agropecuaria/crearArrime.php](/SARP/views/agropecuaria/crearArrime.php) | PHP | 117 | 0 | 21 | 138 |
+| [SARP/views/agropecuaria/datosFleteros.php](/SARP/views/agropecuaria/datosFleteros.php) | PHP | 168 | 8 | 17 | 193 |
+| [SARP/views/agropecuaria/datosPersonales.php](/SARP/views/agropecuaria/datosPersonales.php) | PHP | 91 | 7 | 13 | 111 |
+| [SARP/views/agropecuaria/datosProveedores.php](/SARP/views/agropecuaria/datosProveedores.php) | PHP | 164 | 7 | 17 | 188 |
+| [SARP/views/agropecuaria/datosSiembras.php](/SARP/views/agropecuaria/datosSiembras.php) | PHP | 98 | 2 | 11 | 111 |
+| [SARP/views/agropecuaria/modificarArrime.php](/SARP/views/agropecuaria/modificarArrime.php) | PHP | 126 | 0 | 31 | 157 |
+| [SARP/views/agropecuaria/reportes.php](/SARP/views/agropecuaria/reportes.php) | PHP | 35 | 0 | 4 | 39 |
+| [SARP/views/contraloria/ODP.php](/SARP/views/contraloria/ODP.php) | PHP | 60 | 0 | 5 | 65 |
+| [SARP/views/contraloria/TarifaF.php](/SARP/views/contraloria/TarifaF.php) | PHP | 0 | 0 | 1 | 1 |
+| [SARP/views/contraloria/TarifaP.php](/SARP/views/contraloria/TarifaP.php) | PHP | 212 | 6 | 70 | 288 |
+| [SARP/views/contraloria/datosFleteros.php](/SARP/views/contraloria/datosFleteros.php) | PHP | 271 | 45 | 48 | 364 |
+| [SARP/views/contraloria/datosPersonales.php](/SARP/views/contraloria/datosPersonales.php) | PHP | 102 | 11 | 12 | 125 |
+| [SARP/views/contraloria/datosProveedores.php](/SARP/views/contraloria/datosProveedores.php) | PHP | 268 | 43 | 45 | 356 |
+| [SARP/views/contraloria/pruebalista.php](/SARP/views/contraloria/pruebalista.php) | PHP | 15 | 0 | 3 | 18 |
+| [SARP/views/contraloria/reportes.php](/SARP/views/contraloria/reportes.php) | PHP | 52 | 0 | 6 | 58 |
+| [SARP/views/contraloria/tarifas.php](/SARP/views/contraloria/tarifas.php) | PHP | 35 | 0 | 3 | 38 |
+| [SARP/views/fletero/addCamion.php](/SARP/views/fletero/addCamion.php) | PHP | 85 | 0 | 12 | 97 |
+| [SARP/views/fletero/buscarCamion.php](/SARP/views/fletero/buscarCamion.php) | PHP | 189 | 20 | 61 | 270 |
+| [SARP/views/fletero/datosBancarios.php](/SARP/views/fletero/datosBancarios.php) | PHP | 158 | 11 | 11 | 180 |
+| [SARP/views/fletero/datosPersonales.php](/SARP/views/fletero/datosPersonales.php) | PHP | 108 | 11 | 8 | 127 |
+| [SARP/views/fletero/solicitudesAceptadas.php](/SARP/views/fletero/solicitudesAceptadas.php) | PHP | 125 | 6 | 32 | 163 |
+| [SARP/views/fletero/solicitudesPendientes.php](/SARP/views/fletero/solicitudesPendientes.php) | PHP | 201 | 11 | 61 | 273 |
+| [SARP/views/proveedor/addSiembra.php](/SARP/views/proveedor/addSiembra.php) | PHP | 69 | 0 | 6 | 75 |
+| [SARP/views/proveedor/addTerreno.php](/SARP/views/proveedor/addTerreno.php) | PHP | 52 | 0 | 5 | 57 |
+| [SARP/views/proveedor/consultarSiembra.php](/SARP/views/proveedor/consultarSiembra.php) | PHP | 195 | 17 | 29 | 241 |
+| [SARP/views/proveedor/datosBancarios.php](/SARP/views/proveedor/datosBancarios.php) | PHP | 161 | 4 | 11 | 176 |
+| [SARP/views/proveedor/datosPersonales.php](/SARP/views/proveedor/datosPersonales.php) | PHP | 104 | 11 | 8 | 123 |
+| [SARP/views/proveedor/datosTerreno.php](/SARP/views/proveedor/datosTerreno.php) | PHP | 74 | 0 | 11 | 85 |
+| [SARP/views/proveedor/solicitudesAceptadas.php](/SARP/views/proveedor/solicitudesAceptadas.php) | PHP | 128 | 7 | 24 | 159 |
+| [SARP/views/proveedor/solicitudesPendientes.php](/SARP/views/proveedor/solicitudesPendientes.php) | PHP | 155 | 12 | 43 | 210 |
+| [SARP/views/registros/login.php](/SARP/views/registros/login.php) | PHP | 62 | 0 | 5 | 67 |
+| [SARP/views/registros/recover.php](/SARP/views/registros/recover.php) | PHP | 75 | 0 | 6 | 81 |
+| [SARP/views/registros/register.php](/SARP/views/registros/register.php) | PHP | 95 | 0 | 14 | 109 |
+| [SARP/views/templates/footer.php](/SARP/views/templates/footer.php) | PHP | 15 | 0 | 0 | 15 |
+| [SARP/views/templates/footerFletero.php](/SARP/views/templates/footerFletero.php) | PHP | 14 | 0 | 1 | 15 |
+| [SARP/views/templates/head.php](/SARP/views/templates/head.php) | PHP | 11 | 0 | 1 | 12 |
+| [SARP/views/templates/headFletero.php](/SARP/views/templates/headFletero.php) | PHP | 10 | 0 | 2 | 12 |
+| [SARP/views/templates/headRegistros.php](/SARP/views/templates/headRegistros.php) | PHP | 8 | 0 | 0 | 8 |
+| [SARP/views/templates/menuAgropecuaria.php](/SARP/views/templates/menuAgropecuaria.php) | PHP | 33 | 0 | 3 | 36 |
+| [SARP/views/templates/menuContraloria.php](/SARP/views/templates/menuContraloria.php) | PHP | 30 | 0 | 9 | 39 |
+| [SARP/views/templates/menuFletero.php](/SARP/views/templates/menuFletero.php) | PHP | 43 | 0 | 4 | 47 |
+| [SARP/views/templates/menuProveedor.php](/SARP/views/templates/menuProveedor.php) | PHP | 73 | 0 | 9 | 82 |
+| [SARP/views/templates/template.php](/SARP/views/templates/template.php) | PHP | 0 | 0 | 1 | 1 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

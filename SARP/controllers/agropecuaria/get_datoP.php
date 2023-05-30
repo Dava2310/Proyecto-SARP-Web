@@ -30,7 +30,7 @@ $tipoCtaA=$resultados['TipoCuenta_A'];
 $nombreA=$resultados['Nombre_A'];
 $apellidoA=$resultados['Apellido_A'];
 
- 
+
 //agregamos nuestros datos al array para retornarlos
 $jsondata['Nombre'] = $nombre;
 $jsondata['Apellido'] = $Apellido;
@@ -48,9 +48,9 @@ $jsondata['TipoCuenta_A'] = $tipoCtaA;
 $jsondata['Nombre_A'] = $nombreA;
 $jsondata['Apellido_A'] = $apellidoA;
 
- 
+
 //este header es para el retorno correcto de datos con json
- header('Content-type: application/json; charset=utf-8');
- echo json_encode($jsondata);
- 
+header('Content-type: application/json; charset=utf-8');
+echo json_encode($jsondata);
+
 ?>

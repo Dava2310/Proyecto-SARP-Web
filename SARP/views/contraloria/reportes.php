@@ -22,7 +22,7 @@
                                     <h3> Disponibilidad de Arrime en el Campo.</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil" onclick="location.href='../contraloria/Arrime_campo.php'">Generar reporte</button>
                                 </div>
                             
                             </div>
@@ -31,28 +31,8 @@
                                     <h3> Planificaciones confirmadas.</h3>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
-                                </div>
-                            
-                            </div>
-                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
-                                <div class="  col-md-6 col-sm-12 ">
-                                    <h3> Listado de arrime Real.</h3>
-                                </div>
-                                <div class="form-group col-md-6 col-sm-12">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
-                                </div>
-                            
-                            </div>
-                            <div class="row justify-content-between" style="margin-left: 10px; margin-bottom: 20px;">
-                                <div class="  col-md-6 col-sm-12 ">
-                                    <h3> Reporte por Boleto Individual.</h3>
-                                </div>
-                                <div class="form-group col-md-6 col-sm-12">
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
-                                </div>
-                            
-                            </div>                        
+                                    <button type="submit"  onclick="location.href='../contraloria/PlanificacionesC.php'" class="btn btn-success glyphicon glyphicon-pencil">Generar reporte</button>
+                                </div>                        
 <?php
     include ("../templates/footerFletero.php")
 ?>

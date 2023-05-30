@@ -22,23 +22,36 @@
         include('../conexion.php');
         $connection = Connection::getInstance();
         $con = $connection->getConnection();
-        // se registran datos del camion
-        $resultC = $con->query("insert into camiones
-        (Placa, Modelo, Capacidad, ID_Fleteros)
-        values
-        ('$placa','$modelo','$capacidad','$usuario');");
-        // registro de chofer 1
-        $resultCh = $con->query("insert into choferes
-        (Cedula, Nombre, Apellido)
-        values
-        ('$Cedula','$nombre','$Apellido');");
-        // registro de chofer 2
-        $resultCh2 = $con->query("insert into choferes
-        (Cedula, Nombre, Apellido)
-        values
-        ('$cedula2','$nombre2','$apellido2');");
 
-        //enlace chofer camion 1
+        //verificar que la placa no existe
+        $buscarPlaca = $con->prepare("SELECT (COUNT(*) > 0) AS existe_valor
+        FROM camiones
+        WHERE LOWER(Placa) = LOWER(?);");
+
+        $buscarPlaca->bind_param("s", $placa);
+       
+        $buscarPlaca->execute();
+
+        $resultado = $buscarPlaca->get_result();
+        $existePlaca = $resultado->fetch_assoc()['existe_valor'];
+
+        
+
+        if(!($existePlaca)){
+            $resultC = $con->query("insert into camiones
+            (Placa, Modelo, Capacidad, ID_Fleteros)
+            values
+            ('$placa','$modelo','$capacidad','$usuario');");
+            echo json_encode('agregado con exito');
+        }else{
+            echo json_encode('Error');
+        }
+        // se registran datos del camion
+
+        
+        
+
+      /*   //enlace chofer camion 1
         $resultCyC = $con->query("insert into camion_chofer
         (ID_Camion, ID_chofer)
         values
@@ -49,13 +62,12 @@
         (ID_Camion, ID_chofer)
         values
         ('$placa','$cedula2');");
-
+ */
 
         
 
-        echo "<script>window.alert('Se ha registrado con exito');</script>";
-        header("location: ../../views/fletero/addCamion.php");
-
+        
+        
         
     }
 ?>

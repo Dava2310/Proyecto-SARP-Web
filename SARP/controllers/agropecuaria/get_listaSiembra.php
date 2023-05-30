@@ -10,9 +10,10 @@
  $resultados= mysqli_fetch_array($resultID);
 
  $id = $resultados['ID_Usuario'];
+ 
 
   
- $sql = "SELECT * FROM siembras WHERE ID_Proveedor = $id; ";
+ $sql = "SELECT * FROM siembras WHERE ID_Proveedor = $id and Analisis = 'APROBADO'; ";
  $result= mysqli_query($con,$sql);
  $filas = mysqli_fetch_all($result, MYSQLI_ASSOC); 
   mysqli_close($con);

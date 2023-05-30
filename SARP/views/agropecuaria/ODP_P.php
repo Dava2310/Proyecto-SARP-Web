@@ -19,6 +19,7 @@
     INNER JOIN solicitud_proveedor ON tarifas.ID_Solicitud_Proveedor = solicitud_proveedor.ID_Solicitud_Proveedor
     INNER JOIN siembras ON solicitud_proveedor.ID_Siembra = siembras.ID_Siembra
     INNER JOIN usuario ON siembras.ID_Proveedor = usuario.ID_Usuario
+		INNER JOIN odp_proveedor ON tarifas.ID_Solicitud_Proveedor = odp_proveedor.ID_Solicitud WHERE odp_proveedor.Estado_Pago = 1
     ");
 
     $fletero = $con->query("SELECT *
@@ -27,7 +28,8 @@
     INNER JOIN solicitud_proveedor ON tarifas.ID_Solicitud_Proveedor = solicitud_proveedor.ID_Solicitud_Proveedor
     INNER JOIN solicitud_fletero ON solicitud_proveedor.ID_Solicitud_Fletero = solicitud_fletero.ID_Solicitud_Fletero
     INNER JOIN camiones ON solicitud_fletero.Placa = camiones.Placa
-    INNER JOIN usuario ON camiones.ID_Fleteros = usuario.ID_Usuario");
+    INNER JOIN usuario ON camiones.ID_Fleteros = usuario.ID_Usuario
+		INNER JOIN odp_fletero ON odp_fletero.ID_Solicitud = solicitud_fletero.ID_Solicitud_Fletero WHERE odp_fletero.Estado_Pago= 1");
 
     
 ?>

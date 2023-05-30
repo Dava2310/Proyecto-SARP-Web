@@ -12,8 +12,8 @@
                 <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12" style="background-color: #99BC78; height: 100vh; overflow-y: scroll;">
                     <div class="contenidoInterno" style="padding-top: 25px;">
                         <header class="row" style="margin-left: 10px;">
-                            <h2>Datos Personales</h2>
-                            <img class="imagen-titulo" src="../../assets/images/datos-personales.png" alt="" style="width: 50px; height: 50px;">
+                            <h2>Plantillas ODP</h2>
+                            <img class="imagen-titulo" src="../../assets/images/payment-method.png" alt="" style="width: 50px; height: 50px;">
                         </header>
                         <hr>
                         

@@ -1,4 +1,3 @@
-//importacion de funcion de validacion
 import {validarFormDP} from '../validacion.js';
 
 function activarCampos(){
@@ -12,12 +11,12 @@ function activarCampos(){
         //document.getElementById('Cedula').disabled=true;
         document.getElementById('rif').readOnly=true;
         document.getElementById('direccion').readOnly=true;
-        document.getElementById('ctaP&A').disabled=true;
+        document.getElementById('ctaP&A').disabled =true;
         document.getElementById('NombreA').readOnly=true;
         document.getElementById('ApellidoA').readOnly=true;
         document.getElementById('Banco-A').readOnly=true;
         document.getElementById('numcuenta').readOnly=true;
-        document.getElementById('TpoCuenta-A').disabled=true;
+        document.getElementById('TpoCuenta-A').readOnly=true;
     } else {
         BotonCambiar.value="Modificar (Activado)";
         document.getElementById('Nombre').readOnly=false;
@@ -32,10 +31,11 @@ function activarCampos(){
         document.getElementById('ApellidoA').readOnly=false;
         document.getElementById('Banco-A').readOnly=false;
         document.getElementById('numcuenta').readOnly=false;
-        document.getElementById('TpoCuenta-A').disabled=false;
+        document.getElementById('TpoCuenta-A').readOnly=false;
     }
     
 }
+
 
 const btn_cambiar = document.getElementById("botonCambiar");
 //eventos al dar click al boton de cambiar para hacer los campos editables
@@ -44,8 +44,9 @@ btn_cambiar.addEventListener("click",(e)=>{
     activarCampos()
 })
 
-//funcion para llenar lista de proveedor
+//funcion para cargar los datos del fletero elegido
 function mifuncion(idP){
+    //ajax se usa para ejecutar un documento php y devolverle el resultado a JS
     $.ajax({
         // la URL para la petición
         url : '../../controllers/agropecuaria/get_datoP.php',
@@ -69,6 +70,7 @@ function mifuncion(idP){
             $("#Email").val(json.Email);
             $("#rif").val(json.RIF);
             $("#direccion").val(json.Direccion);
+            $("#sector").val(json.Direccion);
             $("#tlf").val(json.Telefono);
             $("#cuentapropia").val(json.Cuenta_A);
             $("#Banco-A").val(json.Banco_P);
@@ -79,6 +81,7 @@ function mifuncion(idP){
             //para que los campos nombre y apellidos autorizados no aparezcan
             document.getElementById('divNombreA').style.display="none";
             document.getElementById('divApellidoA').style.display="none";
+
         },
 
         // código a ejecutar si la petición falla;
@@ -86,57 +89,50 @@ function mifuncion(idP){
             alert('Disculpe, existió un problema');
         }
     })
- }
+}
 
-const lista_proveedor = document.getElementById('Proveedor');
-
-lista_proveedor.addEventListener("change", (e)=>{
+const lista_Fletero = document.getElementById('Fletero');
+//evento para cuando cambien de fletero seleccionado en la lista
+lista_Fletero.addEventListener("change", (e)=>{
     e.preventDefault()
-    mifuncion(lista_proveedor.value)
+    mifuncion(lista_Fletero.value)
 })
 
-
  //funcion para la seleccion de tipo de cuenta Personal/Autorizada
-function mifuncionP_A(P_A,idP){
-    if(P_A == 'PERSONAL'){
-    $.ajax({
-        // la URL para la petición
-        url : '../../controllers/agropecuaria/get_datoP.php',
+ function mifuncionP_A(P_A,idP){
+     if(P_A == 'PERSONAL'){
+        $.ajax({
+            // la URL para la petición
+            url : '../../controllers/agropecuaria/get_datoP.php',
 
-        // la información a enviar en este caso el valor de lo que seleccionaste en el select
-        data : { idP : idP },
+            // la información a enviar en este caso el valor de lo que seleccionaste en el select
+            data : { idP : idP },
 
-        // especifica si será una petición POST o GET
-        type : 'POST',
+            // especifica si será una petición POST o GET
+            type : 'POST',
 
-        // el tipo de información que se espera de respuesta
-        dataType : 'json',
+            // el tipo de información que se espera de respuesta
+            dataType : 'json',
 
-        // código a ejecutar si la petición es satisfactoria;
-        success : function(json) {
-            //aqui recibimos el "echo" del php(ajax.php)
-            //y ahora solo colocas el valor en los campos
-            $("#Banco-A").val(json.Banco_P);
-            $("#numcuenta").val(json.Cuenta_P);
-            $("#TpoCuenta-A").val(json.TipoCuenta_P);
-            //para que los campos nombre y apellidos autorizados no aparezcan
-            document.getElementById('divNombreA').style.display="none";
-            document.getElementById('divApellidoA').style.display="none";
-            /* solucinando probelmas de responsividad */
-            document.getElementById('div-ctaP&A').className="form-group  col-md-6  col-sm-12 ";   
-               
-            document.getElementById('div-Banco').className="form-group  col-md-6  col-sm-12 ";
-            document.getElementById('div-nrocta').className="form-group  col-md-6  col-sm-12 ";     
-            document.getElementById('div-tcuenta').className="form-group  col-md-6  col-sm-12 ";     
-        },
+            // código a ejecutar si la petición es satisfactoria;
+            success : function(json) {
+                //aqui recibimos el "echo" del php(ajax.php)
+                //y ahora solo colocas el valor en los campos
+                $("#Banco-A").val(json.Banco_P);
+                $("#numcuenta").val(json.Cuenta_P);
+                $("#TpoCuenta-A").val(json.TipoCuenta_P);
+                //para que los campos nombre y apellidos autorizados no aparezcan
+                document.getElementById('divNombreA').style.display="none";
+                document.getElementById('divApellidoA').style.display="none";
+            },
 
-        // código a ejecutar si la petición falla;
-        error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
-        }
-    })
+            // código a ejecutar si la petición falla;
+            error : function(xhr, status) {
+                alert('Disculpe, existió un problema' + idP);
+            }
+        })
 
-    }else if(P_A == 'AUTORIZADA'){
+     }else if(P_A == 'AUTORIZADA'){
         $.ajax({
             // la URL para la petición
             url : '../../controllers/agropecuaria/get_datoP.php',
@@ -162,16 +158,6 @@ function mifuncionP_A(P_A,idP){
                 document.getElementById('divApellidoA').style.display="inline";
                 $("#NombreA").val(json.Nombre_A);
                 $("#ApellidoA").val(json.Apellido_A);
-                /* solucinando probelmas de responsividad */
-                document.getElementById('div-ctaP&A').className="form-group col-xl-4 col-md-6  col-sm-12 ";   
-                document.getElementById('divNombreA').className="form-group  col-xl-4 col-md-6  col-sm-12 "; 
-                document.getElementById('divApellidoA').className="form-group  col-xl-4 col-md-6  col-sm-12 "; 
-                document.getElementById('div-Banco').className="form-group col-xl-4  col-md-6  col-sm-12 ";
-                document.getElementById('div-nrocta').className="form-group  col-xl-4 col-md-6  col-sm-12 ";     
-                document.getElementById('div-tcuenta').className="form-group  col-xl-4 col-md-6  col-sm-12 ";     
-        
-                
-                
                 
                 
 
@@ -179,7 +165,7 @@ function mifuncionP_A(P_A,idP){
 
             // código a ejecutar si la petición falla;
             error : function(xhr, status) {
-                alert('Disculpe, existió un problema');
+                alert('Disculpe, existió un problema' + idP);
             }
         })
 
@@ -192,14 +178,14 @@ function mifuncionP_A(P_A,idP){
 
 
     }
-
+    
 }
 
 //evento para cuando cambien cuenta de personal a autorizara
 const P_A = document.getElementById("ctaP&A");
 P_A.addEventListener("change", (e)=>{
     e.preventDefault()
-    mifuncionP_A(P_A.value,document.getElementById("Proveedor").value);
+    mifuncionP_A(P_A.value,document.getElementById("Fletero").value);
 })
 
 //funcion para enviar datos a la BD con "submit"
@@ -213,12 +199,11 @@ form.addEventListener("submit", (e) =>{
     if(entrar){
         //si la vairable entrar es false, se procede a enviar datos al servidor mediante el fetch
         
-       
         //se gguardan los datos del formulario en formData
         const formData = new FormData(form);
         console.log("listo")
         //usamos la API fetch para enviar datos al agregarUsuario.php 
-        fetch('../../controllers/agropecuaria/ctrl_datosP.php',{
+        fetch('../../controllers/datos_personales/ctrl_datosF.php',{
             //metodo de envio
             method : 'POST',
             //datos enviados

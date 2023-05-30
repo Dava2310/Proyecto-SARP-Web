@@ -23,15 +23,13 @@
         $IDTerreno = $row -> ID_Terreno;
         
         if($IDTerreno == NULL){
-            echo "<script> window.alert('No tiene terreno registrado');</script>";
-            echo "<script> window.location='../../views/proveedor/addSiembra.php'; </script>";
-
+            echo json_encode('No tiene terreno registrado');
         }else {
             $result2 = $con->query("insert into siembras
             (ID_Terreno, ID_Proveedor, Fecha_Inicio, Variedad, Fecha_Cosecha, Hectareas, Kilos_Totales, Kilos_Arrimados, Saldo_Restante)
             values
             ('$IDTerreno','$IDproveedor','$Finicio','$variedad','$Fcosecha','$hectareas', '$kilosT', '0','$kilosT');");
-            echo "<script>window.alert('Se ha agregado con exito');</script>";    
+            echo json_encode("agregado con exito");    
         }
     }
 ?>

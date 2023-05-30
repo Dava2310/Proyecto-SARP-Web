@@ -1,15 +1,15 @@
 import {validarFormDP} from '../validacion.js';
 function activarCampos(){
     var BotonCambiar = document.getElementById('botonCambiar');
-    if(document.getElementById('analisis').readOnly == false){
+    if(document.getElementById('analisis').disabled == false){
         BotonCambiar.value="Permitir Ingreso (Desactivado)";
-        document.getElementById('analisis').readOnly=true;
+        document.getElementById('analisis').disabled=true;
         document.getElementById('ms').readOnly=true;
         document.getElementById('impureza').readOnly=true;
         document.getElementById('kilos').readOnly=true;
-    } else if(document.getElementById('analisis').readOnly == true && !(document.getElementById('idLote').value == "")) {
+    } else if(document.getElementById('analisis').disabled == true && !(document.getElementById('idLote').value == "")) {
         BotonCambiar.value="Permitir Ingreso (Activado)";
-        document.getElementById('analisis').readOnly=false;
+        document.getElementById('analisis').disabled=false;
         document.getElementById('ms').readOnly=false;
         document.getElementById('impureza').readOnly=false;
         document.getElementById('kilos').readOnly=false;
@@ -27,25 +27,44 @@ btn_cambiar.addEventListener("click",(e)=>{
 //LLenar lista de la siembra a partir de proveedores
 const proveedor = document.getElementById("Proveedor");
 proveedor.addEventListener("change", (e)=>{
+    
     let siemb = $('#Siembra');
     var IDP = proveedor.value;
+    
     
     if(IDP !== ''){
         $.ajax({
             data: {IDP:IDP}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
             dataType: 'html', //tipo de datos que esperamos de regreso
             type: 'POST', //mandar variables como post o get
-            url: '../../controllers/agropecuaria/get_listaSiembra.php' //url que recibe las variables
-        }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
-            siemb.prop('disabled', false); //habilitar el select       
-
-            siemb.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
+            url: '../../controllers/agropecuaria/get_listaSiembra.php', //url que recibe las variables
             
-        });
+            success : function(data) {
+           //metodo que se ejecuta cuando ajax ha completado su ejecucion      
+           siemb.prop('disabled', false); //habilitar el select       
+            document.getElementById('idLote').value="";
+            document.getElementById('analisis').value="";
+            document.getElementById('ms').value="";
+            document.getElementById('impureza').value="";
+            document.getElementById('kilos').value="";
+               //establecemos el contenido html de siembras con la informacion que regresa ajax    
+            siemb.html(data);
+        },
+
+            // código a ejecutar si la petición falla;
+            error : function(xhr, status) {
+                alert('Disculpe, existió un problema');
+            }
+        })
 
     }else{ //en caso de seleccionar una opcion no valida
         siemb.val(''); //seleccionar la opcion "- Seleccione -", osea como reiniciar la opcion del select
         siemb.prop('disabled', true); //deshabilitar el select
+        document.getElementById('idLote').value="";
+        document.getElementById('analisis').value="";
+        document.getElementById('ms').value="";
+        document.getElementById('impureza').value="";
+        document.getElementById('kilos').value="";
     }
 
 })
@@ -114,11 +133,12 @@ const form = document.getElementById('form');
 form.addEventListener("submit", (e) =>{
     e.preventDefault()
 
-    //se destruturan los valores en varibales
-    
-        //si la vairable entrar es false, se procede a enviar datos al servidor mediante el fetch
+    //se valida el campo de analisis
+    const analisis = document.getElementById("analisis").value;
+    if(analisis == ""){
+        alert("Seleccion una opcion de analisis");
         
-       
+    }else{
         //se gguardan los datos del formulario en formData
         const formData = new FormData(form);
         console.log("listo")
@@ -140,5 +160,10 @@ form.addEventListener("submit", (e) =>{
                 alert(data)
             }
         })
+    }
+    
+    
+    
+    
     
 })

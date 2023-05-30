@@ -42,7 +42,7 @@ form.addEventListener("submit", (e) => {
         const formData = new FormData(form);
         console.log("listo")
         //usamos la API fetch para enviar datos al agregarUsuario.php 
-        fetch('../../controllers/agropecuaria/ctrl_datosPersonales.php',{
+        fetch('../../controllers/datos_personales/ctrl_datosPersonales.php',{
             //metodo de envio
             method : 'POST',
             //datos enviados

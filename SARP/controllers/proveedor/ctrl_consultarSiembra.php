@@ -22,7 +22,7 @@
             Fecha_Cosecha = '$Fcosecha',
             Hectareas = '$hectareas'
             where ID_Siembra = '$idSiembra';");
-        echo "<script> alert('Se ha modificado con exito');</script>";
-        header("location: ../../views/proveedor/consultarSiembra.php");
+        echo json_encode('Se ha modificado con exito');
+       
     }
 ?>

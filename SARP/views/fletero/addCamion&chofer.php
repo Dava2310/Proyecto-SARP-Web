@@ -32,11 +32,12 @@
                             
                         </header>
                         <hr>
-                        <form action="../../controllers/fletero/ctrl_addCamion.php" method="POST">
+                        <form id="form_Camion" >
                             <div class="row">
                                 <div class="form-group col-sm">
                                     <label for="Placa">Placa:</label>
                                     <input class="form-control" type="text" name="Placa" id="Placa" required>
+                                    <p id="errorPlaca"></p>
                                 </div>
                                 <div class="form-group col-sm">
                                     <label for="Capacidad">Capacidad en Toneladas:</label>
@@ -45,43 +46,7 @@
                                 <div class="form-group col-sm">
                                     <label for="Modelo">Modelo:</label>  
                                     <input class="form-control" type="text" name="Modelo" id="Modelo" required>
-                                </div>
-                            </div>
-                            
-                        
-                            <div class="row" style="margin-left: 10px; margin-top: 8px;">
-                                <h2>Choferes</h2>
-                                <img class="imagen-titulo" src="../../assets/images/chofer.png" alt="" style="width: 50px; height: 50px;"> 
-                            </div>
-                            <hr>
-                    
-                            <div class="row">    
-                                <div class="form-group col-sm">
-                                    <label for="Nombre">Nombre(1):</label>
-                                    <input class="form-control" type="text" name ="Nombre" id="Nombre" required>
-                                </div>
-                                <div class="form-group col-sm">
-                                    <label for="Nombre">Apellido(1):</label>
-                                    <input class="form-control" type="text" name ="Apellido" id="Apellido" required>
-                                </div>
-                                <div class="form-group col-sm">
-                                    <label for="Cedula">Cédula de Identidad (1):</label>
-                                    <input class="form-control" type="text" name="Cedula" id="Cedula" required>
-                                </div> 
-                            </div> 
-                            
-                            <div class="row">   
-                                <div class="form-group col-sm">
-                                    <label for="Nombre2">Nombre(2):</label>   
-                                    <input class="form-control" type="text" name ="Nombre2" id="Nombre2">
-                                </div>
-                                <div class="form-group col-sm">
-                                    <label for="Nombre">Apellido(2):</label>
-                                    <input class="form-control" type="text" name ="Apellido2" id="Apellido2" required>
-                                </div>
-                                <div class="form-group col-sm">
-                                    <label for="CI2"> Cédula de Identidad (2):</label>
-                                    <input class="form-control" type="text" name="CI2" id="CI2">
+                                    <p id="errorModelo"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -90,7 +55,39 @@
                                     <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Terminar registro</button>
                                 </div>
                             </div>
-                        </form>      
+                        </form>
+                        <div class="row" style="margin-left: 10px; margin-top: 8px;">
+                            <h2>Añadir Choferes</h2>
+                            <img class="imagen-titulo" src="../../assets/images/chofer.png" alt="" style="width: 50px; height: 50px;"> 
+                        </div>
+                        <hr>
+                        
+                        <form id = "form_Chofer">
+                            <div class="row">    
+                                <div class="form-group col-sm">
+                                    <label for="Nombre">Nombre:</label>
+                                    <input class="form-control" type="text" name ="Nombre" id="Nombre" required>
+                                    <p id="errorName"></p>
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="Apellido">Apellido:</label>
+                                    <input class="form-control" type="text" name ="Apellido" id="Apellido" required>
+                                    <p id="errorApellido"></p>
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="Cedula">Cédula de Identidad:</label>
+                                    <input class="form-control" type="text" name="Cedula" id="Cedula" required>
+                                    <p id="errorCedula"></p>
+                                </div> 
+                            </div> 
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
+                                    <button type="submit" class="btn btn-primary glyphicon glyphicon-pencil">Terminar registro</button>
+                                </div>
+                            </div>
+                        </form>   
+                        <script type="module" src="../../assets/js/Fletero/addCamion&Chofer.js"></script>   
 <?php
     include ("../templates/footerFletero.php")
 ?>

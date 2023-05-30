@@ -9,8 +9,7 @@
     $direccion = $_POST['direccion'] ?? "";
 
     if(!(isset($usuario))){
-        echo "<script> window.alert('No ha iniciado sesion');</script>";
-        echo "<script> window.location='../registros/login.php'; </script>";
+        echo json_encode("no");
     } else {
         include('../conexion.php');
         $connection = Connection::getInstance();
@@ -23,7 +22,6 @@
             RIF = '$rif',
             Direccion = '$direccion'
             where ID_Usuario = '$usuario';");
-        echo "<script>window.alert('Se ha modificado con exito');</script>";
-        header("location: ../../views/contraloria/datosPersonales.php");
+        echo json_encode("agregado con exito");
     }
 ?>

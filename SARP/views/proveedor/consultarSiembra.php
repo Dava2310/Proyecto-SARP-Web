@@ -39,11 +39,11 @@
                             </div>
                             <div class="form-group  col-md-6 col-sm-12 ">
                                 <div class="row">
-                                    <label for="Proveedores" class="col-sm-5 col-form-label">Lista de Siembra</label>
+                                    <label for="siembras" class="col-sm-5 col-form-label">Lista de Siembra</label>
                                     <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
                                     <div class="col-sm-7">
-                                        <input placeholder="-- SELECCIONE SIEMBRA --" class="form-control" list="Proveedores" name="Proveedores" id="Proveedor" onchange='mifuncion(this.value)'>
-                                            <datalist id="Proveedores" >
+                                        <input placeholder="-- SELECCIONE SIEMBRA --" class="form-control" list="siembras" name="siembras" id="siembra" onchange='mifuncion(this.value)'>
+                                            <datalist id="siembras" >
                                                 <?php
                                                     while($valores = mysqli_fetch_array($result)){
                                                         $id = $valores['ID_Siembra'];
@@ -57,7 +57,7 @@
                             </div>
                         </header>
                         <hr>
-                        <form action="../../controllers/proveedor/ctrl_consultarSiembra.php" method="POST">
+                        <form id="form">
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="fechaI">Fecha de Inicio:</label>
@@ -65,17 +65,17 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="kilosA">Kilos Arrimados:</label>
-                                    <input class="form-control" type="text" name="kilosA" id="kilosA"  readOnly>
+                                    <input class="form-control" type="number" name="kilosA" id="kilosA"  readOnly>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="saldoR">Saldo Restante:</label>
-                                    <input class="form-control" type="text" name="saldoR" id="saldoR"  readOnly>
+                                    <input class="form-control" type="number" name="saldoR" id="saldoR"  readOnly>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="variedad">Variedad:</label>
-                                    <input class="form-control" type="text" name="variedad" id="variedad" required readOnly>
+                                    <input class="form-control" type="number" name="variedad" id="variedad" required readOnly>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="idLote">ID del Lote Generado:</label>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="kilosT">Kilos Totales por Lote:</label>
-                                    <input class="form-control" type="text" name="kilosT" id="kilosT" required readOnly>
+                                    <input class="form-control" type="number" name="kilosT" id="kilosT" required readOnly>
                                 </div>
                             </div>
                             <div class="row">
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="hectareas">Hectáreas Sembradas:</label>
-                                    <input class="form-control" type="text" name="hectareas" id="hectareas" required readOnly>
+                                    <input class="form-control" type="number" name="hectareas" id="hectareas" required readOnly>
                                 </div>
                             </div>
                             <div class="row">
@@ -131,111 +131,7 @@
                                 </div>
                             </div>
                         </form>
-                        <script type="text/javascript">
-                            
-                            function activarCampos(){
-                                var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('kilosA').readOnly == false){
-                                    BotonCambiar.value="Modificar (Desactivado)";
-                                    document.getElementById('kilosA').readOnly=true;
-                                    document.getElementById('saldoR').readOnly=true;
-                                    document.getElementById('variedad').readOnly=true;
-                                    //document.getElementById('email').disabled=true;
-                                    //document.getElementById('Cedula').disabled=true;
-                                    document.getElementById('kilosT').readOnly=true;
-                                    document.getElementById('fechaC').readOnly=true;
-                                    document.getElementById('hectareas').readOnly=true;
-                                } else {
-                                    BotonCambiar.value="Modificar (Activado)";
-                                    document.getElementById('kilosA').readOnly=false;
-                                    document.getElementById('saldoR').readOnly=false;
-                                    document.getElementById('variedad').readOnly=false;
-                                    //document.getElementById('email').disabled=false;
-                                    //document.getElementById('Cedula').disabled=false;
-                                    document.getElementById('kilosT').readOnly=false;
-                                    document.getElementById('fechaC').readOnly=false;
-                                    document.getElementById('hectareas').readOnly=false;
-                                }
-                                
-                            }
-                            function mifuncion(idS){
-                                $.ajax({
-                                    // la URL para la petición
-                                    url : '../../controllers/proveedor/get_datoSiembra.php',
-                        
-                                    // la información a enviar en este caso el valor de lo que seleccionaste en el select
-                                    data : { idS : idS },
-                        
-                                    // especifica si será una petición POST o GET
-                                    type : 'POST',
-                        
-                                    // el tipo de información que se espera de respuesta
-                                    dataType : 'json',
-                        
-                                    // código a ejecutar si la petición es satisfactoria;
-                                    success : function(json) {
-                                        
-                                        $("#fechaI").val(json.Fecha_Inicio);
-                                        $("#kilosA").val(json.Kilos_Arrimados);
-                                        $("#saldoR").val(json.Saldo_Restante);
-                                        $("#variedad").val(json.Variedad);
-                                        $("#idLote").val(json.ID_Siembra);
-                                        $("#kilosT").val(json.Kilos_Totales);
-                                        $("#fechaC").val(json.Fecha_Cosecha);
-                                        $("#hectareas").val(json.Hectareas);
-                                        $("#analisis").val(json.Analisis);
-                                        $("#materiaS").val(json.MateriaSeca);
-                                        $("#impureza").val(json.Impureza);
-                                        $("#kilos").val(json.KilosMuestra);
-                                        //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
-                                        
-                                    },
-                        
-                                    // código a ejecutar si la petición falla;
-                                    error : function(xhr, status) {
-                                        alert('Disculpe, existió un problema');
-                                    }
-                                })
-                            }
-                            function mifuncionEliminar(idS){
-                                if(confirm('¿Seguro de eliminar?')){
-                                    $.ajax({
-                                    // la URL para la petición
-                                    url : '../../controllers/proveedor/ctrl_eliminarSiembra.php',
-                        
-                                    // la información a enviar en este caso el valor de lo que seleccionaste en el select
-                                    data : { idS : idS },
-                        
-                                    // especifica si será una petición POST o GET
-                                    type : 'POST',
-                        
-                                    
-                        
-                                    // código a ejecutar si la petición es satisfactoria;
-                                    success : function(json) {
-                                        alert('eliminada con exito');
-
-                                        window.location='../../views/proveedor/consultarSiembra.php';
-                                    },
-                        
-                                    // código a ejecutar si la petición falla;
-                                    error : function(xhr, status) {
-                                        alert('Disculpe, existió un problema');
-                                    }
-                                    })
-
-                                }else{
-                                    header("location: ../../views/proveedor/consultarSiembra.php");
-
-                                    
-
-                                }
-                                
-
-
-                            }
-
-                        </script>
+                        <script src="../../assets/js/Proveedor/consultarSiembra.js"></script>
     <?php
         include('../templates/footer.php');
     ?>

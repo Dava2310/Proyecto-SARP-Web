@@ -4,8 +4,9 @@ const semana = document.getElementById('semana');
 semana.addEventListener("change", (e)=>{
     let soli = $('#solicitudes');
 
-    $('#semana').change(function(){
+    
         var IDS = semana.value;
+        
         
         if(IDS !== ''){
             $.ajax({
@@ -24,7 +25,7 @@ semana.addEventListener("change", (e)=>{
             soli.val(''); //seleccionar la opcion "- Seleccione -", osea como reiniciar la opcion del select
             soli.prop('disabled', true); //deshabilitar el select
         }
-    })
+   
 })
 
 

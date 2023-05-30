@@ -122,6 +122,7 @@
                                         <option value="AUTORIZADA">AUTORIZADA</option>
                                     
                                 </select>
+                                <p id='errorTipoBancoA'></p>
                             </div>
                             <!-- se coloca el display: none para que los campos nombre y apellidos autorizados no aparezcan -->
                             <div class="form-group col-md  col-sm-12 " id="divNombreA"  style="display: none;">
@@ -150,6 +151,7 @@
                                             <option value="BANCO MERCANTIL"></option>
                                         </datalist>
                                 </input >
+                                <p id='errorBancoA'></p>
                             </div>
                          
                             <div id="div-nrocta" class="form-group  col-md-6  col-sm-12  ">
@@ -164,6 +166,7 @@
                                         <option value="AHORRO">AHORRO</option>
                                         <option value="CORRIENTE">CORRIENTE</option>
                                 </select>
+                                <p id='errorTipoBancoA'></p>
                             </div>
                         </div>
                     
@@ -178,7 +181,7 @@
                             
                     </form>  
                         <!-- Iniciamos el segmento de codigo javascript -->
-                    <script type="module" src="../../assets/js/agropecuario/datosProveedores.js"></script>   
+                    <script type="module" src="../../assets/js/datos_personales/datosProveedores.js"></script>   
 <?php
     include ("../templates/footerFletero.php")
 ?>

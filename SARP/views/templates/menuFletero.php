@@ -24,7 +24,7 @@
                                 <li  ><a class="nav-link active" href="../fletero/datosBancarios.php">Datos Bancarios</a></li>
                                 <li  class="nav-link active"  ><a>Camión</a>
                                     <ul>
-                                        <li ><a  class="nav-link active"href="../fletero/addCamion.php">Añadir Camión</a> </li>
+                                        <li ><a  class="nav-link active"href="../fletero/addCamion&chofer.php">Añadir Camión</a> </li>
                                         <li ><a  class="nav-link active"href="../fletero/buscarCamion.php">Consultar Camiones</a> </li>
                                     </ul>
                                 </li>

@@ -1,16 +1,18 @@
 
 //validacion de datos personales
 export function validarFormDP(){
-    const nombre = document.getElementById("Nombre")
-    const Apellido = document.getElementById("Apellido")
-    const Cedula = document.getElementById("Cedula")
-    const email = document.getElementById("Email")
-    const rif = document.getElementById("rif")
-    const tlf = document.getElementById("tlf")
-    const direccion = document.getElementById("direccion")
+    const nombre = document.getElementById("Nombre");
+    const Apellido = document.getElementById("Apellido");
+    const Cedula = document.getElementById("Cedula");
+    const email = document.getElementById("Email");
+    const rif = document.getElementById("rif");
+    const tlf = document.getElementById("tlf");
+    const direccion = document.getElementById("direccion");
     
     //posibles datos bancarios personal
-    const nrocta = document.getElementById("numcuenta")
+    const nrocta = document.getElementById("numcuenta");
+    const tipo_Cta = document.getElementById("TpoCuenta-A");
+    const banco = document.getElementById("Banco-A");
     //datos bancarios autorizados
     
 
@@ -27,6 +29,10 @@ export function validarFormDP(){
         }
     }
 
+    //lista de bancos
+    const lista_bancos = ["BANCO NACIONAL DE CRÉDITO", "BANCO DEL CARIBE", "BANCO DEL TESORO", "BANCO EXTERIOR","BANCO CARONÍ","BANCO DE VENEZUELA","BANESCO BANCO UNIVERSAL","BANCO PROVINCIAL", "BANCAMIGA BANCO UNIVERSAL", "BANCO MERCANTIL" ] ;
+    // lista de tipos de cuentas
+    const lista_Tipo = ["AHORRO","CORRIENTE"];
     
     //errores
     const errorName = document.getElementById("errorName")
@@ -84,16 +90,19 @@ export function validarFormDP(){
         errorCedula.innerHTML = '';
         Cedula.style.borderColor ='black';
     }
-    
-    if(!expresiones.email.test(email.value)){
-        warnings += `El email no es valido\n`;
-        entrar = false;
-        errorCorreo.innerHTML = '<b>¡El Email no es valido!</b>';
-        email.style.borderColor ='red';
-    }else{
-           
-        errorCorreo.innerHTML = '';
-        email.style.borderColor ='black';
+
+    if(!(email == null)){
+        if(!expresiones.email.test(email.value)){
+            warnings += `El email no es valido\n`;
+            entrar = false;
+            errorCorreo.innerHTML = '<b>¡El Email no es valido!</b>';
+            email.style.borderColor ='red';
+        }else{
+               
+            errorCorreo.innerHTML = '';
+            email.style.borderColor ='black';
+        }
+        
     }
     
     if (!(rif == null)){
@@ -171,12 +180,77 @@ export function validarFormDP(){
         }
         
     }
+    //verificar si lo ingresado en el campo BANCO esta en lista
+    
+    if(!(banco == null)){
+        if(!(lista_bancos.some(bancos => bancos == banco.value))){
+            warnings += `Banco no valido\n`;
+            entrar = false;
+            errorBancoA.innerHTML = '<b>¡Seleccione un banco de la lista!<b>'
+            banco.style.borderColor ='red';
+        }else{
+            errorBancoA.innerHTML = '';
+            banco.style.borderColor ='black';
+        }
+    }
+    //Valida que se selecciona un tipo de cuenta de la lista
+    if(!(tipo_Cta == null)){
+        if(!(lista_Tipo.some(tipo => tipo == tipo_Cta.value ))){
+            warnings += `tipo de cuenta no valida\n`;
+            entrar = false;
+            errorTipoBancoA.innerHTML = '<b>¡Seleccione un tipo de cuenta de la lista!<b>'
+            tipo_Cta.style.borderColor ='red';
+        }else{
+            errorTipoBancoA.innerHTML = '';
+            tipo_Cta.style.borderColor ='black';
+        }
+    }
+
+    
     
     //retornamos ambos valores
     return [entrar, warnings];
 }
 
-//validacion de datos de siembra
-export function validarFormDS(){
+//validacion de datos del camion
+export function validarFormCamion(){
+    //obtencion de campos a validar
+    const Placa = document.getElementById("Placa");
+    const Capacidad = document.getElementById("Capacidad");
+    const Modelo = document.getElementById("Modelo");
 
+    const expresiones = {
+        Placa : /^[A-Z]\d{2}[A-Z]{2}\d[A-Z]$/i,
+        Modelo: /^[A-Za-z\s]+$/
+    }
+
+    let entrar = true;
+    let warnings = "";
+
+    if(!expresiones.Placa.test(Placa.value)){
+        
+        warnings += `la placa no es valida\n`;
+        entrar = false;
+        errorPlaca.innerHTML = '<b>¡La placa debe coincidir con el siguiente formato: A12BC3D!<b>'
+        Placa.style.borderColor = 'red';
+    }else{
+           
+        errorPlaca.innerHTML = '';
+        Placa.style.borderColor ='black';
+    }
+
+    if(!expresiones.Modelo.test(Modelo.value)){
+        
+        warnings += `El nombre no es valido\n`;
+        entrar = false;
+        errorModelo.innerHTML = '<b>¡Escriba correctamente la marca de su vehiculo!<b>'
+        Modelo.style.borderColor = 'red';
+    }else{
+           
+        errorModelo.innerHTML = '';
+        Modelo.style.borderColor ='black';
+    }
+
+    //retornamos ambos valores
+    return [entrar, warnings];
 }

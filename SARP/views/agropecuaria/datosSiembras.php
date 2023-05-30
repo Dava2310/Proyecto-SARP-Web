@@ -80,7 +80,11 @@
                         <div class="row">
                             <div class="form-group col-md col-sm-12 col-12">
                                 <label for="analisis">Análisis de la Muestra:</label>
-                                <input class="form-control" type="text" name ="analisis" id="analisis" required readOnly>
+                                <select name="analisis" id="analisis" disabled class="form-control " >
+                                        <option value="">-- SELECCIONE UNA OPCION --</option>
+                                        <option value="APROBADO">APROBADO</option>
+                                        <option value="RECHAZADO">RECHAZADO</option>
+                                </select>
                             </div>
                             <div class="form-group col-md col-sm-12 col-12">
                                 <label for="ms">% de Materia Seca:</label>

@@ -33,7 +33,7 @@
                         </header>
                         <hr>
                         <!-- FORMULARIO DE LA SIEMBRA -->
-                        <form action="../../controllers/proveedor/ctrl_addSiembra.php" method="POST">
+                        <form id="form">
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="fecha_inicio">Fecha de Inicio</label>
@@ -41,14 +41,14 @@
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="kilos_totales">Kilos Totales por Lote:</label> 
-                                    <input class="form-control" type="text" name="kilos_totales" id="kilos_totales" required>
+                                    <input class="form-control" type="number" name="kilos_totales" id="kilos_totales" required>
                                 </div>
                             </div>
                             <!-- <br> -->
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="variedad">Variedad</label>
-                                    <input class="form-control" type="text" name="variedad" id="variedad" required>
+                                    <input class="form-control" type="number" name="variedad" id="variedad" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -60,7 +60,7 @@
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="hectareas">Héctareas sembradas:</label>
-                                    <input class="form-control" type="text" name="hectareas" id="hectareas" required>
+                                    <input class="form-control" type="number" name="hectareas" id="hectareas" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -70,6 +70,7 @@
                                 </div>
                             </div>
                         </form>
+                        <script src="../../assets/js/Proveedor/addSiembra.js"></script>
     <?php
         include('../templates/footer.php');
     ?>

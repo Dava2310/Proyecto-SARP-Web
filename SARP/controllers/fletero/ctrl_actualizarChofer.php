@@ -18,11 +18,6 @@
         include('../conexion.php');
         $connection = Connection::getInstance();
         $con = $connection->getConnection();
-        //actualizar camion
-        $resultC = $con->query("update camiones
-            set Modelo = '$modelo',
-            Capacidad = '$capacidad'
-            where Placa = '$placa';");
         //actualizar chofer
         $resultCh = $con->query("update choferes
             set Nombre = '$nombre',
@@ -30,7 +25,6 @@
             where Cedula = '$Cedula';");
 
 
-        echo "<script>window.alert('Se ha modificado con exito');</script>";
-        header("location:../../views/fletero/buscarCamion.php");
+        echo json_encode("agregado con exito");
     }
 ?>

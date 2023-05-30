@@ -16,7 +16,7 @@ $resultados= mysqli_fetch_array($result);
 
 $ID_Siembra=$resultados['ID_Siembra'];
 
-$Kilos_Totales=$resultados['Kilos_Totales'];
+$Kilos_Totales=$resultados['Saldo_Restante'];
 
 
 //agregamos nuestros datos al array para retornarlos

@@ -7,7 +7,8 @@
 
 
   
- $sql = "SELECT * FROM solicitud_proveedor INNER JOIN planificaciones on solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion where planificaciones.ID_Planificacion= $valor and solicitud_proveedor.Estado_Aprobacion=1";
+ $sql = "SELECT * FROM solicitud_proveedor INNER JOIN planificaciones on solicitud_proveedor.ID_Planificacion = planificaciones.ID_Planificacion where planificaciones.ID_Planificacion= $valor and solicitud_proveedor.Estado_Aprobacion=1 and solicitud_proveedor.ID_Solicitud_Fletero IS NULL
+ ";
  $result= mysqli_query($con,$sql);
  $filas = mysqli_fetch_all($result, MYSQLI_ASSOC); 
   mysqli_close($con);

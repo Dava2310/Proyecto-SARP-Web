@@ -20,6 +20,9 @@
     $usuario= "SELECT * from camiones WHERE ID_Fleteros = $n ";
     $result= mysqli_query($con,$usuario);
 
+    $Chofere = "SELECT * FROM choferes where ID_Fleteros = $n";
+    $Resultado_Chofer= mysqli_query($con,$Chofere);
+
 
 ?>
 <body>
@@ -43,7 +46,7 @@
                                         
                                     <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
                                     <div class="col-sm-8">
-                                        <input placeholder="-- SELECCIONE CAMION --" class="form-control" list="camiones" name="camiones" id="camion" onchange='mifuncionC(this.value)'>
+                                        <input placeholder="-- SELECCIONE CAMION --" class="form-control" list="camiones" name="camiones" id="camion" >
                                             <datalist id="camiones" >
                                                 <?php
                                                     while($valores = mysqli_fetch_array($result)){
@@ -58,11 +61,12 @@
                             </div>
                         </header>
                             <hr>
-                            <form action="../../controllers/fletero/ctrl_Camion&chofer.php" method="POST readonly">
+                            <form id="form_Camion">
                                 <div class="row">
                                     <div class="form-group col-sm">
                                         <label for="Placa">Placa:</label>
                                         <input class="form-control" type="text" name="Placa" id="Placa" required readonly>
+                                        <p id="errorPlaca"></p>
                                     </div>
                                     <div class="form-group col-sm">
                                         <label for="Capacidad">Capacidad en Toneladas:</label>
@@ -71,9 +75,20 @@
                                     <div class="form-group col-sm">
                                         <label for="Modelo">Modelo:</label>  
                                         <input class="form-control" type="text" name="Modelo" id="Modelo" required readonly>
+                                        <p id="errorModelo"></p>
                                     </div>
                                 </div>
-                                
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Deshacer</button>
+                                        
+                                        <input id="botonCambiarC" type=""  class="btn btn-primary glyphicon glyphicon-pencil" 
+                                        value="Modificar (Desactivado)" >
+                                        <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
+                                        
+                                    </div>
+                                </div>
+                            </form>
                                     
                             
                                 <div class="row justify-content-between" style="margin-left: 10px; margin-top: 25px;">
@@ -83,36 +98,44 @@
                                             <img class="imagen-titulo" src="../../assets/images/chofer.png" alt="" style="width: 50px; height: 50px;">
                                         </div>
                                     </div>
-                                
+                            
                                     <div class="form-group  col-md-6 col-sm-12 ">
                                         <div class="row">
                                             <label  class="col-sm-4 col-form-label">Lista de Choferes</label>
                                                 
                                             <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
                                             <div class="chof col-sm-8">
-                                                <select id="chofer" disabled class="form-control" onchange='mifuncionCh(this.value)' >
-                                                    <option value="">-- SELECCIONE CHOFER --</option>
-                                                </select>
-
-                                          
+                                                <input placeholder="-- SELECCIONE CHOFER --" class="form-control" list="Choferes" name="Choferes" id="Chofer" >
+                                                <datalist id="Choferes" >
+                                                <?php
+                                                    while($valoresCH = mysqli_fetch_array($Resultado_Chofer)){
+                                                        $idF = $valoresCH['ID_Fleteros'];
+                                                        $Cedulas = $valoresCH['Cedula'];
+                                                        echo "<option value=$Cedulas></option>";
+                                                    }
+                                                ?>
+                                            </datalist>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <hr> 
-                              
+                            <form id="form_Chofer" >
                                 <div class="row">    
                                     <div class="form-group col-sm">
                                         <label for="Nombre">Nombre:</label>
                                         <input class="form-control" type="text" name ="Nombre" id="Nombre" required readonly>
+                                        <p id="errorName"></p>
                                     </div>
                                     <div class="form-group col-sm">
                                         <label for="Nombre">Apellido:</label>
                                         <input class="form-control" type="text" name ="Apellido" id="Apellido" required readonly>
+                                        <p id="errorApellido"></p>
                                     </div>
                                     <div class="form-group col-sm">
                                         <label for="Cedula">Cédula de Identidad :</label>
                                         <input class="form-control" type="text" name="Cedula" id="Cedula" required readonly>
+                                        <p id="errorCedula"></p>
                                     </div> 
                                 </div> 
                                 
@@ -120,151 +143,15 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Deshacer</button>
-                                        <input id="botonCambiar" type="" onclick="activarCampos()" class="btn btn-primary glyphicon glyphicon-pencil" 
-                                        value="Modificar (Desactivado)" style="color: black; font-weight: bold;">
+                                        <input id="botonCambiar" type=""  class="btn btn-primary glyphicon glyphicon-pencil" 
+                                        value="Modificar (Desactivado)" >
                                         <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
+                                        <button id="asignar" type="button" class="btn btn-info">Asignar chofer al camion</button>
                                     </div>
                                 </div>
                             </form>  
                             
-                            <script type="text/javascript">
-                            
-                            function activarCampos(){
-                                var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('Modelo').readOnly == false){
-                                    BotonCambiar.value="Modificar (Desactivado)";
-                                    document.getElementById('Modelo').readOnly=true;
-                                    document.getElementById('Capacidad').readOnly=true;
-                                    document.getElementById('Nombre').readOnly=true;
-                                    document.getElementById('Apellido').readOnly=true;
-                                   
-                                } else {
-                                    BotonCambiar.value="Modificar (Activado)";
-                                    document.getElementById('Modelo').readOnly=false;
-                                    document.getElementById('Capacidad').readOnly=false;
-                                    document.getElementById('Nombre').readOnly=false;
-                                
-                                    document.getElementById('Apellido').readOnly=false;
-                                    
-                                }
-                                
-                            }
-                            function mifuncionC(idC){
-                                $.ajax({
-                                    // la URL para la petición
-                                    url : '../../controllers/fletero/get_datosCamion.php',
-                        
-                                    // la información a enviar en este caso el valor de lo que seleccionaste en el select
-                                    data : { idC : idC },
-                        
-                                    // especifica si será una petición POST o GET
-                                    type : 'POST',
-                        
-                                    // el tipo de información que se espera de respuesta
-                                    dataType : 'json',
-                        
-                                    // código a ejecutar si la petición es satisfactoria;
-                                    success : function(json) {
-                                        //aqui recibimos el "echo" del php(ajax.php)
-                                        //y ahora solo colocas el valor en los campos
-                                        $("#Placa").val(json.Placa);
-                                      
-                                        $("#Capacidad").val(json.Capacidad);
-                                        $("#Modelo").val(json.Modelo);
-                                      
-                                        
-                                       
-                                        //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
-                                        
-                                    },
-                        
-                                    // código a ejecutar si la petición falla;
-                                    error : function(xhr, status) {
-                                        alert(' Seleccione un camion');
-                                        $("#Placa").val("");
-                                      
-                                        $("#Capacidad").val("");
-                                        $("#Modelo").val("");
-
-                                    }
-                                })
-                            }
-
-                            //proceso para cargar lista de choferes a partir de los camiones
-                            //se llama a la funcion que cargara datos a la lista cada vez que el camion cambie
-
-                            $(document).ready(function(){
-
-                                var chofer = $('#chofer');
-
-                                $('#camion').change(function(){
-                                    var placa = $(this).val();
-                                    
-                                    if(placa !== ''){
-                                        $.ajax({
-                                            data: {placa:placa}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
-                                            dataType: 'html', //tipo de datos que esperamos de regreso
-                                            type: 'POST', //mandar variables como post o get
-                                            url: '../../controllers/fletero/get_listaChofer.php' //url que recibe las variables
-                                        }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
-                                            chofer.prop('disabled', false); //habilitar el select       
-
-                                            chofer.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
-                                            
-                                        });
-
-                                    }else{ //en caso de seleccionar una opcion no valida
-                                        chofer.val(''); //seleccionar la opcion "- Seleccione -", osea como reiniciar la opcion del select
-                                        chofer.prop('disabled', true); //deshabilitar el select
-                                    }
-                                })
-                            })
-
-                            
-
-
-                            function mifuncionCh(idCh){
-                                $.ajax({
-                                    // la URL para la petición
-                                    url : '../../controllers/fletero/get_datosChofer.php',
-                        
-                                    // la información a enviar en este caso el valor de lo que seleccionaste en el select
-                                    data : { idCh : idCh },
-                        
-                                    // especifica si será una petición POST o GET
-                                    type : 'POST',
-                        
-                                    // el tipo de información que se espera de respuesta
-                                    dataType : 'json',
-                        
-                                    // código a ejecutar si la petición es satisfactoria;
-                                    success : function(json) {
-                                        //aqui recibimos el "echo" del php(ajax.php)
-                                        //y ahora solo colocas el valor en los campos
-                                       
-                                        $("#Nombre").val(json.Nombre);
-                                        $("#Apellido").val(json.Apellido);
-                                        $("#Cedula").val(json.Cedula);
-                                        
-                                        
-                                       
-                                        //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
-                                        
-                                    },
-                        
-                                    // código a ejecutar si la petición falla;
-                                    error : function(xhr, status) {
-                                        alert(' Seleccione un chofer');
-                                        
-                                        $("#Nombre").val("");
-                                        $("#Apellido").val("");
-                                        $("#Cedula").val("");
-                                    }
-                                })
-                            }
-                            
-
-                        </script>
+                            <script type="module" src="../../assets/js/Fletero/buscarCamion.js"></script>
 <?php
     include ("../templates/footerFletero.php")
 ?>

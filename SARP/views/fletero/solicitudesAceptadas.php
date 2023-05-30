@@ -35,7 +35,7 @@
                         <header class="row justify-content-between" style="margin-left: 10px;">
                             <div class=" col-md-6 col-sm-12 ">
                                     <div class="row">
-                                        <h2 >Solicitudes Pendientess</h2>
+                                        <h2 >Solicitudes Aceptadas</h2>
                                         <img class="imagen-titulo" src="../../assets/images/aceptar.png" alt="" style="width: 50px; height: 50px;">
                                     </div>
                                 </div>
@@ -79,9 +79,9 @@
                             <div class="row">
                                 <!-- Dias -->
                                 <div class="col-3" style="margin-bottom: 20px;">
-                                    <label for="dias">Días:</label>
+                                    <label for="dias">Días de retiro</label>
                                     <img class="imagen-titulo" src="../../assets/images/si.png" name= "dias"alt="" style="width: 50px; height: 50px;">
-                                    <input class="form-control"type="date" name="dias" id="dias">
+                                    <input readonly class="form-control"type="date" name="dias" id="dias">
                                 </div>
                             </div>
                             <div class="row">
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-4">  
                                 
-                                    <label  >Lista de Choferes</label>
+                                    <label  >Chofer</label>
                                         
                                     <!-- se coloca el atributo "onchange='mifuncion(this.value)'" para que al momento de cambiar la seleccion llame a la funcion que mostrara los datos del fletero correspondiente -->
                                     

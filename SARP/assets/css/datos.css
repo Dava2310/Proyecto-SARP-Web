@@ -77,9 +77,9 @@ nav ul{
     width: 100%;
 }
 
-nav ul>li:hover{
+/* nav ul>li:hover{
     background-color: rgba(143, 243, 139, 0.942);
-}
+} */
 
 nav > ul > li > ul{
     display: none;

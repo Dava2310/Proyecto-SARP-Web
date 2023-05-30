@@ -70,7 +70,7 @@
                                 <tbody>
                                 <?php	
                                     while($row = $result->fetch_object()){
-                                        
+                                        $total = $row->Pago_Cuadrilla+$row->Pago_MP;
                                         echo "<tr>";
                                         echo "<th scope='row'>$row->Cedula</th>";
                                         echo "<td>$row->Nombre $row->Apellido</td>";
@@ -79,7 +79,7 @@
                                         echo "<td>$row->TipoCuenta_P</td>";
                                         echo "<td>$row->Pago_MP</td>";
                                         echo "<td>$row->Pago_Cuadrilla</td>";
-                                        echo "<td> $row->Pago_Cuadrilla+$row->Pago_MP </td>";
+                                        echo "<td> $total</td>";
                                         echo "</tr>";
                                     }
                                 ?>

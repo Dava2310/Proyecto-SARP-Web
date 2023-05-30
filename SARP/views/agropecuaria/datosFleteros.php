@@ -128,7 +128,7 @@
                                         <option value="AUTORIZADA">AUTORIZADA</option>
                                     
                                 </select>
-
+                                <p id='errorTipoBancoA'></p>
                             </div>
                             <!-- se coloca el display: none para que los campos nombre y apellidos autorizados no aparezcan -->
                             <div class="form-group col-md  col-sm-12 col-12" id="divNombreA"  style="display: none;">
@@ -157,6 +157,7 @@
                                         <option value="BANCO MERCANTIL"></option>
                                     </datalist>
                                 </input >
+                                <p id='errorBancoA'></p>
                             </div>
                         </div>
                         <div class="row"> 
@@ -186,7 +187,7 @@
                         </div>
                             
                     </form>  
-                    <script type="module" src="../../assets/js/agropecuario/DatosFleteros.js"></script>   
+                    <script type="module" src="../../assets/js/datos_personales/DatosFleteros.js"></script>   
                 
 <?php
     include ("../templates/footerFletero.php")

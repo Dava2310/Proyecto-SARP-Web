@@ -105,7 +105,7 @@
                             </div>
                         </form>
                         <!--Se incluye el js correspondiente -->
-                        <script type="module" src="../../assets/js/agropecuario/DatosPersonales.js"></script>
+                        <script type="module" src="../../assets/js/datos_personales/DatosPersonales.js"></script>
 <?php
     include ("../templates/footerFletero.php")
 ?>

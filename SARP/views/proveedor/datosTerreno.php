@@ -41,45 +41,30 @@
                         </header>
                         <hr>
                         <!-- FORMULARIO DEL TERRENO-->
-                        <form action="../../controllers/proveedor/ctrl_datosTerreno.php" method="POST">
+                        <form id="form">
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="espacio">Tamaño en Hectáreas</label>
-                                    <input value="<?=$row->Tamanio?>"class="form-control" type="text" name="espacio" id="espacio" required readonly>
+                                    <input value="<?=$row->Tamanio?>"class="form-control" type="number" name="espacio" id="espacio" required readonly>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="ubicacion">Ubicación</label>
-                                    <input value="<?=$row->Ubicacion?>" class="form-control" type="text" name="ubicacion" id="ubicacion" required readonly>
+                                    <input value="<?=$row->Ubicacion?>" class="form-control" type="text" name="direccion" id="direccion" required readonly>
+                                    <p id="errorDir"></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
-                                    <input id="botonCambiar" type="" onclick="activarCampos()" class="btn btn-primary glyphicon glyphicon-pencil" 
+                                    <input id="botonCambiar" type=""  class="btn btn-primary glyphicon glyphicon-pencil" 
                                     value="Modificar (Desactivado)" style="color: black; font-weight: bold;">
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
                                 </div>
                             </div>
                         </form>
-                        <script type="text/javascript">
-                            function activarCampos(){
-                                var BotonCambiar = document.getElementById('botonCambiar');
-                                if(document.getElementById('espacio').readOnly == false){
-                                    BotonCambiar.value="Modificar (Desactivado)";
-                                    document.getElementById('espacio').readOnly=true;
-                                    document.getElementById('ubicacion').readOnly=true;
-                                  
-                                } else {
-                                    BotonCambiar.value="Modificar (Activado)";
-                                    document.getElementById('espacio').readOnly=false;
-                                    document.getElementById('ubicacion').readOnly=false;
-                               
-                                }
-                                
-                            }
-                        </script>
+                        <script type="module" src = "../../assets/js/Proveedor/datosTerrenos.js"></script>
     <?php
         include('../templates/footer.php');
     ?>

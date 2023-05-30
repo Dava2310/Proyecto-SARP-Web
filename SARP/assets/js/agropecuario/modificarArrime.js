@@ -204,31 +204,32 @@ function fase2(){
 
         }).then(response => response.json()).then(datas => {
 
-           var nuevactda = datas;
-           $("#cantidad").val(nuevactda);
+           var json = datas;
+           $("#cantidad").val(json.nuevactdad);
+           $("#disponibilidad").val(json.kilosRestantes);
            alert('Solicitud realizada con exito')
-            
+            // OBTENER LISTA DE SIEMBRAS PLANIFICADAS
+            var sema = document.querySelector('#semana').value;
+            var Sipla = $('#SiembraStda');
+        
+            $.ajax({
+                data: {sema:sema}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
+                dataType: 'html', //tipo de datos que esperamos de regreso
+                type: 'POST', //mandar variables como post o get
+                url: '../../controllers/agropecuaria/get_SiembraPla.php', //url que recibe las variables
+                success : function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
+                Sipla.prop('disabled', false); //habilitar el select       
+
+                Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax     
+                },
+                error:function(xhr, status){
+                alert('Disculpe, existió un problema');
+                }        
+                
+            });
             
         })
-        // OBTENER LISTA DE SIEMBRAS PLANIFICADAS
-        var sema = document.querySelector('#semana').value;
-        var Sipla = $('#SiembraStda');
-      
-        $.ajax({
-            data: {sema:sema}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
-            dataType: 'html', //tipo de datos que esperamos de regreso
-            type: 'POST', //mandar variables como post o get
-            url: '../../controllers/agropecuaria/get_SiembraPla.php', //url que recibe las variables
-            success : function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion      
-            Sipla.prop('disabled', false); //habilitar el select       
-
-            Sipla.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax     
-            },
-            error:function(xhr, status){
-            alert('Disculpe, existió un problema');
-            }        
-            
-        });
+        
 
        /*  $.ajax({
             data: {sema:sema},

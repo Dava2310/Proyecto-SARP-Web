@@ -28,7 +28,12 @@
         (ID_Siembra, Estado_Aprobacion, Cantidad_MP, ID_planificacion)
         values
         ('$IDsiembra',0,'$solicitudMP', '$IDP');");
-        // registro de chofer 1
+       
+        //restando los kilos solicitados en la siembra correspondiente
+        $menosKilos = $con -> query("UPDATE siembras set Saldo_Restante  = Saldo_Restante - $solicitudMP, Kilos_Arrimados = Kilos_Arrimados + $solicitudMP where ID_Siembra = $IDsiembra ");
+
+        $kilos_Restantes = $con -> query("SELECT Saldo_Restante from siembras where ID_Siembra = $IDsiembra");
+        $rowKG =  $kilos_Restantes -> fetch_object();
 
         //restar la cantidad solicitada con la total en planificacion
         $nuevactdad = $ctdadP - $solicitudMP;
@@ -38,9 +43,12 @@
                             set Rango = '$nuevactdad'
                             where Semana = '$semana';");
        
+        //esta variable es para retornar los datos
+        $jsondata = array();
         
-        
-       echo json_encode($nuevactdad );
+        $jsondata['nuevactdad'] = $nuevactdad;
+        $jsondata['kilosRestantes'] = $rowKG -> Saldo_Restante ;
+       echo json_encode($jsondata );
 
         
     }
