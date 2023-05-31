@@ -379,7 +379,7 @@ CREATE TABLE `usuario` (
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES ('1', '1', '7334ec5a5364990f83b50d2ef8403912', 'Gabriel', 'Antuarez', '28216052', '+584166284044', 'antuarez18@gmail.com', 'Calle 10 casa#535', '546464646', '', '', '', '', '', '', null, null, '', '');
+INSERT INTO `usuario` VALUES ('1', '1', '81dc9bdb52d04dc20036dbd8313ed055', 'Gabriel', 'Antuarez', '28216052', '+584166284044', 'antuarez18@gmail.com', 'Calle 10 casa#535', '546464646', '', '', '', '', '', '', null, null, '', '');
 INSERT INTO `usuario` VALUES ('3', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'diegos', 'gimenez', '12546789', '4129876411', 'diegogo@gmail.com', 'las flores', '125467892', 'BANCO DE VENEZUELA', '57319564588251234567', 'AHORRO', 'BANCAMIGA BANCO UNIVERSAL', '01054657981321234567', 'AHORRO', 'javiera', 'marcano', '', '');
 INSERT INTO `usuario` VALUES ('4', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'juan', 'cortez', '89786545', '4164587979', 'juancho@hotmail.com', 'las carolinasa', '89786545', 'BANCO MERCANTIL', '26485971312345687985', 'CORRIENTE', 'BANCAMIGA BANCO UNIVERSAL', '56482317911234567897', 'CORRIENTE', 'kun', 'aguero', '', '');
 INSERT INTO `usuario` VALUES ('5', '3', '81dc9bdb52d04dc20036dbd8313ed055', 'argenis', 'carrion', '47888654', '4167824561', 'argve@gmail.com', 'penelope', '47888654', 'BANCO MERCANTIL', '54125412325651234567', 'AHORRO', 'BANCO MERCANTIL', '27918351397512345678', 'CORRIENTE', 'ANA', 'PALOMA', '', '');
