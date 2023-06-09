@@ -21,6 +21,11 @@ form.addEventListener("submit", e=>{
         errorCorreo.innerHTML = '<b>¡El Email no es valido! \n Ejemplo de Email valido: xxxx@gmail.com</b>';
         email.style.borderColor ='red';
     }
+    else
+    {
+        errorCorreo.innerHTML = "";
+        email.style.borderColor = '';
+    }
     
     if(entrar){
         e.preventDefault()

@@ -25,18 +25,25 @@
                     <hr>
                     <div class="contenedorform">
                         <h2>Datos de usuario:</h2> <hr>
-
                         <form id="form">
                             <div class="form-group">
                                 <label for="email">Email de usuario:</label>
                                 <input type="text" name="email" id="email" class="form-control" required>
                             </div>
                             <p id='errorCorreo'></p>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="newP">Nueva contraseña:</label>
                                 <input type="password" name="newP" id="newP" class="form-control" required>
                             </div>
                             <p id='errorPassword'></p>
+                            
+                            <div class="form-group">
+                                <label for="newP2">Verifique su nueva contraseña:</label>
+                                <input type="password" name="newP2" id="newP2" class="form-control" required>
+                            </div>
+                            <p id='errorPassword2'></p>
+                            <p id='coincidencia'></p>
+                            
                             <div class="form-group">
                                 <label for="question">Pregunta de seguridad:</label>
                                 <input type="text" name="question" id="question" class="form-control" required>
@@ -59,7 +66,7 @@
                                     <option value="3">Proveedor</option>
                                     <option value="4">Fletero</option>
                                 </select>
-                            </div> -->
+                            </div>
                             <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión aquí</a>.</p>
                             <p class="inicioSesion">¿No tienes una cuenta? <a href="register.php">Create una aquí</a>.</p>
                             <div class="botones">
@@ -75,7 +82,7 @@
 
     <!-- Insert script recover.js -->
 
-    <script src="../../assets/js/registros/recover.js"></script>
+    <script src="../../assets/js/registros/recover_2.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
 	<script src="../../assets/js/jquery-3.2.1.min.js"></script>
 </body>

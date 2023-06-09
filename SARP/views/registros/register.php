@@ -62,12 +62,30 @@
                             </div>
                             <p id='errorPassword'></p>
 
+                            <div class="form-group">
+                                <label for="password2">Verifique su contraseña: </label>
+                                <input type="password" name="password2" id="password2" class="form-control" required>
+                            </div>
+                            <p id='errorPassword2'></p>
+                            <p id='coincidencia'></p>
+                            
+
                             <div class="descripcion">
                                 <p> <b> Asegúrese de resguardar la pregunta de seguridad y su respuesta </b></p>
                             </div>
                             <div class="form-group">
                                 <label for="question">Pregunta de seguridad: </label>
-                                <input type="text" name="question" id="question" class="form-control" required>
+                                <!-- <input type="text" name="question" id="question" class="form-control" required> -->
+                                <select name="question" id="question" class="form-control" required>
+                                    <option value="">-- SELECCIONE PREGUNTA -- </option>
+                                    <option value="¿Cuál es el nombre de tu mascota de la infancia?">¿Cuál es el nombre de tu mascota de la infancia?</option>
+                                    <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
+                                    <option value="¿En qué ciudad naciste?">¿En qué ciudad naciste?</option>
+                                    <option value="¿Cuál es el nombre de tu mejor amigo/a de la infancia?">¿Cuál es el nombre de tu mejor amigo/a de la infancia?</option>
+                                    <option value="¿Cuál es el nombre de tu abuelo/a?">¿Cuál es el nombre de tu abuelo/a?</option>
+                                    <option value="¿Cuál es tu película favorita?">¿Cuál es tu película favorita?</option>
+                                    <option value="¿Cuál es tu equipo deportivo favorito?">¿Cuál es tu equipo deportivo favorito?</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="answer">Respuesta: </label>
@@ -87,7 +105,7 @@
                                 <label for="codigo">Codigo de Seguridad:</label>
                                 <input type="text" name="codigo" id="codigo" class="form-control" required>
                             </div>
-                            <p class="inicioSesion">¿Olvidaste la contraseña de tu cuenta? <a href="login.php">Recupera tu contraseña aquí.</a>.</p>
+                            <p class="inicioSesion">¿Olvidaste la contraseña de tu cuenta? <a href="recover.php">Recupera tu contraseña aquí.</a>.</p>
                             <p class="inicioSesion">¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>

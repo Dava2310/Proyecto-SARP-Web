@@ -2,19 +2,23 @@
 
 /* const form = document.getElementById('form');
  */
+
+// ========================= Campos a validar ==================
 const nombre = document.getElementById("nombre")
 const Apellido = document.getElementById("Apellido")
 const Cedula = document.getElementById("Cedula")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
+const password2 = document.getElementById("password2")
 
+// ========================= Campos de error ==================
 const errorName = document.getElementById("errorName")
 const errorApellido = document.getElementById("errorApellido")
 const errorCedula = document.getElementById("errorCedula")
 const errorCorreo = document.getElementById("errorCorreo")
 const errorPassword = document.getElementById("errorPassword")
-
-
+const errorPassword2 = document.getElementById("errorPassword2")
+const coincidencia = document.getElementById("coincidencia")
 
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -96,6 +100,33 @@ form.addEventListener("submit", (e) => {
         password.style.borderColor = '';
     }
     
+    if(!expresiones.password.test(password2.value)){
+        warnings += `La contraseña no es valida\n`;
+        entrar = true;
+        errorPassword2.innerHTML = '<b>¡La contraseña debe ser de 4 a 12 digitos!</b>';
+        password2.style.borderColor ='red';
+    }
+    else
+    {
+        errorPassword2.innerHTML = "";
+        password2.style.borderColor = '';
+    }
+
+    if (password.value != password2.value)
+    {
+        warnings += "Las contraseñas no son iguales";
+        entrar = true;
+        coincidencia.innerHTML = "<b>Las contraseñas deben coincidir!</b>";
+        password.style.borderColor = 'red';
+        password2.style.borderColor = 'red';
+    }
+    else
+    {
+        coincidencia.innerHTML = "";
+        password.style.borderColor = '';
+        password2.style.borderColor = '';
+    }
+
     // Si la variable entrar es true, no se direcciona hacia el servidor
     if(entrar){
         e.preventDefault()
@@ -121,7 +152,8 @@ form.addEventListener("submit", (e) => {
             //data contiene la respuesta obtenida de agregarUsuario.php
             if(data == "agregado con exito"){
                 alert(data);
-                location.reload();
+                // location.reload();
+                window.location = '../../views/registros/login.php';
             }else{
                 alert(data)
             }
