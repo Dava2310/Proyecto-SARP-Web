@@ -9,6 +9,7 @@
     $rif = $_POST['rif'] ?? "";
     $direccion = $_POST['direccion'] ?? "";
     $banco = $_POST['Banco'] ?? "";
+    $CodBanco = $_POST['CODbanco'] ?? "";
     $nrocuenta = $_POST['numcuenta'] ?? "";
     $tipocta = $_POST['TpoCuenta'] ?? "";
     $nombreA = $_POST['NombreA'] ?? "";
@@ -17,7 +18,8 @@
     $nroctaA = $_POST['numcuenta'] ?? "";
     $tipoctaA = $_POST['TpoCuenta'] ?? "";
 
- 
+    //inclute e codigo + el numero de cuenta
+    $numCuenta = $CodBanco.$nrocuenta; 
         include('../conexion.php');
         $connection = Connection::getInstance();
         $con = $connection->getConnection(); 
@@ -29,7 +31,7 @@
                                 RIF = '$rif',
                                 Direccion = '$direccion',
                                 Banco_P='$banco',
-                                Cuenta_P = '$nrocuenta',
+                                Cuenta_P = '$numCuenta',
                                 TipoCuenta_P = '$tipocta'
                                 where Cedula = '$Cedula';");
         }else if($P_A == "AUTORIZADA"){
@@ -40,7 +42,7 @@
                                 RIF = '$rif',
                                 Direccion = '$direccion',
                                 Banco_A='$banco',
-                                Cuenta_A = '$nrocuenta',
+                                Cuenta_A = '$numCuenta',
                                 TipoCuenta_A = '$tipocta',
                                 Nombre_A = '$nombreA',
                                 Apellido_A='$apellidoA'

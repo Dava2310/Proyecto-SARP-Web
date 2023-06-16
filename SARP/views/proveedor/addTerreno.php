@@ -31,6 +31,27 @@
                         <hr>
                         <!-- FORMULARIO DEL TERRENO-->
                         <form action="../../controllers/proveedor/ctrl_addTerreno.php" method="POST">
+                        <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label >¿Posee titulo de propiedad?</label>
+                                </div>
+                                <!-- checks para seleccion opcion de si hay o no titulo -->
+                                <div class="form-check form-check-inline mr-5">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="si">
+                                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no">
+                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                </div>
+                            </div>
+
+                            <div class="row" >
+                                <div class="form-group col-md-5" id="propiedad" style="display: inline;">
+                                    <label for="folio">Numero de folio</label>
+                                    <input class="form-control" type="number" name="folio" id="folio"  >
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="espacio">Tamaño en Hectáreas</label>
@@ -51,6 +72,7 @@
                                 </div>
                             </div>
                         </form>
+                        <script type="module" src = "../../assets/js/Proveedor/ADDdatosTerrenos.js"></script>
                         
     <?php
         include('../templates/footer.php');

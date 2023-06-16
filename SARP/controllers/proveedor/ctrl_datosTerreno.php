@@ -1,7 +1,7 @@
 <?php
     session_start();
     $usuario = $_SESSION['ID'];
-
+    $folio = $_POST['folio'] ?? "";
     $tamanio = $_POST['espacio'] ?? "";
     $ubicacion = $_POST['direccion'] ?? "";
 
@@ -14,7 +14,8 @@
         $con = $connection->getConnection();
         $result = $con->query("update terrenos
             set Tamanio='$tamanio',
-            Ubicacion = '$ubicacion'
+            Ubicacion = '$ubicacion',
+            Folio = '$folio'
             where ID_Usuario = '$usuario';");
         echo json_encode('agregado con exito');
     }

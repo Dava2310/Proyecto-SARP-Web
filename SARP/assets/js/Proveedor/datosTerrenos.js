@@ -5,11 +5,13 @@ function activarCampos(){
         BotonCambiar.value="Modificar (Desactivado)";
         document.getElementById('espacio').readOnly=true;
         document.getElementById('direccion').readOnly=true;
+        document.getElementById('folio').readOnly=true;
       
     } else {
         BotonCambiar.value="Modificar (Activado)";
         document.getElementById('espacio').readOnly=false;
         document.getElementById('direccion').readOnly=false;
+        document.getElementById('folio').readOnly=false;
    
     }
     
@@ -21,6 +23,7 @@ btn_cambiar.addEventListener("click",(e)=>{
     e.preventDefault();
     activarCampos();
 })
+
 
 //enviar datos 
 

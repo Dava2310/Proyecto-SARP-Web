@@ -1,5 +1,39 @@
 //importacion de funcion de validacion
 import {validarFormDP} from '../validacion.js';
+//funcion que indica cual es el codigo del banco seleccionado
+function cambiarCodBanco(codigo){
+    if(codigo == "BANCO MERCANTIL"){
+        $("#CODbanco").val("0105");
+
+    }else if(codigo == "BANCO NACIONAL DE CRÉDITO"){
+        $("#CODbanco").val("0191");
+
+    }else if(codigo == "BANCO DEL CARIBE"){
+        $("#CODbanco").val("0114");
+        
+    }else if(codigo == "BANCO DEL TESORO"){
+        $("#CODbanco").val("0163");
+        
+    }else if(codigo == "BANCO EXTERIOR"){
+        $("#CODbanco").val("0115");
+        
+    }else if(codigo == "BANCO CARONÍ"){
+        $("#CODbanco").val("0128");
+        
+    }else if(codigo == "BANCO DE VENEZUELA"){
+        $("#CODbanco").val("0102");
+        
+    }else if(codigo == "BANESCO BANCO UNIVERSAL"){
+        $("#CODbanco").val("0134");
+        
+    }else if(codigo == "BANCO PROVINCIAL"){
+        $("#CODbanco").val("0108");
+        
+    }else if(codigo == "BANCAMIGA BANCO UNIVERSAL"){
+        $("#CODbanco").val("0172");
+        
+    }
+}
 
 function activarCampos(){
     var BotonCambiar = document.getElementById('botonCambiar');
@@ -72,6 +106,8 @@ function mifuncion(idP){
             $("#tlf").val(json.Telefono);
             $("#cuentapropia").val(json.Cuenta_A);
             $("#Banco-A").val(json.Banco_P);
+            //cambiar campo de codigo del banco
+            cambiarCodBanco(json.Banco_P);
             $("#numcuenta").val(json.Cuenta_P);
             $("#TpoCuenta-A").val(json.TipoCuenta_P);
             //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
@@ -117,6 +153,7 @@ export function mifuncionP_A(P_A,idP){
             //aqui recibimos el "echo" del php(ajax.php)
             //y ahora solo colocas el valor en los campos
             $("#Banco-A").val(json.Banco_P);
+            cambiarCodBanco(json.Banco_P);
             $("#numcuenta").val(json.Cuenta_P);
             $("#TpoCuenta-A").val(json.TipoCuenta_P);
             //para que los campos nombre y apellidos autorizados no aparezcan
@@ -155,6 +192,7 @@ export function mifuncionP_A(P_A,idP){
                 //aqui recibimos el "echo" del php(ajax.php)
                 //y ahora solo colocas el valor en los campos
                 $("#Banco-A").val(json.Banco_A);
+                cambiarCodBanco(json.Banco_A);
                 $("#numcuenta").val(json.Cuenta_A);
                 $("#TpoCuenta-A").val(json.TipoCuenta_A);
                 //para que los campos nombre y apellidos autorizados si aparezcan
@@ -194,6 +232,12 @@ export function mifuncionP_A(P_A,idP){
     }
 
 }
+//evento para cargar codigos bancarios a partir de la lista de bancos
+const banco = document.getElementById("Banco-A");
+banco.addEventListener("change", (e)=>{
+
+    cambiarCodBanco(banco.value);
+})
 
 //evento para cuando cambien cuenta de personal a autorizara
 const P_A = document.getElementById("ctaP&A");

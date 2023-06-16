@@ -49,7 +49,7 @@ export function validarFormDP(){
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         telefono: /^(?:\+58)?[2469]\d{9}$/, // numero de telefono formato venezuela, con +58 mas 10 digitos
         direccion: /^[a-zA-Z0-9\sáéíóúñÑ#\-\.]+$/,
-        nrocta : /^[0-9]{20}$/
+        nrocta : /^[0-9]{16}$/
     }
 
     let entrar = true;
@@ -146,7 +146,7 @@ export function validarFormDP(){
         if(!expresiones.nrocta.test(nrocta.value)){
             warnings += `El formato del numero de cuenta no es valido\n`;
             entrar = false;
-            errorNroCta.innerHTML = '<b>El numero de cuenta debe de tener 20 digitos </b>'
+            errorNroCta.innerHTML = '<b>El numero de cuenta debe de tener 16 digitos sin incluir prefijos</b>'
             nrocta.style.borderColor ='red';
         }else{
            

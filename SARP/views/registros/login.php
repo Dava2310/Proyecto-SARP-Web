@@ -47,7 +47,7 @@
                                     <option value="4">Fletero</option>
                                 </select>
                             </div>
-                            <p class="inicioSesion">¿Olvidazte tu contraseña?<a href="recover.php"> Haz clic aquí</a>.</p>
+                            <p class="inicioSesion">¿Olvidaste tu contraseña?<a href="recover.php"> Haz clic aquí</a>.</p>
                             <p class="inicioSesion">¿No tienes una cuenta?<a href="register.php"> Crea una cuenta aquí</a>.</p>
                             <div class="botones">
                                 <button type="reset" class="btn btn-primary">Limpiar</button>

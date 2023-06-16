@@ -75,7 +75,7 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="variedad">Variedad:</label>
-                                    <input class="form-control" type="number" name="variedad" id="variedad" required readOnly>
+                                    <input class="form-control" type="text" name="variedad" id="variedad" required readOnly>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="idLote">ID del Lote Generado:</label>

@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="variedad">Variedad</label>
-                                    <input class="form-control" type="number" name="variedad" id="variedad" required>
+                                    <input class="form-control" type="text" name="variedad" id="variedad" required>
                                 </div>
                             </div>
                             <div class="row">

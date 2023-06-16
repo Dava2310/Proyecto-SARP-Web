@@ -163,12 +163,15 @@
                         <div class="row"> 
                             <div class="form-group  col-md-6  col-sm-12 col-12">
                                 <label for="numcuenta">Nº de Cuenta:</label>
-                                <input  readOnly class="form-control" type="text" name="numcuenta" id="numcuenta" >
+                                <div class="input-group">
+                                    <input readonly type="text" class="form-control col-2" name="CODbanco" id="CODbanco" >
+                                    <input readOnly class="form-control"  type="text" name="numcuenta" id="numcuenta" >
+                                </div>
                                 <p id='errorNroCta'></p>
                             </div>
                             <div class="form-group  col-md-6  col-sm-12 col-12">
                                 <label for="tipocuenta">Tipo de Cuenta:</label>
-                                <input  class="form-control" list="TpoCuenta" name="TpoCuenta" id="TpoCuenta-A" readOnly>
+                                <input  class="form-control" list="TpoCuenta" name="TpoCuenta" id="TpoCuenta-A" disabled>
                                     <datalist id="TpoCuenta">
                                         <option value="AHORRO"></option>
                                         <option value="CORRIENTE"></option>

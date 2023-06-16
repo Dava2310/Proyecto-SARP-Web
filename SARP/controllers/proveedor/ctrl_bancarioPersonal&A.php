@@ -3,6 +3,7 @@
     $P_A = $_POST['cuentapropia'] ?? ""; //determina si la cta es personal o autorizada
     $usuario = $_SESSION['ID'];
     $banco = $_POST['Banco'] ?? "";
+    $CodBanco = $_POST['CODbanco'] ?? "";
     $nrocuenta = $_POST['numcuenta'] ?? "";
     $tipocta = $_POST['TpoCuenta'] ?? "";
     $nombreA = $_POST['NombreA'] ?? "";
@@ -10,7 +11,8 @@
   /*   $bancoA = $_POST['BancoA'] ?? "";
     $nroctaA = $_POST['NrocuentaA'] ?? "";
     $tipoctaA = $_POST['TpoCuentaA'] ?? ""; */
-
+    //inclute e codigo + el numero de cuenta
+    $numCuenta = $CodBanco.$nrocuenta; 
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
         echo "<script> window.location='../registros/login.php'; </script>";
@@ -21,7 +23,7 @@
         if($P_A == "PERSONAL"){
             $result = $con->query("update usuario
                                 set Banco_P='$banco',
-                                Cuenta_P = '$nrocuenta',
+                                Cuenta_P = '$numCuenta',
                                 TipoCuenta_P = '$tipocta'
                                 where ID_Usuario = '$usuario';");
                                 
@@ -30,7 +32,7 @@
         }else if($P_A == "AUTORIZADA"){
             $result = $con->query("update usuario
                                 set Banco_A='$banco',
-                                Cuenta_A = '$nrocuenta',
+                                Cuenta_A = '$numCuenta',
                                 TipoCuenta_A = '$tipocta',
                                 Nombre_A = '$nombreA',
                                 Apellido_A='$apellidoA'

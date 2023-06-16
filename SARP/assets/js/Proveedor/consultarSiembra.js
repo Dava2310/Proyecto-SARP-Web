@@ -12,8 +12,7 @@ function activarCampos(){
         document.getElementById('hectareas').readOnly=true;
     } else {
         BotonCambiar.value="Modificar (Activado)";
-        document.getElementById('kilosA').readOnly=false;
-        document.getElementById('saldoR').readOnly=false;
+        
         document.getElementById('variedad').readOnly=false;
         //document.getElementById('email').disabled=false;
         //document.getElementById('Cedula').disabled=false;

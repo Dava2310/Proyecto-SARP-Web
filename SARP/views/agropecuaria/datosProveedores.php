@@ -156,7 +156,10 @@
                          
                             <div id="div-nrocta" class="form-group  col-md-6  col-sm-12  ">
                                 <label for="numcuenta">Nº de Cuenta:</label>
-                                <input readOnly class="form-control"  type="text" name="numcuenta" id="numcuenta" >
+                                <div class="input-group">
+                                    <input readonly type="text" class="form-control col-2" name="CODbanco" id="CODbanco" >
+                                    <input readOnly class="form-control"  type="text" name="numcuenta" id="numcuenta" >
+                                </div>
                                 <p id='errorNroCta'></p>
                             </div>
                             <div id="div-tcuenta" class="form-group  col-md-6  col-sm-12  ">

@@ -1,4 +1,38 @@
 import {validarFormDP} from '../validacion.js';
+//funcion que indica cual es el codigo del banco seleccionado
+function cambiarCodBanco(codigo){
+    if(codigo == "BANCO MERCANTIL"){
+        $("#CODbanco").val("0105");
+
+    }else if(codigo == "BANCO NACIONAL DE CRÉDITO"){
+        $("#CODbanco").val("0191");
+
+    }else if(codigo == "BANCO DEL CARIBE"){
+        $("#CODbanco").val("0114");
+        
+    }else if(codigo == "BANCO DEL TESORO"){
+        $("#CODbanco").val("0163");
+        
+    }else if(codigo == "BANCO EXTERIOR"){
+        $("#CODbanco").val("0115");
+        
+    }else if(codigo == "BANCO CARONÍ"){
+        $("#CODbanco").val("0128");
+        
+    }else if(codigo == "BANCO DE VENEZUELA"){
+        $("#CODbanco").val("0102");
+        
+    }else if(codigo == "BANESCO BANCO UNIVERSAL"){
+        $("#CODbanco").val("0134");
+        
+    }else if(codigo == "BANCO PROVINCIAL"){
+        $("#CODbanco").val("0108");
+        
+    }else if(codigo == "BANCAMIGA BANCO UNIVERSAL"){
+        $("#CODbanco").val("0172");
+        
+    }
+}
 
 function activarCampos(){
     var BotonCambiar = document.getElementById('botonCambiar');
@@ -16,7 +50,7 @@ function activarCampos(){
         document.getElementById('ApellidoA').readOnly=true;
         document.getElementById('Banco-A').readOnly=true;
         document.getElementById('numcuenta').readOnly=true;
-        document.getElementById('TpoCuenta-A').readOnly=true;
+        document.getElementById('TpoCuenta-A').disabled=true;
     } else {
         BotonCambiar.value="Modificar (Activado)";
         document.getElementById('Nombre').readOnly=false;
@@ -31,7 +65,7 @@ function activarCampos(){
         document.getElementById('ApellidoA').readOnly=false;
         document.getElementById('Banco-A').readOnly=false;
         document.getElementById('numcuenta').readOnly=false;
-        document.getElementById('TpoCuenta-A').readOnly=false;
+        document.getElementById('TpoCuenta-A').disabled=false;
     }
     
 }
@@ -74,6 +108,8 @@ function mifuncion(idP){
             $("#tlf").val(json.Telefono);
             $("#cuentapropia").val(json.Cuenta_A);
             $("#Banco-A").val(json.Banco_P);
+            //cambiar campo de codigo del banco
+            cambiarCodBanco(json.Banco_P);
             $("#numcuenta").val(json.Cuenta_P);
             $("#TpoCuenta-A").val(json.TipoCuenta_P);
             //para que al momento de selecciona a alguien se muestre primeramene los datos bancarios personales
@@ -119,6 +155,8 @@ lista_Fletero.addEventListener("change", (e)=>{
                 //aqui recibimos el "echo" del php(ajax.php)
                 //y ahora solo colocas el valor en los campos
                 $("#Banco-A").val(json.Banco_P);
+                //cambiar campo de codigo del banco
+                cambiarCodBanco(json.Banco_P);
                 $("#numcuenta").val(json.Cuenta_P);
                 $("#TpoCuenta-A").val(json.TipoCuenta_P);
                 //para que los campos nombre y apellidos autorizados no aparezcan
@@ -151,6 +189,8 @@ lista_Fletero.addEventListener("change", (e)=>{
                 //aqui recibimos el "echo" del php(ajax.php)
                 //y ahora solo colocas el valor en los campos
                 $("#Banco-A").val(json.Banco_A);
+                //cambiar campo de codigo del banco
+                cambiarCodBanco(json.Banco_A);
                 $("#numcuenta").val(json.Cuenta_A);
                 $("#TpoCuenta-A").val(json.TipoCuenta_A);
                 //para que los campos nombre y apellidos autorizados si aparezcan
@@ -180,6 +220,12 @@ lista_Fletero.addEventListener("change", (e)=>{
     }
     
 }
+//evento para cargar codigos bancarios a partir de la lista de bancos
+const banco = document.getElementById("Banco-A");
+banco.addEventListener("change", (e)=>{
+
+    cambiarCodBanco(banco.value);
+})
 
 //evento para cuando cambien cuenta de personal a autorizara
 const P_A = document.getElementById("ctaP&A");
@@ -201,7 +247,8 @@ form.addEventListener("submit", (e) =>{
         
         //se gguardan los datos del formulario en formData
         const formData = new FormData(form);
-        console.log("listo")
+        
+        
         //usamos la API fetch para enviar datos al agregarUsuario.php 
         fetch('../../controllers/datos_personales/ctrl_datosF.php',{
             //metodo de envio

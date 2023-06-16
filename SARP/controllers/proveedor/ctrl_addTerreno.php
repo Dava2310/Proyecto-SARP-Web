@@ -1,7 +1,7 @@
 <?php
     session_start();
     $usuario = $_SESSION['ID'];
-
+    $folio = $_POST['folio'] ?? "";
     $tamanio = $_POST['espacio'] ?? "";
     $ubicacion = $_POST['ubicacion'] ?? "";
     
@@ -14,9 +14,9 @@
         $connection = Connection::getInstance();
         $con = $connection->getConnection();
         $result = $con->query("insert into terrenos
-        ( Tamanio, Ubicacion, ID_Usuario)
+        ( Tamanio, Ubicacion, ID_Usuario, Folio)
         values
-        ('$tamanio','$ubicacion','$usuario');");
+        ('$tamanio','$ubicacion','$usuario', '$folio');");
         echo "<script>window.alert('Se ha registrado con exito');</script>";
         header("location: ../../views/proveedor/datosTerreno.php");
     }
