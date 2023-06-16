@@ -335,6 +335,7 @@ CREATE TABLE `terrenos` (
   `Tamanio` float DEFAULT NULL,
   `Ubicacion` varchar(40) DEFAULT NULL,
   `ID_Usuario` int(11) NOT NULL,
+   `Folio` int(11) NOT NULL,
   PRIMARY KEY (`ID_Terreno`),
   KEY `fk_terrenos_usuario_1` (`ID_Usuario`),
   CONSTRAINT `fk_terrenos_usuario_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuario` (`ID_Usuario`)
