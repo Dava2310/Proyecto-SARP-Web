@@ -45,7 +45,7 @@ export function validarFormDP(){
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
         Apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
         password: /^.{4,12}$/, // 4 a 12 digitos.
-        Cedula: /^([VE]-)?\d{6,9}$/i,
+        Cedula: /^([VEJPG]-)?\d{6,9}$/i,
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         telefono: /^(?:\+58)?[2469]\d{9}$/, // numero de telefono formato venezuela, con +58 mas 10 digitos
         direccion: /^[a-zA-Z0-9\sáéíóúñÑ#\-\.]+$/,
@@ -83,7 +83,7 @@ export function validarFormDP(){
     if(!expresiones.Cedula.test(Cedula.value)){
         warnings += `La Cedula no es valida\n`;
         entrar = false;
-        errorCedula.innerHTML = '<b>¡La Cedula debe contener de 6 a 8 numeros. Los formatos pueden ser: V-XXXXXXXX ; E-XXXXXXXX ; XXXXXXXX</b>';
+        errorCedula.innerHTML = '<b>¡La Cedula debe contener de 6 a 8 numeros. Los formatos pueden ser: V-XXXXXXXX ; E-XXXXXXXX ; J-XXXXXXXX ; P-XXXXXXXX ; G-XXXXXXXX ; XXXXXXXX</b>';
         Cedula.style.borderColor ='red';
     }else{
            
@@ -109,7 +109,7 @@ export function validarFormDP(){
         if(!expresiones.Cedula.test(rif.value)){
             warnings += `El rif no es valido\n`;
             entrar = false;
-            errorRif.innerHTML = '<b>¡el rif debe contener de 6 a 9 digitos. Los formatos pueden ser: V-XXXXXXXX ; E-XXXXXXXX ; XXXXXXXX</b>';
+            errorRif.innerHTML = '<b>¡La Cedula debe contener de 6 a 8 numeros. Los formatos pueden ser: V-XXXXXXXX ; E-XXXXXXXX ; J-XXXXXXXX ; P-XXXXXXXX ; G-XXXXXXXX ; XXXXXXXX</b>';
             rif.style.borderColor ='red';
         }else{
            

@@ -35,6 +35,7 @@
                             <div class="form-group">
                                 <label for="password">Contraseña:</label>
                                 <input class="form-control" type="password" name="password" id="password" required>
+                                <button id="togglePassword"><i class="fas fa-eye"></i></button>
                             </div>
                             <p id='errorPassword'></p>
                             <div class="form-group">

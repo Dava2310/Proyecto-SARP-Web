@@ -1,11 +1,24 @@
 const form = document.getElementById("form")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
+const togglePassword = document.getElementById("togglePassword");
 
 const expresiones = {
     password: /^.{4,12}$/, // 4 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 }
+
+togglePassword.addEventListener("click", function(e) {
+
+    e.preventDefault();
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+});
 
 form.addEventListener("submit", e=>{
 
