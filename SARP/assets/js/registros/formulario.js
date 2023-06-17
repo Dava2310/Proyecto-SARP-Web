@@ -9,6 +9,8 @@ const Apellido = document.getElementById("Apellido")
 const Cedula = document.getElementById("Cedula")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
+const togglePassword = document.getElementById("togglePassword");
+const togglePassword2 = document.getElementById("togglePassword2");
 const password2 = document.getElementById("password2")
 
 // ========================= Campos de error ==================
@@ -30,7 +32,29 @@ const expresiones = {
 
 const form = document.getElementById('form');
 
+togglePassword.addEventListener("click", function(e) {
 
+    e.preventDefault();
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+});
+
+togglePassword2.addEventListener("click", function(e) {
+
+    e.preventDefault();
+
+    if (password2.type === "password") {
+        password2.type = "text";
+    } else {
+        password2.type = "password";
+    }
+
+});
 
 form.addEventListener("submit", (e) => {
     

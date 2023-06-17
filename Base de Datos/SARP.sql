@@ -344,10 +344,10 @@ CREATE TABLE `terrenos` (
 -- ----------------------------
 -- Records of terrenos
 -- ----------------------------
-INSERT INTO `terrenos` VALUES ('1', '500', 'las flores', '9');
-INSERT INTO `terrenos` VALUES ('2', '78245', 'trinitarias', '5');
-INSERT INTO `terrenos` VALUES ('3', '888888', 'molinos', '4');
-INSERT INTO `terrenos` VALUES ('4', '4791360', 'molinos', '3');
+INSERT INTO `terrenos` VALUES ('1', '500', 'las flores', '9',0);
+INSERT INTO `terrenos` VALUES ('2', '78245', 'trinitarias', '5',0);
+INSERT INTO `terrenos` VALUES ('3', '888888', 'molinos', '4',0);
+INSERT INTO `terrenos` VALUES ('4', '4791360', 'molinos', '3',0);
 
 -- ----------------------------
 -- Table structure for usuario

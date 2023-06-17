@@ -59,12 +59,14 @@
                             <div class="form-group">
                                 <label for="password">Contraseña: </label>
                                 <input type="password" name="password" id="password" class="form-control" required>
+                                <button id="togglePassword"><i class="fas fa-eye"></i></button>
                             </div>
                             <p id='errorPassword'></p>
 
                             <div class="form-group">
                                 <label for="password2">Verifique su contraseña: </label>
                                 <input type="password" name="password2" id="password2" class="form-control" required>
+                                <button id="togglePassword2"><i class="fas fa-eye"></i></button>
                             </div>
                             <p id='errorPassword2'></p>
                             <p id='coincidencia'></p>

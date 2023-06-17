@@ -1,23 +1,48 @@
 
- .fondo{
-    height: 100vh;
- }
- .fondo img{
-    width: 100%;
-    height: auto;
-  }
-  @supports(object-fit: cover){
-      .fondo img{
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-      }
-  }
-  .registro{
-    height: 100vh;
-    overflow-y: scroll;
-  }
-  .registro-cabecera{
-    margin-top: 20px;
-  }
-  
+.fondo{
+  height: 100vh;
+}
+.fondo img{
+  width: 100%;
+  height: auto;
+}
+@supports(object-fit: cover){
+    .fondo img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+.registro{
+  height: 100vh;
+  overflow-y: scroll;
+}
+.registro-cabecera{
+  margin-top: 20px;
+}
+
+
+#togglePassword {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 10px; /* Ajusta este valor según tu preferencia */
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#togglePassword2 {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 10px; /* Ajusta este valor según tu preferencia */
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.form-group {
+  position: relative; /* Agrega este estilo al contenedor del campo de contraseña */
+  margin-right: 0px; /* Ajusta este valor según tu preferencia */
+}
