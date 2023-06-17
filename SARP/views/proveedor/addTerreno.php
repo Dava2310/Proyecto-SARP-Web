@@ -37,7 +37,7 @@
                                 </div>
                                 <!-- checks para seleccion opcion de si hay o no titulo -->
                                 <div class="form-check form-check-inline mr-5">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="si">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="si" checked>
                                     <label class="form-check-label" for="inlineRadio1">Si</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -64,16 +64,22 @@
                                     <input  class="form-control" type="text" name="ubicacion" id="ubicacion" required >
                                 </div>
                             </div>
+
+                            <input style="display: none" type="checkbox" id="checkboxCompromiso">
+
+                            <p id="compromiso" style="display: none;">
+                                <b>Yo declaro que no proporcioné la información legal del terreno, aunque se me haya solicitado.</b>
+                            </p>
+
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <button type="reset" class="btn btn-warning glyphicon glyphicon-pencil">Limpiar</button>
                                     
-                                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Registrar</button>
+                                    <button id="aceptar" type="submit" class="btn btn-success glyphicon glyphicon-pencil">Registrar</button>
                                 </div>
                             </div>
                         </form>
                         <script type="module" src = "../../assets/js/Proveedor/ADDdatosTerrenos.js"></script>
-                        
     <?php
         include('../templates/footer.php');
     ?>

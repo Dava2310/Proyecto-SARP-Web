@@ -227,3 +227,10 @@ form.addEventListener("submit", (e) =>{
         alert(warnings)
     }
 })
+
+// function limitarInput(event) {
+//     var input = event.target;
+//     if (input.value.length > 16) {
+//         input.value = input.value.slice(0, 16);
+//     }
+// }

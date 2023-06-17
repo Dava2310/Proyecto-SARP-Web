@@ -42,15 +42,12 @@
                         <hr>
                         <!-- FORMULARIO DEL TERRENO-->
                         <form id="form">
-                           
-
                             <div class="row" >
                                 <div class="form-group col-md-5" id="propiedad" >
                                     <label for="folio">Numero de folio</label>
                                     <input value="<?=$row->Folio?>"class="form-control" type="number" name="folio" id="folio" required readonly>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="espacio">Tamaño en Hectáreas</label>
@@ -72,6 +69,7 @@
                                     <button type="submit" class="btn btn-success glyphicon glyphicon-pencil">Guardar Cambios</button>
                                 </div>
                             </div>
+                            
                         </form>
                         <script type="module" src = "../../assets/js/Proveedor/datosTerrenos.js"></script>
     <?php

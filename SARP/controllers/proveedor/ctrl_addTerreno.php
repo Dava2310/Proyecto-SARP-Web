@@ -4,8 +4,8 @@
     $folio = $_POST['folio'] ?? "";
     $tamanio = $_POST['espacio'] ?? "";
     $ubicacion = $_POST['ubicacion'] ?? "";
-    
 
+    
     if(!(isset($usuario))){
         echo "<script> window.alert('No ha iniciado sesion');</script>";
         echo "<script> window.location='../registros/login.php'; </script>";
