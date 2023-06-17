@@ -33,6 +33,7 @@ function cambiarCodBanco(codigo){
         
     }
 }
+
 function activarCampos(){
     var BotonCambiar = document.getElementById('botonCambiar');
     if(document.getElementById('Banco-A').readOnly == false){
@@ -166,6 +167,16 @@ export function mifuncionP_A(P_A,idP){
 
 }
 
+// ===================== ACCION PARA CAMBIAR EL CODIGO DEL NUMERO DE BANCO SEGUN EL BANCO SELECCIONADO 
+var selectElement = document.getElementById("Banco-A");
+
+selectElement.addEventListener("change", (e)=>{
+
+    cambiarCodBanco(selectElement.value);
+})
+
+
+
 const btn_cambiar = document.getElementById("botonCambiar");
 //eventos al dar click al boton de cambiar para hacer los campos editables
 btn_cambiar.addEventListener("click",(e)=>{
@@ -190,8 +201,7 @@ form.addEventListener("submit", (e) =>{
     const[entrar,warnings] = validarFormDP();
     if(entrar){
         //si la vairable entrar es false, se procede a enviar datos al servidor mediante el fetch
-        
-       
+
         //se gguardan los datos del formulario en formData
         const formData = new FormData(form);
         

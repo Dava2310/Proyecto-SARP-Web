@@ -101,7 +101,7 @@
                                     <label for="numcuenta">Nº de Cuenta:</label>
                                     <div class="input-group">
                                         <input readonly type="text" class="form-control col-2" name="CODbanco" id="CODbanco" >
-                                        <input readOnly class="form-control"  type="text" name="numcuenta" id="numcuenta" >
+                                        <input readOnly class="form-control" type="text" name="numcuenta" id="numcuenta" oninput="limitarInput(event)">
                                     </div>
                                     <p id='errorNroCta'></p>
                                 </div>
@@ -126,6 +126,14 @@
                             </div>
                         </form>
                         <script type="module" src="../../assets/js/Proveedor/datosBancarios.js"></script>
+                        <script>
+                            function limitarInput(event) {
+                                var input = event.target;
+                                if (input.value.length > 16) {
+                                    input.value = input.value.slice(0, 16);
+                                }
+                            }
+                        </script>
     <?php
         include('../templates/footer.php');
     ?>

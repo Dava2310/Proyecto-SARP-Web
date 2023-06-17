@@ -232,6 +232,7 @@ export function mifuncionP_A(P_A,idP){
     }
 
 }
+
 //evento para cargar codigos bancarios a partir de la lista de bancos
 const banco = document.getElementById("Banco-A");
 banco.addEventListener("change", (e)=>{
